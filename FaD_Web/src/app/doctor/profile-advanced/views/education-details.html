@@ -1,0 +1,366 @@
+<div class="row fad-advanced-doc-profile-inside-container-row">
+    <div class="col-md-12" style="padding: 15px;">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel-heading fad-advanced-doc-profile-info-panel-heading">
+                    <span>
+                        Professional School
+                    </span>
+                    <svg class="fad-su-doctor-prof-update-add" ng-click="advancedDoctorProfile.openMedicalSchoolModal()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.86 27.87">
+                        <defs>
+                            <style>
+                            .cls-1 {
+                                fill: #fa5f5f;
+                                fill-rule: evenodd;
+                            }
+                            </style>
+                        </defs>
+                        <title>Untitled-3</title>
+                        <path class="cls-1" d="M15.18,1.24A13.93,13.93,0,1,0,29.11,15.18,13.93,13.93,0,0,0,15.18,1.24m0,26.12A12.19,12.19,0,1,1,27.36,15.18,12.19,12.19,0,0,1,15.18,27.37M20.4,14.3H16V10a.87.87,0,1,0-1.74,0V14.3H10A.87.87,0,1,0,10,16H14.3V20.4a.87.87,0,0,0,1.74,0V16H20.4a.87.87,0,0,0,0-1.74" transform="translate(-1.24 -1.24)" />
+                    </svg>
+                </div>
+                <div class="panel-body fad-advanced-doc-profile-info-panel-body">
+                    <p ng-repeat="medSchool in advancedDoctorProfile.docObj.medicalSchoolName " class="fad-advanced-doc-profile-basic-info-specialty-upd">
+                        <span>
+                            {{medSchool.collegeId.name | titleCase}} <span style="display:block; color: #fa5f5f; font-size: 12px;">{{medSchool.taxanomyId.title | titleCase}} <span ng-repeat="degreeName in medSchool.degreeName">, {{degreeName}} </span></span>
+                        <svg style="top: 35%;" class="fad-su-doctor-prof-update-spec-close" ng-click="advancedDoctorProfile.removeMedicalSchool($index)" id="{{speciality}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.14 27.14">
+                            <defs>
+                                <style>
+                                .cls-1 {
+                                    fill: #fa5f5f;
+                                }
+                                </style>
+                            </defs>
+                            <title>Untitled-3</title>
+                            <path class="cls-1" d="M15.18,1.61A13.57,13.57,0,1,0,28.74,15.18,13.58,13.58,0,0,0,15.18,1.61Zm5.44,16.61a1.7,1.7,0,1,1-2.4,2.4l-3-3-3,3a1.7,1.7,0,0,1-2.4-2.4l3-3-3-3a1.7,1.7,0,0,1,2.4-2.4l3,3,3-3a1.7,1.7,0,1,1,2.4,2.4l-3,3Zm0,0" transform="translate(-1.61 -1.61)" />
+                        </svg>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <!--    <div class="col-md-6">
+                <div class="panel-heading fad-advanced-doc-profile-info-panel-heading">
+                    <span>
+                        Awards and Accolades
+                    </span>
+                </div>
+                <div class="panel-body fad-advanced-doc-profile-info-panel-body">
+                    <div class="row fad-advanced-doc-profile-patients-row">
+                        <div class="col-md-8">
+                            <md-input-container class="md-block">
+                                <label>Awards and Accolades</label>
+                                <input ng-model="advancedDoctorProfile.award" type="text">
+                            </md-input-container>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-default fad-advanced-doc-profile-patients-input-btn" ng-click="advancedDoctorProfile.addAwards(advancedDoctorProfile.award)">
+                                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.86 27.87">
+                                    <defs>
+                                        <style>
+                                        .cls-1 {
+                                            fill: #fff;
+                                        }
+                                        </style>
+                                    </defs>
+                                    <title>Untitled-3</title>
+                                    <path class="cls-1" d="M15.18,1.24A13.93,13.93,0,1,0,29.11,15.18,13.93,13.93,0,0,0,15.18,1.24m0,26.12A12.19,12.19,0,1,1,27.36,15.18,12.19,12.19,0,0,1,15.18,27.37M20.4,14.3H16V10a.87.87,0,1,0-1.74,0V14.3H10A.87.87,0,1,0,10,16H14.3V20.4a.87.87,0,0,0,1.74,0V16H20.4a.87.87,0,0,0,0-1.74" transform="translate(-1.24 -1.24)" />
+                                </svg>Add</button>
+                        </div>
+                        <div class="col-md-6 fad-advanced-doc-profile-patients-input-reasons-container" ng-repeat="award in advancedDoctorProfile.docObj.awardsAndAccolades">
+                            <label class="fad-advanced-doc-profile-patients-input-reasons-label">
+                                {{award}}
+                                <button style="opacity:1;" type="button" class="close fad-advanced-doc-profile-patients-input-reasons-btn" aria-hidden="true" ng-click="advancedDoctorProfile.removeAwards(award)">
+                                    <svg id="{{speciality}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.14 27.14">
+                                        <defs>
+                                            <style>
+                                            .cls-1 {
+                                                fill: #fa5f5f;
+                                            }
+                                            </style>
+                                        </defs>
+                                        <title>Untitled-3</title>
+                                        <path class="cls-1" d="M15.18,1.61A13.57,13.57,0,1,0,28.74,15.18,13.58,13.58,0,0,0,15.18,1.61Zm5.44,16.61a1.7,1.7,0,1,1-2.4,2.4l-3-3-3,3a1.7,1.7,0,0,1-2.4-2.4l3-3-3-3a1.7,1.7,0,0,1,2.4-2.4l3,3,3-3a1.7,1.7,0,1,1,2.4,2.4l-3,3Zm0,0" transform="translate(-1.61 -1.61)" />
+                                    </svg>
+                                </button>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="col-md-6">
+                <div class="panel-heading fad-advanced-doc-profile-info-panel-heading">
+                    <span>
+                        Board Certifications
+                    </span>
+                </div>
+                <div class="panel-body fad-advanced-doc-profile-info-panel-body">
+                    <div class="row fad-advanced-doc-profile-patients-row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <md-input-container class="md-block">
+                                    <label>Board Certifications</label>
+                                    <input ng-model="advancedDoctorProfile.boardCertification.certficationName" type="text">
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row text-center">
+                                <button class="btn fad-advanced-doc-profile-patients-input-btn" ng-click="advancedDoctorProfile.addBoardCertification(advancedDoctorProfile.boardCertification)">
+                                Add
+                                </button>
+                                    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.86 27.87">
+                                        <defs>
+                                            <style>
+                                            .cls-1 {
+                                                fill: #fff;
+                                            }
+                                            </style>
+                                        </defs>
+                                        <title>Untitled-3</title>
+                                        <path class="cls-1" d="M15.18,1.24A13.93,13.93,0,1,0,29.11,15.18,13.93,13.93,0,0,0,15.18,1.24m0,26.12A12.19,12.19,0,1,1,27.36,15.18,12.19,12.19,0,0,1,15.18,27.37M20.4,14.3H16V10a.87.87,0,1,0-1.74,0V14.3H10A.87.87,0,1,0,10,16H14.3V20.4a.87.87,0,0,0,1.74,0V16H20.4a.87.87,0,0,0,0-1.74" transform="translate(-1.24 -1.24)" />
+                                    </svg>
+                            </div>
+                        </div>
+                        <div class="col-md-12 fad-advanced-doc-profile-patients-input-reasons-container">
+                            <div class="row">
+                                <div id="practice-location">
+                                    <address ng-repeat="certification in advancedDoctorProfile.docObj.certifications" class="fad-prac-info-hosp-label">
+                                        <div>
+                                            <h4>
+                                            {{certification.certficationName | titleCase}}
+                                            <svg class="fad-su-doctor-prof-update-close" ng-click="advancedDoctorProfile.removeBoardCertification(certification.certficationName)" id="location['_id']" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.14 27.14">
+                                        <defs>
+                                            <style>
+                                            .cls-1 {
+                                                fill: #fa5f5f;
+                                            }
+                                            </style>
+                                        </defs>
+                                        <title>Untitled-3</title>
+                                        <path class="cls-1" d="M15.18,1.61A13.57,13.57,0,1,0,28.74,15.18,13.58,13.58,0,0,0,15.18,1.61Zm5.44,16.61a1.7,1.7,0,1,1-2.4,2.4l-3-3-3,3a1.7,1.7,0,0,1-2.4-2.4l3-3-3-3a1.7,1.7,0,0,1,2.4-2.4l3,3,3-3a1.7,1.7,0,1,1,2.4,2.4l-3,3Zm0,0" transform="translate(-1.61 -1.61)" />
+                                    </svg>
+                                        </h4>
+                                        </div>
+                                    </address>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-md-6 col-xs-12">
+                <div class="panel-heading fad-advanced-doc-profile-info-panel-heading">
+                    <span>
+                                                    Board Certifications
+                                                </span>
+                    <svg class="fad-su-doctor-prof-update-add" ng-click="advancedDoctorProfile.openCertificationModal()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.86 27.87">
+                        <defs>
+                            <style>
+                            .cls-1 {
+                                fill: #fa5f5f;
+                                fill-rule: evenodd;
+                            }
+                            </style>
+                        </defs>
+                        <title>Untitled-3</title>
+                        <path class="cls-1" d="M15.18,1.24A13.93,13.93,0,1,0,29.11,15.18,13.93,13.93,0,0,0,15.18,1.24m0,26.12A12.19,12.19,0,1,1,27.36,15.18,12.19,12.19,0,0,1,15.18,27.37M20.4,14.3H16V10a.87.87,0,1,0-1.74,0V14.3H10A.87.87,0,1,0,10,16H14.3V20.4a.87.87,0,0,0,1.74,0V16H20.4a.87.87,0,0,0,0-1.74" transform="translate(-1.24 -1.24)" />
+                    </svg>
+                </div>
+                <div class="panel-body fad-advanced-doc-profile-info-panel-body">
+                    <p ng-repeat="certification in advancedDoctorProfile.docObj.certifications " class="fad-advanced-doc-profile-basic-info-specialty-upd">
+                        <span ng-if="!certification.yearOfCert">
+                            {{certification.certficationName| titleCase}}
+                        <svg class="fad-su-doctor-prof-update-spec-close" ng-click="advancedDoctorProfile.removeCertification($index)" id="{{speciality}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.14 27.14">
+                            <defs>
+                                <style>
+                                .cls-1 {
+                                    fill: #fa5f5f;
+                                }
+                                </style>
+                            </defs>
+                            <title>Untitled-3</title>
+                            <path class="cls-1" d="M15.18,1.61A13.57,13.57,0,1,0,28.74,15.18,13.58,13.58,0,0,0,15.18,1.61Zm5.44,16.61a1.7,1.7,0,1,1-2.4,2.4l-3-3-3,3a1.7,1.7,0,0,1-2.4-2.4l3-3-3-3a1.7,1.7,0,0,1,2.4-2.4l3,3,3-3a1.7,1.7,0,1,1,2.4,2.4l-3,3Zm0,0" transform="translate(-1.61 -1.61)" />
+                        </svg>
+                        </span>
+                        <span ng-if="!!certification.yearOfCert">
+                            {{certification.certficationName| titleCase}} <br>
+                        <span style="font-size:10px;"><span style="color:#fa5f5f;">Date of Certification: </span> {{certification.monthOfCert}}, {{certification.yearOfCert}}</span>
+                        <svg style="top: 35% !important;" class="fad-su-doctor-prof-update-spec-close" ng-click="advancedDoctorProfile.removeCertification($index)" id="{{speciality}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.14 27.14">
+                            <defs>
+                                <style>
+                                .cls-1 {
+                                    fill: #fa5f5f;
+                                }
+                                </style>
+                            </defs>
+                            <title>Untitled-3</title>
+                            <path class="cls-1" d="M15.18,1.61A13.57,13.57,0,1,0,28.74,15.18,13.58,13.58,0,0,0,15.18,1.61Zm5.44,16.61a1.7,1.7,0,1,1-2.4,2.4l-3-3-3,3a1.7,1.7,0,0,1-2.4-2.4l3-3-3-3a1.7,1.7,0,0,1,2.4-2.4l3,3,3-3a1.7,1.7,0,1,1,2.4,2.4l-3,3Zm0,0" transform="translate(-1.61 -1.61)" />
+                        </svg>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fad-advanced-doc-profile-info-next-btn-container col-md-12" style="position: relative; left: 15px;">
+    <button class="btn btn-raised pull-right fad-advanced-doc-profile-info-next-btn" ng-click="advancedDoctorProfile.saveDoctor()">DONE</button>
+</div>
+<script type="text/ng-template" id="certification-modal.html">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 fad-add-spec-modal-header">
+                <h4 class="fad-add-spec-modal-title">Add <span class="fad-color-code">Board Certifications</span> <svg ng-click="cancel()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.89 24.89"><defs><style>.cls-1{fill:#fa5f5f;}</style></defs><title>twitter-logo-silhouette</title><path class="cls-1" d="M40.92,11.82l-1.13-1.13L28.47,22,17.16,10.68,16,11.82,27.34,23.13,16,34.44l1.13,1.13L28.47,24.26,39.79,35.58l1.13-1.13L29.6,23.13Zm0,0" transform="translate(-16.03 -10.68)"/></svg></h4>
+            </div>
+            <div style="padding:20px 0;" class="fad-add-spec-modal-body col-md-12">
+                <div class="col-md-12">
+                    <div style="padding:0px 20px">
+                        <input type="text" ng-model="specialityFilter" class="form-control fad-doctor-su-upd-search" placeholder="Search for board certifications">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <button style="margin:0;float:right;font-size:x-small;margin-right: 30px;" type="button" class="btn btn-link btn-raised btn-right" ng-click="clearAll()" ng-disabled="selectedCertifications.length == 0">Uncheck all</button>
+                </div>
+                <div class="col-md-12" style="max-height: 340px; padding: 0 15px 0 30px; overflow-y:auto;">
+                    <div class="fad-doc-upd-speciality-list" ng-repeat="item in certifications |filter : {certficationName :specialityFilter } ">
+                        <div class="driving-license-settings" id="accordion-{{$index}}">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <div>
+                                            <input id="{{item['_id']}}" class="btn-lg pull-right" ng-model="selected" type="checkbox" ng-checked="arrayOfCerts.indexOf(item['certficationName']) > -1 " ng-click="addCertification(item,selected)" ng-true-value="true" ng-false-value="false" data-toggle="collapse" data-parent="#accordion-{{$index}}"
+                                            data-target="#collapseOne-{{$index}}">
+                                            <label class="label-for-cert" ng-click="addCertification(item,selected)" for="{{item['_id']}}">{{item.certficationName |titleCase}}
+                                            </label>
+                                        </div>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne-{{$index}}" class="panel-collapse collapse " ng-class="arrayOfCerts.indexOf(item['certficationName']) > -1 ? 'in' : out">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="exampleInput" style="font-size: 12px; color: #fa5f5f;">Month of Certification :</label>
+                                                <select id="exampleInput" ng-model="item.months" name="monthOfCert">
+                                                    <option value=''>Month</option>
+                                                    <option ng-value="screen.id" ng-repeat="screen in monthList">
+                                                        {{screen.name}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="exampleInput1" style="font-size: 12px; color: #fa5f5f;">Year of Certification :</label>
+                                                <div id="exampleInput1"  year-drop offset="0" range="90" style="display: inline-block;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fad-add-spec-modal-footer col-md-12">
+                <button class="btn btn-raised fad-doctor-su-upd-search-sub" type="button" ng-click="ok()">Save ({{selectedCertifications.length}})</button>
+                <br>
+                <h4 class="col-md-6 col-md-offset-3">Copyright 2003-2016 <span>Millennium Technology Solutions</span> Inc. All Rights Reserved.</h4>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/ng-template" id="medical-school-modal.html">
+    <div class="col-md-12">
+        <h4 class="fad-add-spec-modal-title"><svg ng-click="cancel()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.89 24.89"><defs><style>.cls-1{fill:#fa5f5f;}</style></defs><title>twitter-logo-silhouette</title><path class="cls-1" d="M40.92,11.82l-1.13-1.13L28.47,22,17.16,10.68,16,11.82,27.34,23.13,16,34.44l1.13,1.13L28.47,24.26,39.79,35.58l1.13-1.13L29.6,23.13Zm0,0" transform="translate(-16.03 -10.68)"/></svg></h4>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <form novalidate role="form" name="hospitalInfo">
+                <div class="row" style="margin: 0;margin-top: 15px;box-shadow: 1px 1px 4px 2px rgba(0,0,0, 0.3);padding: 15px;">
+                    <div class="col-md-12 fad-add-spec-modal-header">
+                        <h4 class="fad-add-spec-modal-title">Add a <span class="fad-color-code">Professional School</span></h4>
+                    </div>
+                    <div class="modal-body col-md-12">
+                        <div class="row">
+                            <div class="col-md-6 fad-hosp-aff-modal-selectize">
+                                <div class="row">
+                                    <ui-select on-select="onSelected($item)" ng-model="country.selected" theme="bootstrap" reset-search-input="true">
+                                        <ui-select-match allow-clear="true" placeholder="Choose a Country">{{country.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="country in country|filter:$select.search | orderBy " position='down'>
+                                            {{country}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 fad-hosp-aff-modal-second-selectize">
+                                <div class="row">
+                                    <ui-select ng-disabled="!country.selected" ng-model="stateList.selected" theme="bootstrap">
+                                        <ui-select-match allow-clear="true" placeholder="Choose a State">{{stateList.selected| titleCase }}</ui-select-match>
+                                        <div>remove</div>
+                                        <ui-select-choices repeat="state in stateList |filter:$select.search | orderBy : state " position='down'>
+                                            {{state}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <md-autocomplete md-no-cache="true" md-selected-item="selectedItem" md-search-text="searchText" md-items="item in getMatches(searchText,country.selected,stateList.selected)" md-item-text="item.name | titleCase" placeholder="Search for Professional school" required>
+                                <span md-highlight-text="searchText" md-highlight-flags="i">{{item.name | titleCase}}</span>
+                            </md-autocomplete>
+                        </div>
+                        <div class="row" style="padding-top: 10px;">
+                            <div class="col-md-6 col-sm-6 col-xs-12 fad-search-specialty-selectize-container-advanced">
+                                <label id="label">Specialty</label>
+                                <ui-select ng-model="MedSchoolModCon.specialitySelected" theme="selectize" tabindex="2" on-select="onSpecialtySelected($item)" name-tab="specialty" required>
+                                    <ui-select-match placeholder="Choose a Specialty"> {{MedSchoolModCon.specialitySelected.title}}</ui-select-match>
+                                    <ui-select-choices class="scroll" repeat="speciality in medSpecialities|filter:{title : $select.search }" position='down'>
+                                        {{speciality.title}}
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 fad-hosp-aff-modal-second-selectize">
+                                <!-- <label id="label1">Degree</label> -->
+                                <ui-select multiple ng-model="MedSchoolModCon.degreeSelected" theme="bootstrap" tabindex="2" on-select="onDegreeSelected($item)" name-tab="degree" required>
+                                    <ui-select-match placeholder="Choose a Degree"> {{MedSchoolModCon.degreeSelected[$index]}}</ui-select-match>
+                                    <ui-select-choices class="scroll" repeat="degree in degreeList| filter:$select.search | orderBy" position='down'>
+                                        {{degree}}
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <!-- <div class="text-center col-md-12" style="padding-top: 10px;">
+                        <button class="btn btn-raised" style="margin: 0;" type="button" ng-click="clear()">clear</button>
+                    </div> -->
+                    </div>
+                    <div class="fad-add-hosp-modal-footer col-md-12">
+                        <button class="btn btn-raised fad-doctor-su-upd-search-sub" type="button" ng-click="ok()" ng-disabled="!(selectedItem && MedSchoolModCon.degreeSelected && MedSchoolModCon.specialitySelected)">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="fad-add-spec-modal-footer col-md-12">
+            <table class="added-hospitals-table col-md-12">
+                <tr class="added-hospitals-header">
+                    <th ng-if="selectedList.length > 0">Added Professional Schools</th>
+                </tr>
+                <tr class="added-hospitals-content col-md-6" ng-repeat="item in selectedList">
+                    <td>{{item.collegeId.name |titleCase}}
+                        <svg style="right:20px;" class="fad-su-doctor-prof-update-spec-close" ng-click="removeMedicalSchool($index)" id="{{speciality}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.14 27.14">
+                            <defs>
+                                <style>
+                                .cls-1 {
+                                    fill: #fa5f5f;
+                                }
+                                </style>
+                            </defs>
+                            <title>Untitled-3</title>
+                            <path class="cls-1" d="M15.18,1.61A13.57,13.57,0,1,0,28.74,15.18,13.58,13.58,0,0,0,15.18,1.61Zm5.44,16.61a1.7,1.7,0,1,1-2.4,2.4l-3-3-3,3a1.7,1.7,0,0,1-2.4-2.4l3-3-3-3a1.7,1.7,0,0,1,2.4-2.4l3,3,3-3a1.7,1.7,0,1,1,2.4,2.4l-3,3Zm0,0" transform="translate(-1.61 -1.61)" />
+                        </svg>
+                    </td>
+                </tr>
+            </table>
+            <button class="btn btn-raised fad-doctor-su-upd-search-sub" type="button" ng-click="saves()">Save</button>
+            <br>
+            <h4 class="col-md-6 col-md-offset-3">Copyright 2003-2016 <span>Millennium Technology Solutions</span> Inc. All Rights Reserved.</h4>
+        </div>
+    </div>
+</script>

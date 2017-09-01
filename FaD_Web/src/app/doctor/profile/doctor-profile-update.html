@@ -1,0 +1,885 @@
+<div class="container-fluid fad-user-su-container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row fad-doc-su-main-row">
+                <div class="col-md-12 col-sm-12 col-xs-12 fad-su-logo-container">
+                    <div class="row" style="padding: 10px 0;">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <a href="#">
+                                <img class="fad-login-header-logo" src="../../../assets/images/logo-horizontal.png">
+                            </a>
+                        </div>
+                    </div>
+                    <hr style="border-top:1px solid #d1d1d1; opacity: 0.5; margin-top: 0;">
+                </div>
+                <div class="col-md-12">
+                    <div class="row" style="margin-bottom: 25px;">
+                        <h3 class="text-center fad-doc-su-main-text">We found the below information from our records</h3>
+                        <h3 class="text-center fad-doc-su-main-text">Please <span>EDIT</span> the details if required, or <span>CONFIRM.</span></h3>
+                    </div>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="row fad-doc-su-form-container">
+                        <div class="col-md-12">
+                            <h3 class="fad-user-su-form-header col-md-8 col-md-offset-2">
+                            <span class="fad-user-su-form-header-name">get started</span>
+                        </h3>
+                        </div>
+                        <div class="col-md-12">
+                            <form novalidate role="form" name="doctorRegistration">
+                                <div class="row">
+                                    <div class="col-md-12 fad-doc-prof-upd-img-container">
+                                        <div class="fad-advanced-prof-img-container">
+                                            <div class=" img-circle" type="file">
+                                                <img class="img-circle" ngf-src="doctorProfileUpdate.imgPath" alt="profile image">
+                                                <!-- ngf-resize="{width: 110, height: 110, quality: 100%}" ngf-size="{width: 110, height: 110, quality: 100%}" -->
+                                                <button ngf-pattern="'.jpg,.jpeg,.png,.gif'" ngf-keep ngf-select ng-model="doctorProfileUpdate.imgPath" name="file" accept="image/*" ngf-model-invalid="errorFile" ngf-change="doctorProfileUpdate.setImageChange()">UPLOAD</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6" ng-if="!!doctorProfileUpdate.DoctorProfileFactory.originalDocObj.fName">
+                                                <label style="color:#333;">Full Name</label>
+                                                <label class="form-control fad-su-doc-update-form" id="name" name="name">
+                                                    <span ng-if="doctorProfileUpdate.DoctorProfileFactory.originalDocObj.prefix !== 'NULL' && doctorProfileUpdate.DoctorProfileFactory.originalDocObj.prefix">{{doctorProfileUpdate.DoctorProfileFactory.originalDocObj.prefix}}</span>&nbsp{{doctorProfileUpdate.DoctorProfileFactory.originalDocObj.fName | capitalize}}<span ng-if="doctorProfileUpdate.DoctorProfileFactory.originalDocObj.mName">&nbsp{{doctorProfileUpdate.DoctorProfileFactory.originalDocObj.mName | capitalize}}</span>&nbsp{{doctorProfileUpdate.DoctorProfileFactory.originalDocObj.lName | capitalize}}
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6" ng-if="!!doctorProfileUpdate.DoctorProfileFactory.originalDocObj.gender">
+                                                <label style="color:#333;">Gender</label>
+                                                <label ng-if="doctorProfileUpdate.DoctorProfileFactory.originalDocObj.gender ==='M'" type="text" class="form-control fad-su-doc-update-form" id="gender">
+                                                    Male
+                                                </label>
+                                                <label ng-if="doctorProfileUpdate.DoctorProfileFactory.originalDocObj.gender ==='F'" type="text" class="form-control fad-su-doc-update-form" id="gender">
+                                                    Female
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6" ng-if="!doctorProfileUpdate.DoctorProfileFactory.originalDocObj.fName">
+                                                <input id="names" type="text" name="names" ng-model="doctorProfileUpdate.DoctorProfileFactory.stagedDocObj.fName " class="fad-inputs form-control" placeholder="First Name" input-text-only required tabindex="1">
+                                            </div>
+                                            <div class="col-md-6" ng-if="!doctorProfileUpdate.DoctorProfileFactory.originalDocObj.lName">
+                                                <input type="text" id="names" type="text" ng-model="doctorProfileUpdate.DoctorProfileFactory.stagedDocObj.lName" class="fad-inputs form-control" placeholder="Last Name" input-text-only required tabindex="2">
+                                            </div>
+                                            <!-- dropdown for gender selec for new npi -->
+                                            <div class="col-md-6 fad-doc-prof-upd-gender-selectize" ng-if="!doctorProfileUpdate.DoctorProfileFactory.originalDocObj.gender">
+                                                <!-- <ui-select ng-model="doctorProfileUpdate.DoctorProfileFactory.stagedDocObj.gender" theme="selectize" search-enabled="false">
+                                                <ui-select-match placeholder="Gender">{{doctorProfileUpdate.genderMap[doctorProfileUpdate.DoctorProfileFactory.stagedDocObj.gender]}}</ui-select-match>
+                                                <ui-select-choices repeat="val in ['M','F']" position='down'>
+                                                    {{doctorProfileUpdate.genderMap[val]}}
+                                                </ui-select-choices>
+                                            </ui-select> -->
+                                                <div uib-dropdown is-open="status.isopen">
+                                                    <button id="single-button" type="button" class="btn form-control fad-drop-down-update" uib-dropdown-toggle>
+                                                        <span ng-if="!doctorProfileUpdate.DoctorProfileFactory.stagedDocObj.gender">Gender</span>
+                                                        <span ng-if="doctorProfileUpdate.DoctorProfileFactory.stagedDocObj.gender === 'M'">Male</span>
+                                                        <span ng-if="doctorProfileUpdate.DoctorProfileFactory.stagedDocObj.gender === 'F'">Female</span>
+                                                        <span>
+                                                                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.86 10.77"><defs><style>.cls-1{fill:#fa5f5f;fill-rule:evenodd; width: 12px; height: 8px;}</style></defs><title>Untitled-3</title><path class="cls-1" d="M11.67,8.83,4.57,1.68a1.35,1.35,0,0,0-1.92,0,1.37,1.37,0,0,0,0,1.93l8,8a1.34,1.34,0,0,0,1,.39,1.34,1.34,0,0,0,1-.39l8-8a1.37,1.37,0,0,0,0-1.93,1.35,1.35,0,0,0-1.92,0Z" transform="translate(-2.25 -1.28)"/></svg>
+                                                            </span>
+                                                    </button>
+                                                    <ul class="dropdown-menu fad-search-results-header-nav-filters-dropdown" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                                        <li class="fad-search-results-header-nav-filters-dropdown-list" role="  menuitem" ng-click="doctorProfileUpdate.genderSelectTrigger('M')">Male</li>
+                                                        <li class="fad-search-results-header-nav-filters-dropdown-list" role="menuitem" ng-click="doctorProfileUpdate.genderSelectTrigger('F')">Female</li>
+                                                    </ul>
+                                                </div>
+                                                <!-- <div class="dropdown col-md-12">
+                                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" placeholder="Gender" style="width: 100%;">
+                                                        {{doctorProfileUpdate.genderMap[selectedGender]}}
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                        <li ng-repeat="gender in doctorProfileUpdate.gender"><a ng-click="doctorProfileUpdate.dropdowngenderselected(gender)">{{doctorProfileUpdate.genderMap[gender]}}</a></li>
+                                                    </ul>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <div class="row">
+                                            <h3 class="fad-ap-questions col-md-12"><span class="fad-ap-questions-header">specialties</span></h3>
+                                            <div class="col-md-6" ng-repeat="speciality in doctorProfileUpdate.DoctorProfileFactory.originalDocObj.taxonomy" ng-if="speciality.level==2">
+                                                <label class="fad-su-doctor-prof-upd-spec-form">{{speciality.title}}
+                                                    <svg class="fad-su-doctor-prof-update-spec-close" ng-click="doctorProfileUpdate.removeSpeciality(speciality)" id="{{speciality}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.14 27.14">
+                                                        <defs>
+                                                            <style>
+                                                            .cls-1 {
+                                                                fill: #fa5f5f;
+                                                            }
+                                                            </style>
+                                                        </defs>
+                                                        <title>Untitled-3</title>
+                                                        <path class="cls-1" d="M15.18,1.61A13.57,13.57,0,1,0,28.74,15.18,13.58,13.58,0,0,0,15.18,1.61Zm5.44,16.61a1.7,1.7,0,1,1-2.4,2.4l-3-3-3,3a1.7,1.7,0,0,1-2.4-2.4l3-3-3-3a1.7,1.7,0,0,1,2.4-2.4l3,3,3-3a1.7,1.7,0,1,1,2.4,2.4l-3,3Zm0,0" transform="translate(-1.61 -1.61)" />
+                                                    </svg>
+                                                </label>
+                                            </div>
+                                            <div class="fad-doc-prof-update-msg col-md-6" ng-show="(doctorProfileUpdate.DoctorProfileFactory.originalDocObj.taxonomy| filter: taxonomy : taxonomy.level='2').length === 0">
+                                                Select at least one Specialty*
+                                            </div>
+                                            <div class="col-md-6 text-right">
+                                                <label class="fad-doc-prof-upd-add-btn-label">
+                                                    Add a Specialty
+                                                    <svg class="fad-su-doctor-prof-update-add" ng-click="doctorProfileUpdate.openSpecialityModal()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.86 27.87">
+                                                        <defs>
+                                                            <style>
+                                                            .cls-1 {
+                                                                fill: #fa5f5f;
+                                                                fill-rule: evenodd;
+                                                            }
+                                                            </style>
+                                                        </defs>
+                                                        <title>Untitled-3</title>
+                                                        <path class="cls-1" d="M15.18,1.24A13.93,13.93,0,1,0,29.11,15.18,13.93,13.93,0,0,0,15.18,1.24m0,26.12A12.19,12.19,0,1,1,27.36,15.18,12.19,12.19,0,0,1,15.18,27.37M20.4,14.3H16V10a.87.87,0,1,0-1.74,0V14.3H10A.87.87,0,1,0,10,16H14.3V20.4a.87.87,0,0,0,1.74,0V16H20.4a.87.87,0,0,0,0-1.74" transform="translate(-1.24 -1.24)" />
+                                                    </svg>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12" ng-if="doctorProfileUpdate.DoctorProfileFactory.originalDocObj.pSubSpeciality.length > 0">
+                                        <div class="row">
+                                            <h3 class="fad-ap-questions col-md-12"><span class="fad-ap-questions-header">Sub-Specialties</span></h3>
+                                            <div class="col-md-6" ng-repeat="speciality in doctorProfileUpdate.DoctorProfileFactory.originalDocObj.pSubSpeciality">
+                                                <label class="fad-su-doctor-prof-upd-spec-form">{{speciality.title}}
+                                                    <svg class="fad-su-doctor-prof-update-spec-close" ng-click="doctorProfileUpdate.removeSubSpeciality(speciality)" id="{{speciality}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.14 27.14">
+                                                        <defs>
+                                                            <style>
+                                                            .cls-1 {
+                                                                fill: #fa5f5f;
+                                                            }
+                                                            </style>
+                                                        </defs>
+                                                        <title>Untitled-3</title>
+                                                        <path class="cls-1" d="M15.18,1.61A13.57,13.57,0,1,0,28.74,15.18,13.58,13.58,0,0,0,15.18,1.61Zm5.44,16.61a1.7,1.7,0,1,1-2.4,2.4l-3-3-3,3a1.7,1.7,0,0,1-2.4-2.4l3-3-3-3a1.7,1.7,0,0,1,2.4-2.4l3,3,3-3a1.7,1.7,0,1,1,2.4,2.4l-3,3Zm0,0" transform="translate(-1.61 -1.61)" />
+                                                    </svg>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <div class="row">
+                                            <h3 class="fad-ap-questions col-md-12"><span class="fad-ap-questions-header">Practice Locations</span></h3>
+                                            <div class="col-md-6" ng-repeat="location in doctorProfileUpdate.DoctorProfileFactory.originalDocObj.otherAddress">
+                                                <h4 class="fad-su-doctor-prof-upd-loc-form" ng-if="location.organizationLegalName">{{location.organizationLegalName | titleCase}}
+                                                <p>
+                                                <span>{{location.Line1StreetAddress | titleCase}},</span><span ng-if="!!location.Line2StreetAddress"> {{location.Line2StreetAddress | titleCase}},</span>
+                                                <span>{{location.city | titleCase}},</span>
+                                                <span>{{location.state}}</span>
+                                                <span>{{location.zipCode}},</span>
+                                                <span>{{location.country}}</span>
+                                                
+                                                </p>
+                                                <svg class="fad-su-doctor-prof-update-loc-close" ng-click="doctorProfileUpdate.removePracticeLocation(location)" id="{{speciality}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.14 27.14">
+                                                    <defs>
+                                                        <style>
+                                                        .cls-1 {
+                                                            fill: #fa5f5f;
+                                                        }
+                                                        </style>
+                                                    </defs>
+                                                    <title>Untitled-3</title>
+                                                    <path class="cls-1" d="M15.18,1.61A13.57,13.57,0,1,0,28.74,15.18,13.58,13.58,0,0,0,15.18,1.61Zm5.44,16.61a1.7,1.7,0,1,1-2.4,2.4l-3-3-3,3a1.7,1.7,0,0,1-2.4-2.4l3-3-3-3a1.7,1.7,0,0,1,2.4-2.4l3,3,3-3a1.7,1.7,0,1,1,2.4,2.4l-3,3Zm0,0" transform="translate(-1.61 -1.61)" />
+                                                </svg>
+                                            </h4>
+                                                <h4 class="fad-su-doctor-prof-upd-loc-form" ng-if="!location.organizationLegalName">
+                                                <p class="fad-su-doctor-prof-upd-loc-form-no-org-name">
+                                                <span>{{location.Line1StreetAddress | titleCase}},</span>
+                                                <span ng-if="!!location.Line2StreetAddress"> {{location.Line2StreetAddress | titleCase}},</span>
+                                                <span>{{location.city | titleCase}},</span>
+                                                <span>{{location.state}}</span>
+                                                <span>{{location.zipCode}},</span>
+                                                <span>{{location.country}}</span>
+                                                
+                                                </p>
+                                                <svg style="width: 14px;" class="fad-su-doctor-prof-update-loc-close" ng-click="doctorProfileUpdate.removePracticeLocation(location)" id="{{speciality}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.14 27.14">
+                                                    <defs>
+                                                        <style>
+                                                        .cls-1 {
+                                                            fill: #fa5f5f;
+                                                        }
+                                                        </style>
+                                                    </defs>
+                                                    <title>Untitled-3</title>
+                                                    <path class="cls-1" d="M15.18,1.61A13.57,13.57,0,1,0,28.74,15.18,13.58,13.58,0,0,0,15.18,1.61Zm5.44,16.61a1.7,1.7,0,1,1-2.4,2.4l-3-3-3,3a1.7,1.7,0,0,1-2.4-2.4l3-3-3-3a1.7,1.7,0,0,1,2.4-2.4l3,3,3-3a1.7,1.7,0,1,1,2.4,2.4l-3,3Zm0,0" transform="translate(-1.61 -1.61)" />
+                                                </svg>
+                                            </h4>
+                                            </div>
+                                            <div class="fad-doc-prof-update-msg col-md-6" ng-show="(doctorProfileUpdate.DoctorProfileFactory.originalDocObj.otherAddress).length === 0">
+                                                Select at least one Practice Location*
+                                            </div>
+                                            <div class="col-md-6 text-right" style="margin: 10px 0;">
+                                                <label class="fad-doc-prof-upd-add-btn-label">
+                                                    Add a Practice Location
+                                                    <svg class="fad-su-doctor-prof-update-add" ng-click="doctorProfileUpdate.openPracticeLocationModal()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.86 27.87">
+                                                        <defs>
+                                                            <style>
+                                                            .cls-1 {
+                                                                fill: #fa5f5f;
+                                                                fill-rule: evenodd;
+                                                            }
+                                                            </style>
+                                                        </defs>
+                                                        <title>Untitled-3</title>
+                                                        <path class="cls-1" d="M15.18,1.24A13.93,13.93,0,1,0,29.11,15.18,13.93,13.93,0,0,0,15.18,1.24m0,26.12A12.19,12.19,0,1,1,27.36,15.18,12.19,12.19,0,0,1,15.18,27.37M20.4,14.3H16V10a.87.87,0,1,0-1.74,0V14.3H10A.87.87,0,1,0,10,16H14.3V20.4a.87.87,0,0,0,1.74,0V16H20.4a.87.87,0,0,0,0-1.74" transform="translate(-1.24 -1.24)" />
+                                                    </svg>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <div class="row">
+                                            <h3 class="fad-ap-questions col-md-12"><span class="fad-ap-questions-header">Hospital Affiliations</span></h3>
+                                            <div class="col-md-6" ng-repeat="affiliation in 
+                                         doctorProfileUpdate.DoctorProfileFactory.originalDocObj.hospitalAffillation">
+                                                <p class="fad-su-doctor-prof-upd-spec-form">{{affiliation.name | titleCase}}
+                                                    <svg class="fad-su-doctor-prof-update-spec-close" ng-click="doctorProfileUpdate.removeHospitalAffiliation(affiliation)" id="{{insurance}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.14 27.14">
+                                                        <defs>
+                                                            <style>
+                                                            .cls-1 {
+                                                                fill: #fa5f5f;
+                                                            }
+                                                            </style>
+                                                        </defs>
+                                                        <title>Untitled-3</title>
+                                                        <path class="cls-1" d="M15.18,1.61A13.57,13.57,0,1,0,28.74,15.18,13.58,13.58,0,0,0,15.18,1.61Zm5.44,16.61a1.7,1.7,0,1,1-2.4,2.4l-3-3-3,3a1.7,1.7,0,0,1-2.4-2.4l3-3-3-3a1.7,1.7,0,0,1,2.4-2.4l3,3,3-3a1.7,1.7,0,1,1,2.4,2.4l-3,3Zm0,0" transform="translate(-1.61 -1.61)" />
+                                                    </svg>
+                                                </p>
+                                            </div>
+                                            <!-- <div class="fad-doc-prof-update-msg col-md-6" ng-show="(doctorProfileUpdate.DoctorProfileFactory.originalDocObj.hospitalAffillation).length === 0">
+                                            Select at least one Hospital*
+                                        </div> -->
+                                            <div class="col-md-6 text-right">
+                                                <label class="fad-doc-prof-upd-add-btn-label">
+                                                    Add a Hospital
+                                                    <svg class="fad-su-doctor-prof-update-add" ng-click="doctorProfileUpdate.openHospitalAffiliationModal()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.86 27.87">
+                                                        <defs>
+                                                            <style>
+                                                            .cls-1 {
+                                                                fill: #fa5f5f;
+                                                                fill-rule: evenodd;
+                                                            }
+                                                            </style>
+                                                        </defs>
+                                                        <title>Untitled-3</title>
+                                                        <path class="cls-1" d="M15.18,1.24A13.93,13.93,0,1,0,29.11,15.18,13.93,13.93,0,0,0,15.18,1.24m0,26.12A12.19,12.19,0,1,1,27.36,15.18,12.19,12.19,0,0,1,15.18,27.37M20.4,14.3H16V10a.87.87,0,1,0-1.74,0V14.3H10A.87.87,0,1,0,10,16H14.3V20.4a.87.87,0,0,0,1.74,0V16H20.4a.87.87,0,0,0,0-1.74" transform="translate(-1.24 -1.24)" />
+                                                    </svg>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <div class="row">
+                                            <h3 class="fad-ap-questions col-md-12"><span class="fad-ap-questions-header">Insurances Accepted</span></h3>
+                                            <div class="col-md-6" ng-repeat="insurance in doctorProfileUpdate.DoctorProfileFactory.originalDocObj.insuranceIds | orderBy : 'name' | limitTo: limit">
+                                                <label class="fad-su-doctor-prof-upd-spec-form">{{insurance.name}}
+                                                    <svg class="fad-su-doctor-prof-update-spec-close" ng-click="doctorProfileUpdate.removeInsurance(insurance)" id="{{insurance}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.14 27.14">
+                                                        <defs>
+                                                            <style>
+                                                            .cls-1 {
+                                                                fill: #fa5f5f;
+                                                            }
+                                                            </style>
+                                                        </defs>
+                                                        <title>Untitled-3</title>
+                                                        <path class="cls-1" d="M15.18,1.61A13.57,13.57,0,1,0,28.74,15.18,13.58,13.58,0,0,0,15.18,1.61Zm5.44,16.61a1.7,1.7,0,1,1-2.4,2.4l-3-3-3,3a1.7,1.7,0,0,1-2.4-2.4l3-3-3-3a1.7,1.7,0,0,1,2.4-2.4l3,3,3-3a1.7,1.7,0,1,1,2.4,2.4l-3,3Zm0,0" transform="translate(-1.61 -1.61)" />
+                                                    </svg>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6" style="height: 46px;" ng-if="doctorProfileUpdate.DoctorProfileFactory.originalDocObj.insuranceIds.length > 10">
+                                                <button style="margin: 0;outline: 0 !important;font-size: 12px;color: #fa5f5f;" class="btn btn-link btn-raised" type="link" ng-click="doctorProfileUpdate.showMore()">show <span id="showLess">more</span> ...</button>
+                                            </div>
+                                            <div class="fad-doc-prof-update-msg col-md-6" ng-show="(doctorProfileUpdate.DoctorProfileFactory.originalDocObj.insuranceIds).length === 0">
+                                                Select at least one Insurance*
+                                            </div>
+                                            <div class="col-md-6 text-right">
+                                                <label class="fad-doc-prof-upd-add-btn-label">
+                                                    Add Insurances
+                                                    <svg class="fad-su-doctor-prof-update-add" ng-click="doctorProfileUpdate.openInsurancesModal()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.86 27.87">
+                                                        <defs>
+                                                            <style>
+                                                            .cls-1 {
+                                                                fill: #fa5f5f;
+                                                                fill-rule: evenodd;
+                                                            }
+                                                            </style>
+                                                        </defs>
+                                                        <title>Untitled-3</title>
+                                                        <path class="cls-1" d="M15.18,1.24A13.93,13.93,0,1,0,29.11,15.18,13.93,13.93,0,0,0,15.18,1.24m0,26.12A12.19,12.19,0,1,1,27.36,15.18,12.19,12.19,0,0,1,15.18,27.37M20.4,14.3H16V10a.87.87,0,1,0-1.74,0V14.3H10A.87.87,0,1,0,10,16H14.3V20.4a.87.87,0,0,0,1.74,0V16H20.4a.87.87,0,0,0,0-1.74" transform="translate(-1.24 -1.24)" />
+                                                    </svg>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                                <!-- <button class="btn btn-raised fad-su-doctor-prof-update-form-btn" ng-disabled="doctorProfileUpdate.checValidation()" ng-click="doctorProfileUpdate.updateDoctor();doctorProfileUpdate.openMessageControl()">CONFIRM</button> -->
+                                                <button class="btn btn-raised fad-su-doctor-prof-update-form-btn" ng-disabled="doctorProfileUpdate.checValidation()" ng-click="doctorProfileUpdate.showAdvanced()">CONFIRM</button>
+                                                <!-- ng-class="doctorRegistration.$valid?'fad-su-doctor-prof-update-form-btn':'fad-su-doctor-prof-update-form-btn-inactive'" -->
+                                                <!-- ||(doctorProfileUpdate.DoctorProfileFactory.originalDocObj.hospitalAffillation).length === 0 -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--modal template for showing message-->
+            <div>
+                <script type="text/ng-template" id="message-modal.html">
+                    <!-- <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12 " style="text-align:center;">
+                                <img src="../assets/images/Congratulation-Message.png">
+                            </div>
+                            <div class="col-md-12" style="margin-top: 30px;">
+                                <h4 style="color: #fa5f5f; font-size: 30px; text-align: center;  text-transform: uppercase;">
+                            Thank you for listing your practice with us
+                        </h4>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 30px;">
+                                <h5 style="text-align: center; font-size: 24px;">
+                            Welcome to FINDaDOCTOR
+                        </h5>
+                            </div>
+                        </div>
+                    </div> -->
+                    <md-dialog style="width: 100%; height: 100%;" aria-label="Mango (Fruit)">
+                      <form ng-cloak style="width:100%; height:100%;">
+                        <!-- <md-toolbar>
+                          <div class="md-toolbar-tools">
+                            <h2>Thank You</h2>
+                            <span flex></span>
+                            <md-button class="md-icon-button" ng-click="cancel()">
+                              <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                            </md-button>
+                          </div>
+                        </md-toolbar> -->
+                        <img style="padding:30px; height:340px;" src="../assets/images/Congratulation-Message.png">
+                        <md-dialog-content>
+                          <div class="md-dialog-content">
+                           
+                            <p style="text-align:center; font-size:30px;">
+                              Thank you for listing your practice with us.
+                            </p>
+                          </div>
+                        </md-dialog-content>
+
+                        <md-dialog-actions layout="row" style="position:absolute; bottom:0; right: 0;">
+                          <span flex></span>
+                          <md-button ng-click="Message.cancel()">
+                           Cancel
+                          </md-button>
+                          <md-button ng-click="Message.updateDoctor()">
+                            Continue
+                          </md-button>
+                        </md-dialog-actions>
+                      </form>
+                    </md-dialog>
+                </script>
+            </div>
+            <!--modal template for adding specialities-->
+            <div>
+                <script type="text/ng-template" id="speciality-modal.html">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12 fad-add-spec-modal-header">
+                                <h4 class="fad-add-spec-modal-title">
+                                    <span ng-if="(selectedSpecialities| filter : { level : '2'}).length === 0">Add <span class="fad-color-code">Specialties</span></span>
+                              <span ng-repeat="spec in selectedSpecialities| filter : { level : '2'}" >
+                                <span ng-if="emptySub[0] == spec._id">Add <span class="fad-color-code">Sub-Specialities</span> for {{spec.title}}</span></span>
+                             <svg ng-click="cancel()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.89 24.89"><defs><style>.cls-1{fill:#fa5f5f;}</style></defs><title>twitter-logo-silhouette</title><path class="cls-1" d="M40.92,11.82l-1.13-1.13L28.47,22,17.16,10.68,16,11.82,27.34,23.13,16,34.44l1.13,1.13L28.47,24.26,39.79,35.58l1.13-1.13L29.6,23.13Zm0,0" transform="translate(-16.03 -10.68)"/></svg></h4>
+                            </div>
+                            <div style="padding:20px 0;" class="fad-add-spec-modal-body col-md-12">
+                                <div class="col-md-12">
+                                    <div style="padding:0px 20px">
+                                        <input type="text" ng-model="specialityFilter" class="form-control fad-doctor-su-upd-search" placeholder="{{placeHolderValue}}">
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="max-height: 340px; padding: 0 15px 0 30px; overflow-y:auto;">
+                                    <div class="fad-doc-upd-speciality-list" ng-repeat="item in items|filter : {title :specialityFilter } ">
+                                        <input id="{{item.title}}" class="btn-lg pull-right" ng-checked="arrayOfIds.indexOf(item._id) > -1 " ng-model="selected" type="checkbox" ng-click="addSpeciality(item,selected)" ng-true-value="true" ng-false-value="false"> <span ng-click="!!selected?selected=false:selected=true;addSpeciality(item,selected)">{{ item.title}}</span>
+                                        <!-- <md-checkbox id="{{item.title}}" ng-model="selected" type="checkbox" ng-click="addSpeciality(item,selected)" ng-true-value="true" ng-false-value="false">
+                                    </md-checkbox> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fad-add-spec-modal-footer col-md-12">
+                                <button class="btn btn-raised fad-doctor-su-upd-search-sub" type="button" ng-click="ok()" ng-disabled="selectedSpecialities.length == 0">Save</button>
+                                <br>
+                                <h4 class="col-md-6 col-md-offset-3">Copyright 2003-2016 <span>Millennium Technology Solutions</span> Inc. All Rights Reserved.</h4>
+                            </div>
+                        </div>
+                    </div>
+                </script>
+            </div>
+            <!-- modal for adding sub specialty -->
+            <div>
+                <script type="text/ng-template" id="sub-speciality-modal.html">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12 fad-add-spec-modal-header">
+                                <h4 class="fad-add-spec-modal-title">Add Sub-Specialty  <svg ng-click="cancel()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.89 24.89"><defs><style>.cls-1{fill:#fa5f5f;}</style></defs><title>twitter-logo-silhouette</title><path class="cls-1" d="M40.92,11.82l-1.13-1.13L28.47,22,17.16,10.68,16,11.82,27.34,23.13,16,34.44l1.13,1.13L28.47,24.26,39.79,35.58l1.13-1.13L29.6,23.13Zm0,0" transform="translate(-16.03 -10.68)"/></svg></h4>
+                            </div>
+                            <div style="padding:20px 0;" class="fad-add-spec-modal-body col-md-12">
+                                <div class="col-md-12">
+                                    <div style="padding:0px 20px">
+                                        <input type="text" ng-model="specialityFilter" class="form-control fad-doctor-su-upd-search" placeholder="Search for sub specialties">
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="max-height: 340px; padding: 0 15px 0 30px; overflow-y:auto;">
+                                    <div class="fad-doc-upd-speciality-list" ng-repeat="item in items|filter:{title :specialityFilter }">
+                                        <input id="{{item.title}}" class="btn-lg pull-right" ng-model="selected" type="checkbox" ng-click="addSubSpeciality(item,selected)" ng-true-value="true" ng-false-value="false"><span ng-click="!!selected?selected=false:selected=true;addSubSpeciality(item,selected)">{{ item.title}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fad-add-spec-modal-footer col-md-12">
+                                <button class="btn btn-raised fad-doctor-su-upd-search-sub" type="button" ng-click="ok()">Add ({{selectedSpecialities.length}}) {{items.length}}</button>
+                                <br>
+                                <h4 class="col-md-6 col-md-offset-3">Copyright 2003-2016 <span>Millennium Technology Solutions</span> Inc. All Rights Reserved.</h4>
+                            </div>
+                        </div>
+                    </div>
+                </script>
+            </div>
+            <!--modal template for adding hospital affiliation-->
+            <div>
+                <script type="text/ng-template" id="hospital-affiliation-modal.html">
+                <h4 class="fad-add-prac-loc-modal-title"><svg ng-click="cancel()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.89 24.89"><defs><style>.cls-1{fill:#fa5f5f;}</style></defs><title>twitter-logo-silhouette</title><path class="cls-1" d="M40.92,11.82l-1.13-1.13L28.47,22,17.16,10.68,16,11.82,27.34,23.13,16,34.44l1.13,1.13L28.47,24.26,39.79,35.58l1.13-1.13L29.6,23.13Zm0,0" transform="translate(-16.03 -10.68)"/></svg></h4>
+                <div ng-cloak>
+                    <md-content>
+                        <md-tabs md-dynamic-height md-border-bottom>
+                            <md-tab  label="Add a Hospital from list">
+                                <md-content class="md-padding">
+                                    <div class="container-fluid">
+                                        <form novalidate role="form" name="hospitalInfo">
+                                            <div class="row" style="margin: 0;margin-top: 15px;box-shadow: 1px 1px 4px 2px rgba(0,0,0, 0.3);padding: 15px;">
+                                        <div class="col-md-12 fad-add-spec-modal-header">
+                                            <h4 class="fad-add-spec-modal-title">Add a <span class="fad-color-code">Hospital</span></h4>
+                                        </div>
+                                        <div class="modal-body col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-6 fad-hosp-aff-modal-selectize">
+                                                    <div class="row">
+                                                        <ui-select on-select="onSelected($item)" ng-model="stateList.selected" theme="bootstrap" reset-search-input="true">
+                                                            <ui-select-match allow-clear="true" placeholder="Choose a State">{{stateList.selected.name}}</ui-select-match>
+                                                            <ui-select-choices repeat="state in stateList|filter:$select.search" position='down'>
+                                                                {{state.name}}
+                                                            </ui-select-choices>
+                                                        </ui-select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 fad-hosp-aff-modal-second-selectize">
+                                                    <div class="row">
+                                                        <ui-select ng-disabled="!stateList.selected" ng-model="cityList.selected" theme="bootstrap">
+                                                            <ui-select-match allow-clear="true" placeholder="Choose a City">{{cityList.selected| titleCase }}</ui-select-match>
+                                                            <div>remove</div>
+                                                            <ui-select-choices repeat="city in cityList |filter:$select.search | orderBy : city " position='down'>
+                                                                {{city|titleCase }}
+                                                            </ui-select-choices>
+                                                        </ui-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <md-autocomplete md-no-cache="true" md-selected-item="selectedItem" md-search-text="searchText" md-items="item in getMatches(searchText,stateList.selected.code,cityList.selected)" md-item-text="item.name | titleCase" placeholder="Search Organization" required>
+                                                    <span md-highlight-text="searchText" md-highlight-flags="i">{{item.name | titleCase}}</span>
+                                                </md-autocomplete>
+                                            </div>
+                                        </div>
+                                        <div class="fad-add-hosp-modal-footer col-md-12">
+                                            <button class="btn btn-raised fad-doctor-su-upd-search-sub" type="button" ng-click="addFromList()" ng-disabled="!selectedItem">Add</button>
+                                        </div>
+                                    </div>
+                                        </form>
+                                    </div>
+                                </md-content>
+                            </md-tab>
+                            <md-tab  label="Add a Hospital Manually">
+                                <md-content class="md-padding">
+                                   <div class="container-fluid">
+                                        <form novalidate role="form" name="practiceInfo">
+                                            <div class="row" style="margin: 0;margin-top: 15px;box-shadow: 1px 1px 4px 2px rgba(0,0,0, 0.3);padding: 15px;">
+                                        <div class="col-md-12 fad-add-spec-modal-header" style="margin-bottom: 25px;">
+                                            <h4 class="fad-add-spec-modal-title">Add a <span class="fad-color-code">Hospital</span> manually</h4>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input ng-model="hospitalLocation.name" type="text" class="fad-inputs form-control" placeholder="Hospital name" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input ng-model="hospitalLocation.address.city" type="text" class="fad-inputs form-control" placeholder="City" name="hospCity" required hospital-auto-suggestion suggestion-type="city">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input ng-model="hospitalLocation.address.state" type="text" class="fad-inputs form-control" placeholder="State" name="hospState" required hospital-auto-suggestion suggestion-type="state">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input ng-model="hospitalLocation.address.zipCode" type="text" class="fad-inputs form-control" placeholder="Zip Code">
+                                        </div>
+                                        <div class="fad-add-hosp-modal-footer col-md-12">
+                                            <button class="btn btn-raised fad-doctor-su-upd-search-sub" type="button" ng-click="addHospital()" ng-disabled="!(hospitalLocation.name && hospitalLocation.address.city )">Add</button>
+                                        </div>
+                                    </div>
+                                        </form>
+                                    </div>
+                                </md-content>
+                            </md-tab>
+                        </md-tabs>
+                        <div class="fad-add-spec-modal-footer col-md-12">
+                            <table class="added-hospitals-table col-md-12">
+                                <tr class="added-hospitals-header">
+                                    <th>Added hospitals</th>
+                                </tr>
+                                <tr class="added-hospitals-content col-md-6" ng-repeat="item in selectedList">
+                                    <td>{{item.name |titleCase}}
+                                        <svg style="right:20px;" class="fad-su-doctor-prof-update-spec-close" ng-click="removeHospital($index)" id="{{speciality}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.14 27.14">
+                                            <defs>
+                                                <style>
+                                                .cls-1 {
+                                                    fill: #fa5f5f;
+                                                }
+                                                </style>
+                                            </defs>
+                                            <title>Untitled-3</title>
+                                            <path class="cls-1" d="M15.18,1.61A13.57,13.57,0,1,0,28.74,15.18,13.58,13.58,0,0,0,15.18,1.61Zm5.44,16.61a1.7,1.7,0,1,1-2.4,2.4l-3-3-3,3a1.7,1.7,0,0,1-2.4-2.4l3-3-3-3a1.7,1.7,0,0,1,2.4-2.4l3,3,3-3a1.7,1.7,0,1,1,2.4,2.4l-3,3Zm0,0" transform="translate(-1.61 -1.61)" />
+                                        </svg>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button class="btn btn-raised fad-doctor-su-upd-search-sub" type="button" ng-click="save()">Save</button>
+                            <br>
+                            <h4 class="col-md-6 col-md-offset-3">Copyright 2003-2016 <span>Millennium Technology Solutions</span> Inc. All Rights Reserved.</h4>
+                        </div>
+                    </md-content>
+                </div>
+                    <!-- <div class="col-md-12">
+                        <h4 class="fad-add-spec-modal-title"><svg ng-click="cancel()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.89 24.89"><defs><style>.cls-1{fill:#fa5f5f;}</style></defs><title>twitter-logo-silhouette</title><path class="cls-1" d="M40.92,11.82l-1.13-1.13L28.47,22,17.16,10.68,16,11.82,27.34,23.13,16,34.44l1.13,1.13L28.47,24.26,39.79,35.58l1.13-1.13L29.6,23.13Zm0,0" transform="translate(-16.03 -10.68)"/></svg></h4>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <form novalidate role="form" name="hospitalInfo">
+                                <uib-tabset active="activeForm" class="hosp-tab-head">
+                                    <uib-tab index="0" heading="Add from list" class="hosp-tab-1">
+                                        <div class="row" style="margin: 0;margin-top: 15px;box-shadow: 1px 1px 4px 2px rgba(0,0,0, 0.3);padding: 15px;">
+                                            <div class="col-md-12 fad-add-spec-modal-header">
+                                                <h4 class="fad-add-spec-modal-title">Add a <span class="fad-color-code">Hospital</span></h4>
+                                            </div>
+                                            <div class="modal-body col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-6 fad-hosp-aff-modal-selectize">
+                                                        <div class="row">
+                                                            <ui-select on-select="onSelected($item)" ng-model="stateList.selected" theme="bootstrap" reset-search-input="true">
+                                                                <ui-select-match allow-clear="true" placeholder="Choose a State">{{stateList.selected.name}}</ui-select-match>
+                                                                <ui-select-choices repeat="state in stateList|filter:$select.search" position='down'>
+                                                                    {{state.name}}
+                                                                </ui-select-choices>
+                                                            </ui-select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 fad-hosp-aff-modal-second-selectize">
+                                                        <div class="row">
+                                                            <ui-select ng-disabled="!stateList.selected" ng-model="cityList.selected" theme="bootstrap">
+                                                                <ui-select-match allow-clear="true" placeholder="Choose a City">{{cityList.selected| titleCase }}</ui-select-match>
+                                                                <div>remove</div>
+                                                                <ui-select-choices repeat="city in cityList |filter:$select.search | orderBy : city " position='down'>
+                                                                    {{city|titleCase }}
+                                                                </ui-select-choices>
+                                                            </ui-select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <md-autocomplete md-no-cache="true" md-selected-item="selectedItem" md-search-text="searchText" md-items="item in getMatches(searchText,stateList.selected.code,cityList.selected)" md-item-text="item.name | titleCase" placeholder="Search Organization" required>
+                                                        <span md-highlight-text="searchText" md-highlight-flags="i">{{item.name | titleCase}}</span>
+                                                    </md-autocomplete>
+                                                </div>
+                                            </div>
+                                            <div class="fad-add-hosp-modal-footer col-md-12">
+                                                <button class="btn btn-raised fad-doctor-su-upd-search-sub" type="button" ng-click="addFromList()" ng-disabled="!selectedItem">Add</button>
+                                            </div>
+                                        </div>
+                                    </uib-tab>
+                                    <uib-tab index="1" heading="Add manually" class="hosp-tab-1">
+                                        <div class="row" style="margin: 0;margin-top: 15px;box-shadow: 1px 1px 4px 2px rgba(0,0,0, 0.3);padding: 15px;">
+                                            <div class="col-md-12 fad-add-spec-modal-header" style="margin-bottom: 25px;">
+                                                <h4 class="fad-add-spec-modal-title">Add a <span class="fad-color-code">Hospital</span> manually</h4>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input ng-model="hospitalLocation.name" type="text" class="fad-inputs form-control" placeholder="Hospital name" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input ng-model="hospitalLocation.address.city" type="text" class="fad-inputs form-control" placeholder="City" name="hospCity" required hospital-auto-suggestion suggestion-type="city">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input ng-model="hospitalLocation.address.state" type="text" class="fad-inputs form-control" placeholder="State" name="hospState" required hospital-auto-suggestion suggestion-type="state">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input ng-model="hospitalLocation.address.zipCode" type="text" class="fad-inputs form-control" placeholder="Zip Code">
+                                            </div>
+                                            <div class="fad-add-hosp-modal-footer col-md-12">
+                                                <button class="btn btn-raised fad-doctor-su-upd-search-sub" type="button" ng-click="addHospital()" ng-disabled="!(hospitalLocation.name &&  hospitalLocation.address.city )">Add</button>
+                                            </div>
+                                        </div>
+                                    </uib-tab>
+                                </uib-tabset>
+                            </form>
+                        </div>
+                        <div class="fad-add-spec-modal-footer col-md-12">
+                            <table class="added-hospitals-table col-md-12">
+                                <tr class="added-hospitals-header">
+                                    <th>Added hospitals</th>
+                                </tr>
+                                <tr class="added-hospitals-content col-md-6" ng-repeat="item in selectedList">
+                                    <td>{{item.hospitalName |titleCase}}
+                                        <svg style="right:20px;" class="fad-su-doctor-prof-update-spec-close" ng-click="removeHospital($index)" id="{{speciality}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.14 27.14">
+                                            <defs>
+                                                <style>
+                                                .cls-1 {
+                                                    fill: #fa5f5f;
+                                                }
+                                                </style>
+                                            </defs>
+                                            <title>Untitled-3</title>
+                                            <path class="cls-1" d="M15.18,1.61A13.57,13.57,0,1,0,28.74,15.18,13.58,13.58,0,0,0,15.18,1.61Zm5.44,16.61a1.7,1.7,0,1,1-2.4,2.4l-3-3-3,3a1.7,1.7,0,0,1-2.4-2.4l3-3-3-3a1.7,1.7,0,0,1,2.4-2.4l3,3,3-3a1.7,1.7,0,1,1,2.4,2.4l-3,3Zm0,0" transform="translate(-1.61 -1.61)" />
+                                        </svg>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button class="btn btn-raised fad-doctor-su-upd-search-sub" type="button" ng-click="save()">Save</button>
+                            <br>
+                            <h4 class="col-md-6 col-md-offset-3">Copyright 2003-2016 <span>Millennium Technology Solutions</span> Inc. All Rights Reserved.</h4>
+                        </div>
+                    </div> -->
+                </script>  
+            </div>
+            <!--modal template for adding insurances-->
+            <div>
+                <script type="text/ng-template" id="insurances-modal.html">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12 fad-add-spec-modal-header">
+                                <h4 class="fad-add-spec-modal-title">Add <span class="fad-color-code">Insurances</span> <svg ng-click="cancel()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.89 24.89"><defs><style>.cls-1{fill:#fa5f5f;}</style></defs><title>twitter-logo-silhouette</title><path class="cls-1" d="M40.92,11.82l-1.13-1.13L28.47,22,17.16,10.68,16,11.82,27.34,23.13,16,34.44l1.13,1.13L28.47,24.26,39.79,35.58l1.13-1.13L29.6,23.13Zm0,0" transform="translate(-16.03 -10.68)"/></svg></h4>
+                            </div>
+                            <div style="padding:20px 0;" class="fad-add-spec-modal-body col-md-12">
+                                <div class="col-md-12">
+                                    <div style="padding:0px 20px">
+                                        <input id="insuranceInput" type="text" ng-model="insuranceFilter" class="form-control fad-doctor-su-upd-search" placeholder="Search for insurances">
+                                        <span class="input-group-btn">
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <button style="margin:0;float:right;font-size:x-small;margin-right: 30px;" type="button" class="btn btn-link btn-raised btn-right" ng-click="clearAll()" ng-disabled="selectedInsurances.length == 0">Uncheck all</button>
+                                </div>
+                                <div class="col-md-12" style="max-height: 340px; padding: 0 15px 0 30px; overflow-y:auto;">
+                                    <div class="fad-doc-upd-speciality-list" ng-repeat="insurance in Insurance.insuranceProviders|filter : {name :insuranceFilter}">
+                                        <input id="{{insurance['_id']}}" class="btn-lg pull-right myCheck" ng-checked="arrayOfIds.indexOf(insurance['_id']) > -1 " ng-model="selected" type="checkbox" ng-click="addInsurance(insurance,selected)" ng-true-value="true" ng-false-value="false">
+                                        <span ng-click="!!selected?selected=false:selected=true;addInsurance(insurance,selected)">{{insurance.name}}</span>
+                                        <!-- <md-checkbox id="{{item.title}}" ng-model="selected" type="checkbox" ng-click="addSpeciality(item,selected)" ng-true-value="true" ng-false-value="false">
+                                    </md-checkbox> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fad-add-spec-modal-footer col-md-12">
+                                <button class="btn btn-raised fad-doctor-su-upd-search-sub" type="button" ng-click="ok()">Save ({{selectedInsurances.length}})</button>
+                                <!-- <button  class="btn btn-raised fad-doctor-su-upd-search-sub-update" type="button" ng-click="clearAll()" ng-disabled="selectedInsurances.length == 0">Clear All ({{selectedInsurances.length}})</button> -->
+                                <br>
+                                <h4 class="col-md-6 col-md-offset-3">Copyright 2003-2016 <span>Millennium Technology Solutions</span> Inc. All Rights Reserved.</h4>
+                            </div>
+                        </div>
+                    </div>
+                </script>
+            </div>
+        </div>
+        <!--modal template for adding pracice location-->
+        <div>
+            <script type="text/ng-template" id="practice-location-modal.html">
+                <h4 class="fad-add-prac-loc-modal-title"><svg ng-click="cancel()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.89 24.89"><defs><style>.cls-1{fill:#fa5f5f;}</style></defs><title>twitter-logo-silhouette</title><path class="cls-1" d="M40.92,11.82l-1.13-1.13L28.47,22,17.16,10.68,16,11.82,27.34,23.13,16,34.44l1.13,1.13L28.47,24.26,39.79,35.58l1.13-1.13L29.6,23.13Zm0,0" transform="translate(-16.03 -10.68)"/></svg></h4>
+                <div ng-cloak>
+                    <md-content>
+                        <md-tabs md-dynamic-height md-border-bottom>
+                            <md-tab  label="Add a practice location from list">
+                                <md-content style="min-height: 508px;" class="md-padding">
+                                    <div class="container-fluid">
+                                        <form novalidate role="form" name="practiceInfo">
+                                            <div class="row">
+                                                <div style="padding: 10px 20px;" class="modal-body col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-6 fad-hosp-aff-modal-selectize">
+                                                            <div class="row">
+                                                                <ui-select on-select="onSelected($item)" ng-model="stateList.selected" theme="bootstrap" reset-search-input="true">
+                                                                    <ui-select-match allow-clear="true" placeholder="Choose a State">{{stateList.selected.name}}</ui-select-match>
+                                                                    <ui-select-choices repeat="state in stateList|filter:$select.search" position='down'>
+                                                                        {{state.name}}
+                                                                    </ui-select-choices>
+                                                                </ui-select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 fad-hosp-aff-modal-second-selectize">
+                                                            <div class="row">
+                                                                <ui-select ng-disabled="!stateList.selected" ng-model="cityList.selected" theme="bootstrap">
+                                                                    <ui-select-match allow-clear="true" placeholder="Choose a City">{{cityList.selected| titleCase }}</ui-select-match>
+                                                                    <div>remove</div>
+                                                                    <ui-select-choices repeat="city in cityList |filter:$select.search | orderBy : city " position='down'>
+                                                                        {{city|titleCase }}
+                                                                    </ui-select-choices>
+                                                                </ui-select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <md-autocomplete md-no-cache="true" md-selected-item="selectedItem" md-search-text="searchText" md-items="item in getMatches(searchText,stateList.selected.code,cityList.selected)" md-item-text="item.orgName " placeholder="Search for Practice Location">
+                                                            <span md-highlight-text="searchText" md-highlight-flags="i">{{item.orgName | titleCase}}  - </span>
+                                                            <span class="fad-color-code"> 
+
+                                                                        {{item.pracAddress.Line1StreetAddress | titleCase }},</span>
+                                                            <span ng-if="!!doctor['_source'].pracAddress.Line2StreetAddress" class="fad-color-code"> {{item.pracAddress.Line2StreetAddress | titleCase}},</span>
+                                                            <span class="fad-color-code">{{item.pracAddress.city | titleCase}},</span>
+                                                            <span class="fad-color-code">{{item.pracAddress.state}}</span>
+                                                            <span class="fad-color-code">{{item.pracAddress.zipCode}},</span>
+                                                            <span class="fad-color-code">{{item.pracAddress.country}}</span>
+                                                            </span>
+                                                        </md-autocomplete>
+                                                        <label class="fad-su-doc-upd-prac-loc-label">
+                                                            Practice Information
+                                                        </label>
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <input ng-model="practiceLocation.organizationLegalName" type="text" class="fad-inputs form-control" placeholder="Name of Practice" required disabled>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <input ng-model="practiceLocation.Line1StreetAddress " type="text" class="fad-inputs form-control" placeholder="Address Line 1" required disabled>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <input ng-model="practiceLocation.Line2StreetAddress" type="text" class="fad-inputs form-control" placeholder="Address Line 2" disabled>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <input ng-model="practiceLocation.zipCode" type="text" class="fad-inputs form-control" address-auto-suggestion suggestion-type="postal_code" placeholder="Zip Code" required tabindex="-1" disabled>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <input ng-model="practiceLocation.city " type="text" class="fad-inputs form-control" placeholder="City" suggestion-type="city" id="city" name="city" required tabindex="-1" disabled>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <input ng-model="practiceLocation.state" type="text" class="fad-inputs form-control" placeholder="State" suggestion-type="state" id="state" name="state" required tabindex="-1" disabled>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <input ng-model="practiceLocation.phoneNo" type="text" id="phone" name="mobile" class="fad-inputs form-control" placeholder="Phone Number" maxLength="14" minLength="10" mobile-formatter required>
+                                                                            <span class="fad-doc-su-form-alert">Mobile number is required field<br></span>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <input ng-model="practiceLocation.faxNo" type="text" id="fax" name="fax" class="fad-inputs form-control" placeholder="Fax Number" maxLength="14" minLength="10" mobile-formatter>
+                                                                        </div>
+                                                                        <div class="col-md-12" style="display:block;">
+                                                                            <div class="row">
+                                                                                <div class="fad-user-su-checkbox">
+                                                                                    <label>
+                                                                                        <md-checkbox ng-disabled="!(practiceLocation.organizationLegalName && practiceLocation.Line1StreetAddress &&practiceLocation.zipCode && practiceLocation.phoneNo)" ng-click="showConfirm(practiceLocation)" ng-model="practiceLocation.isPrimary">
+                                                                                            This is my Primary Location.
+                                                                                        </md-checkbox>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </form>
+                                    </div>
+                                </md-content>
+                                <div class="fad-add-spec-modal-footer col-md-12">
+                                    <button class="btn btn-raised fad-doctor-su-upd-search-sub" type="button" ng-click="ok()" ng-disabled="!practiceInfo.$valid">Add</button>
+                                    <br>
+                                    <h4 class="col-md-6 col-md-offset-3">Copyright 2003-2016 <span>Millennium Technology Solutions</span> Inc. All Rights Reserved.</h4>
+                                </div>
+                            </md-tab>
+                            <md-tab  label="Add a practice location manually">
+                                <md-content style="min-height: 508px;" class="md-padding">
+                                   <div class="container-fluid">
+                                        <form novalidate role="form" name="practiceInform">
+                                            <div class="row">
+                                                <div style="padding: 10px 20px;" class="modal-body col-md-12">
+                                                    <div class="row">
+                                                        <label class="fad-su-doc-upd-prac-loc-label">
+                                                            Practice Information
+                                                        </label>
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <input ng-model="practiceLocationManually.orgName" type="text" class="fad-inputs form-control" placeholder="Name of Practice" required>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <input ng-model="practiceLocationManually.pracAddress.Line1StreetAddress " type="text" class="fad-inputs form-control" placeholder="Address Line 1" required>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <input ng-model="practiceLocationManually.pracAddress.Line2StreetAddress" type="text" class="fad-inputs form-control" placeholder="Address Line 2">
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <input ng-model="practiceLocationManually.pracAddress.zipCode" type="text" class="fad-inputs form-control" address-auto-suggestion suggestion-type="postal_code" placeholder="Zip Code" required tabindex="-1">
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <input ng-model="practiceLocationManually.pracAddress.city " type="text" class="fad-inputs form-control" placeholder="City" suggestion-type="city" id="city" name="city" required tabindex="-1">
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <input ng-model="practiceLocationManually.pracAddress.state" type="text" class="fad-inputs form-control" placeholder="State" suggestion-type="state" id="state" name="state" required tabindex="-1">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <input ng-model="practiceLocationManually.pracAddress.phoneNo" type="text" id="phone" name="mobile" class="fad-inputs form-control" placeholder="Phone Number" maxLength="14" minLength="10" mobile-formatter required>
+                                                                            <span class="fad-doc-su-form-alert">Mobile number is required field<br></span>
+                                                                        </div>
+                                                                        <!-- <div class="col-md-6">
+                                                                            <input ng-model="practiceLocationManually.pracAddress.faxNo" type="text" id="fax" name="fax" class="fad-inputs form-control" placeholder="Fax Number" maxLength="14" minLength="10" mobile-formatter>
+                                                                        </div> -->
+                                                                        <div class="col-md-12" style="display:block;">
+                                                                            <div class="row">
+                                                                                <div class="fad-user-su-checkbox">
+                                                                                    <label>
+                                                                                        <md-checkbox ng-disabled="!(practiceLocationManually.pracAddress.Line1StreetAddress &&practiceLocationManually.pracAddress.zipCode && practiceLocationManually.pracAddress.phoneNo)" ng-click="showConfirmButton(practiceLocationManually)" ng-model="isPrimary">
+                                                                                            This is my Primary Location.
+                                                                                        </md-checkbox>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </md-content>
+                                <div class="fad-add-spec-modal-footer col-md-12">
+                                    <button class="btn btn-raised fad-doctor-su-upd-search-sub" type="button" ng-click="addPracLocation()" ng-disabled="!practiceInform.$valid">Add</button>
+                                    <br>
+                                    <h4 class="col-md-6 col-md-offset-3">Copyright 2003-2016 <span>Millennium Technology Solutions</span> Inc. All Rights Reserved.</h4>
+                                </div>
+                            </md-tab>
+                        </md-tabs>
+                    </md-content>
+                </div>
+            </script>
+        </div>
+        <div style="position: relative; margin-top: 15px;" class="col-md-12 col-sm-12 col-xs-12 fad-user-su-footer">
+            <h4 class="fad-user-su-footer-text">&copy;2016 <span>Millennium Technology Solutions Inc.</span> All Rights Reserved.</h4>
+        </div>
+    </div>
+</div>

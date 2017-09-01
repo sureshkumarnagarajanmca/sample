@@ -1,0 +1,497 @@
+<main style="height:100%;" id="doctor-profile">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="container-fluid fad-doctor-details-container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 fad-doctor-details-header-container">
+                    <h4 class="doc-prof-back-btn" ui-sref="search-results">
+                       <svg  class="back-svg-btn" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.86 10.77"><defs><style>.cls-back-1{fill:#fff;fill-rule:evenodd; width: 12px; height: 8px;}</style></defs><title>Untitled-3</title><path class="cls-back-1" d="M11.67,8.83,4.57,1.68a1.35,1.35,0,0,0-1.92,0,1.37,1.37,0,0,0,0,1.93l8,8a1.34,1.34,0,0,0,1,.39,1.34,1.34,0,0,0,1-.39l8-8a1.37,1.37,0,0,0,0-1.93,1.35,1.35,0,0,0-1.92,0Z" transform="translate(-2.25 -1.28)"/></svg>
+                                    Back to Results
+                    </h4>
+                    <div class="fad-doctor-details-header-logo-container centered">
+                        <a href="#" class="fad-search-footer-logo-img-container">
+                            <img src="../assets/images/white-logo.png" class="fad-search-footer-logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="fad-float-msg-container" ng-hide="showme" style="top: 7%; right: 3%;">
+                    <h3>Are you a Doctor? <span style="text-decoration: underline; cursor: pointer;" ui-sref="doctor-signup">Sign up</span> with us.
+                            <svg class="fad-float-msg-close" ng-click="showme = true" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.14 27.14">
+                            <defs>
+                                <style>
+                                .cls-11234 {
+                                    fill: #fff;
+                                }
+                                </style>
+                            </defs>
+                            <title>Untitled-3</title>
+                            <path class="cls-11234" d="M15.18,1.61A13.57,13.57,0,1,0,28.74,15.18,13.58,13.58,0,0,0,15.18,1.61Zm5.44,16.61a1.7,1.7,0,1,1-2.4,2.4l-3-3-3,3a1.7,1.7,0,0,1-2.4-2.4l3-3-3-3a1.7,1.7,0,0,1,2.4-2.4l3,3,3-3a1.7,1.7,0,1,1,2.4,2.4l-3,3Zm0,0" transform="translate(-1.61 -1.61)" />
+                            </path>
+                        </svg>
+                        </h3>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 fad-doctor-details-map-main-container">
+                    <div class="row fad-doctor-details-map-container">
+                        <div id="map" location="{{doctorDetails.locationObj}}" map-directions style="min-height:250px;min-width: 400px">
+                        </div>
+                        <button class="fad-doctor-details-map-button" ng-click="doctorDetails.openGetDirectionsModal(doctorDetails.cardObj['_source'].address.geoLocation)">
+                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196.32 196.44">
+                                <defs>
+                                    <style>
+                                    .cls-1 {
+                                        fill: #3db39e;
+                                    }
+                                    </style>
+                                </defs>
+                                <title>expand</title>
+                                <path class="cls-1" d="M62.2,39.5l10.18-9.64c6.81-6.7,5-14.25-3.92-16.35H25.33c-7.15.26-11.94,2.42-11.7,11.87l-.06,43.18c1.82,8.9,8,10.64,13.83,3.87L38.85,61.62,75,97.79a8.07,8.07,0,0,0,11.38,0L97.78,86.43a8,8,0,0,0,0-11.37Zm24,86.43a8,8,0,0,0-11.34,0L38.78,162,27.36,151.19c-5.78-6.76-12-5-13.79,3.85l.07,43.08c-.23,9.4,4.53,11.58,11.67,11.83h43c8.93-2.11,10.69-9.63,3.91-16.29L62.09,184l35.44-35.46a8,8,0,0,0,0-11.33ZM137.25,97.8a8,8,0,0,0,11.35,0l36.09-36.17L196.1,72.43c5.76,6.77,12,5,13.78-3.87l-.06-43.18c.23-9.45-4.54-11.61-11.67-11.87H155.08c-8.94,2.11-10.65,9.66-3.87,16.35l10.17,9.65L125.92,75a8.06,8.06,0,0,0,0,11.37Zm58.88,53.38L184.75,162l-36-36a8,8,0,0,0-11.32,0l-11.31,11.32a8,8,0,0,0,0,11.33L161.52,184l-10.14,9.63c-6.75,6.67-5,14.2,3.88,16.29h42.93c7.11-.24,11.89-2.43,11.64-11.83l.06-43.08C208.07,146.17,201.89,144.43,196.13,151.18Z" transform="translate(-13.57 -13.51)" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <button ng-hide="doctorDetails.SearchService.doctorCount == 1" class="btn btn-raised btn-circle btn-lg doc-prof-nav-btn" style="position: fixed; left: 15px; top: 50%; z-index: 10000; border-radius: 50%; margin: 0; padding: 12px 16px;" ng-click="doctorDetails.getPrevDoctor()">
+                    <svg style="width: 20px; transform: rotate(90deg); position: relative; left: -2px;" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.86 10.77">
+                        <defs>
+                            <style>
+                            .cls-1 {
+                                fill: #fa5f5f;
+                                fill-rule: evenodd;
+                                width: 12px;
+                                height: 8px;
+                            }
+                            </style>
+                        </defs>
+                        <title>Untitled-3</title>
+                        <path class="cls-1" d="M11.67,8.83,4.57,1.68a1.35,1.35,0,0,0-1.92,0,1.37,1.37,0,0,0,0,1.93l8,8a1.34,1.34,0,0,0,1,.39,1.34,1.34,0,0,0,1-.39l8-8a1.37,1.37,0,0,0,0-1.93,1.35,1.35,0,0,0-1.92,0Z" transform="translate(-2.25 -1.28)" />
+                    </svg>
+                </button>
+                <button ng-hide="doctorDetails.SearchService.doctorCount == doctorDetails.SearchService.totalRecords" class="btn btn-raised btn-circle btn-lg doc-prof-nav-btn" style="position: fixed; right: 15px; top: 50%; z-index: 10000; border-radius: 50%; margin: 0; padding: 12px 16px;" ng-click="doctorDetails.getNextDoctor()">
+                    <svg style="width: 20px; transform: rotate(-90deg); position: relative; left: 2px;" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.86 10.77">
+                        <defs>
+                            <style>
+                            .cls-1 {
+                                fill: #fa5f5f;
+                                fill-rule: evenodd;
+                                width: 12px;
+                                height: 8px;
+                            }
+                            </style>
+                        </defs>
+                        <title>Untitled-3</title>
+                        <path class="cls-1" d="M11.67,8.83,4.57,1.68a1.35,1.35,0,0,0-1.92,0,1.37,1.37,0,0,0,0,1.93l8,8a1.34,1.34,0,0,0,1,.39,1.34,1.34,0,0,0,1-.39l8-8a1.37,1.37,0,0,0,0-1.93,1.35,1.35,0,0,0-1.92,0Z" transform="translate(-2.25 -1.28)" />
+                    </svg>
+                </button>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-5 col-xs-12 col-sm-12 height-for-mobile" id="to">
+                            <div class="row" hl-sticky="" container="to" media-query="min-width: 768px" style="height:424px; position: relative; top: -30px;" offset-top="55">
+                                <div class="fad-doc-prof-det-card-cont">
+                                    <ul class="fad-doc-prof-det-card-cont-details">
+                                        <li class="col-md-12 det-card-li-container">
+                                            <div class="text-center" style="border-bottom: 1px solid #eee;">
+                                                <img class="img-responsive img-thumbnail img-circle det-card-img" ngf-src="doctorDetails.imgPath" alt="profile image" ngf-resize="{width: 30, height: 30, quality: 100%}" ngf-size="{width: 30, height: 30, quality: 100%}">
+												<div class="account-name-logo-profile" ng-if="doctorDetails.cardObj['_source'].accountName !== 'NULL'">
+													<img src="assets/images/account-name-logo-web.png" />
+												</div>												
+                                                <!-- <img class="img-responsive img-thumbnail img-circle det-card-img" avatar gender="{{doctorDetails.cardObj['_source'].gender}}"> -->
+                                                <h3 class="fad-search-results-doctor-results-name">
+                                            <!--<span ng-if="doctorDetails.doctor.prefix !== 'NULL' && doctorDetails.doctor.prefix">
+                                            {{doctorDetails.doctor.prefix|capitalize}}</span>-->
+                                            {{doctorDetails.doctor.fName|titleCase}} 
+                                            {{doctorDetails.doctor.mName|titleCase}} 
+                                            {{doctorDetails.doctor.lName|titleCase}}<!--<span ng-if="doctorDetails.doctor.credentialText[0]">, {{doctorDetails.doctor.credentialText[0]|credential}}</span>-->
+											<span ng-if="doctorDetails.doctor.suffix !== 'NULL' && doctorDetails.doctor.suffix">
+                                            , {{doctorDetails.doctor.suffix}}</span>
+                                            <br><span class="fad-doc-prof-speciality" ng-repeat="tax in doctorDetails.doctor.taxonomy" ng-if="tax._id ===doctorDetails.SearchService.specialitySelected._id">{{tax.title}}</span>
+                                            </h3>
+                                            </div>
+                                        </li>
+                                        <li class="col-md-12 det-card-li-container">
+                                            <div class="text-center" style="border-bottom: 1px solid #eee; height: 90px;">
+                                                <div class="fad-search-results-doctor-results-location"><span>Within {{doctorDetails.cardObj["fields"].distance[0]|number : 2}} miles</span></div>
+                                                <p class="fad-search-results-doctor-results-address">
+                                                    <span ng-if="doctorDetails.cardObj['_source'].address.Line1StreetAddress !== 'NULL' && doctorDetails.cardObj['_source'].address.Line1StreetAddress">{{doctorDetails.cardObj['_source'].address.Line1StreetAddress | titleCase}},</span>
+                                                    <span ng-if="doctorDetails.cardObj['_source'].address.Line2StreetAddress !== 'NULL' && doctorDetails.cardObj['_source'].address.Line2StreetAddress && doctorDetails.cardObj['_source'].address.Line2StreetAddress !== doctorDetails.cardObj['_source'].address.Line1StreetAddress">{{doctorDetails.cardObj['_source'].address.Line2StreetAddress | titleCase}},</span>
+                                                    <span>{{doctorDetails.cardObj['_source'].address.city | titleCase}},</span>
+                                                    <span>{{doctorDetails.cardObj['_source'].address.state}}</span>
+                                                    <span>{{doctorDetails.cardObj['_source'].address.zipCode}},</span>
+                                                    <span>{{doctorDetails.cardObj['_source'].address.country}}</span>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li class="col-md-12 det-card-li-container" style="padding-bottom: 0;">
+                                            <div style="padding:0px; text-align: center; height: 70px;">
+                                                <h4>
+                                        <span ng-if="doctorDetails.cardObj['_source'].address.phoneNo">
+                                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.82 22.82"><defs><style>.cls-1{fill:#fa5f5f;}</style></defs><title>call</title><path class="cls-1" d="M23,19.63c-3.26-2.62-4.17-1.33-5.65.15-1,1-3.65-1.12-5.91-3.38S7,11.52,8.06,10.49C9.54,9,10.82,8.09,8.2,4.83s-4.37-.76-5.8.68c-1.66,1.66-.09,7.82,6,13.92s12.26,7.66,13.92,6c1.43-1.43,3.94-3.18.68-5.8" transform="translate(-1.78 -3.23)">
+                                        </path>
+                                        </svg>{{doctorDetails.cardObj['_source'].address.phoneNo|phone}}
+                                        </span>
+                                        <span ng-if="!doctorDetails.cardObj['_source'].address.phoneNo">   
+                                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.82 22.82" ng-if="!doctorDetails['_source'].address.phoneNo"><defs><style>.cls-1{fill:#fa5f5f;}</style></defs><title>call</title><path class="cls-1" d="M23,19.63c-3.26-2.62-4.17-1.33-5.65.15-1,1-3.65-1.12-5.91-3.38S7,11.52,8.06,10.49C9.54,9,10.82,8.09,8.2,4.83s-4.37-.76-5.8.68c-1.66,1.66-.09,7.82,6,13.92s12.26,7.66,13.92,6c1.43-1.43,3.94-3.18.68-5.8" transform="translate(-1.78 -3.23)"></path>
+                                        </svg>
+                                        Phone Number Unavailable
+                                        </span>
+                                        </h4>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12 col-xs-12" style="margin-top: 30px; padding: 0; min-height: 402px;" id="from">
+                            <div class="row fad-doctor-details-doctor-info-container">
+                                <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 25px;" ng-if="doctorDetails.doctor.taxonomy !== 'NULL' && doctorDetails.doctor.taxonomy.length>0">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-4 col-xs-4">
+                                            <h2 class="fad-doctor-details-doctor-info-data-header">Specialties</h2>
+                                        </div>
+                                        <div class="col-md-12 col-sm-8 col-xs-8">
+                                            <ul class="fad-doctor-details-doctor-info-data-lists">
+                                                <li ng-repeat="tax in doctorDetails.doctor.taxonomy | filter: taxonomy : taxonomy.level='2'">
+                                                    <span class="fad-doc-prof-speciality" ng-if="tax._id ===doctorDetails.SearchService.searchFilter.params.specId">{{tax.title}}
+                                                    </span>
+                                                </li>
+                                                <li ng-repeat="tax in doctorDetails.doctor.taxonomy | filter: taxonomy : taxonomy.level='2'">
+                                                    <span class="fad-doc-prof-speciality" ng-if="tax._id !==doctorDetails.SearchService.searchFilter.params.specId">{{tax.title}}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 25px;" ng-if="doctorDetails.doctor.certifications !== 'NULL' && doctorDetails.doctor.certifications.length>0">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-4 col-xs-4">
+                                            <h2 class="fad-doctor-details-doctor-info-data-header">Board Certifications</h2>
+                                        </div>
+                                        <div class="col-md-12 col-sm-8 col-xs-8">
+                                            <ul class="fad-doctor-details-doctor-info-data-lists" ng-repeat="certification in doctorDetails.doctor.certifications">
+                                                <li ng-if="certification.level == 2"><span>{{certification.certficationName}}</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>-->
+                                <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 25px;" ng-if="doctorDetails.doctor.insuranceIds !== 'NULL' && doctorDetails.doctor.insuranceIds.length>0">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-4 col-xs-4">
+                                            <h2 class="fad-doctor-details-doctor-info-data-header">Insurances Accepted</h2>
+                                        </div>
+                                        <div class="col-md-12 col-sm-8 col-xs-8">
+                                            <ul class="fad-doctor-details-doctor-info-data-lists">
+                                                <li ng-repeat="insurance in doctorDetails.doctor.insuranceIds | orderBy: 'name' | limitTo : limit">
+                                                    <span>{{insurance.name}}</span>
+                                                </li>
+                                                <button style="outline: 0 !important;font-size: 12px;color: #fa5f5f;" ng-if="doctorDetails.doctor.insuranceIds.length > 10" class="btn btn-link btn-raised" type="link" ng-click="doctorDetails.showMore()">show <span id="showLess">more</span> ...</button>
+                                                <!-- <button type="button" ng-click = "limit = limit + 5">more</button> -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 25px;" ng-if="doctorDetails.doctor.otherAddress !== 'NULL' && doctorDetails.doctor.otherAddress.length > 0">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-4 col-xs-4">
+                                            <h2 class="fad-doctor-details-doctor-info-data-header">Practice Locations</h2>
+                                        </div>
+                                        <div class="col-md-12 col-sm-8 col-xs-8">
+                                            <ul class="fad-doctor-details-doctor-info-data-lists" ng-repeat="address in doctorDetails.doctor.otherAddress">
+                                                <li>
+                                                    <span ng-if="address.organizationLegalName">
+                                                <span style="font-size: 14px; font-weight: 600;">{{address.organizationLegalName}}</span>
+                                                    <br>
+                                                    </span>
+                                                    <span ng-if="address.Line1StreetAddress">{{address.Line1StreetAddress | titleCase}},</span>
+                                                    <span ng-if="address.Line2StreetAddress">{{address.Line2StreetAddress | titleCase}},</span>
+                                                    <span ng-if="address.city">{{address.city | titleCase}},</span>
+                                                    <span ng-if="address.state">{{address.state}}</span>
+                                                    <span ng-if="address.zipCode">{{address.zipCode}},</span>
+                                                    <span ng-if="address.country">{{address.country}}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>-->
+                                <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 25px;" ng-if="doctorDetails.doctor.pracAddress !== 'NULL' && doctorDetails.doctor.pracAddress">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-4 col-xs-4">
+                                            <h2 class="fad-doctor-details-doctor-info-data-header">Practice Locations</h2>
+                                        </div>
+                                        <div class="col-md-12 col-sm-8 col-xs-8">
+                                            <ul class="fad-doctor-details-doctor-info-data-lists">
+                                                <li>
+                                                    <span ng-if="doctorDetails.doctor.pracAddress.street">{{doctorDetails.doctor.pracAddress.street | titleCase}},</span>
+                                                    <span ng-if="doctorDetails.doctor.pracAddress.city">{{doctorDetails.doctor.pracAddress.city | titleCase}},</span>
+                                                    <span ng-if="doctorDetails.doctor.pracAddress.state">{{doctorDetails.doctor.pracAddress.state}}</span>
+                                                    <span ng-if="doctorDetails.doctor.pracAddress.zipCode">{{doctorDetails.doctor.pracAddress.zipCode}},</span>
+                                                    <span ng-if="doctorDetails.doctor.pracAddress.country">{{doctorDetails.doctor.pracAddress.country}}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>								
+                                <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 25px;" ng-if="doctorDetails.doctor.hospitalAffillation !== 'NULL' && doctorDetails.doctor.hospitalAffillation.length>0">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-4 col-xs-4">
+                                            <h2 class="fad-doctor-details-doctor-info-data-header">Hospital Affiliations</h2>
+                                        </div>
+                                        <div class="col-md-12 col-sm-8 col-xs-8">
+                                            <ul class="fad-doctor-details-doctor-info-data-lists" ng-repeat="affiliation in doctorDetails.doctor.hospitalAffillation">
+                                                <li><span>{{affiliation.name | titleCase}}</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="margin-bottom: 25px;" ng-if="doctorDetails.doctor.medicalSchoolName !== 'NULL' && doctorDetails.doctor.medicalSchoolName.length>0">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-4 col-xs-4">
+                                            <h2 class="fad-doctor-details-doctor-info-data-header">Educational Credentials</h2>
+                                        </div>
+                                        <div class="col-md-12 col-sm-8 col-xs-8">
+                                            <ul class="fad-doctor-details-doctor-info-data-lists">
+                                                <li ng-repeat="medicalSchool in doctorDetails.doctor.medicalSchoolName">
+                                                    <span>{{medicalSchool.collegeId.name |capitalize}}</span>
+                                                    <span>{{medicalSchool.taxanomyId.title |capitalize}}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 25px;" ng-if="doctorDetails.doctor.languagesSpoken !== 'NULL' && doctorDetails.doctor.languagesSpoken.length > 0">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-4 col-xs-4">
+                                            <h2 class="fad-doctor-details-doctor-info-data-header">Languages Spoken</h2>
+                                        </div>
+                                        <div class="col-md-12 col-sm-8 col-xs-8">
+                                            <ul class="fad-doctor-details-doctor-info-data-lists">
+                                                <li ng-repeat="language in doctorDetails.doctor.languagesSpoken">
+                                                    <span>{{language.languageName}}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-12" style="margin-bottom: 25px;">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h2 class="fad-doctor-details-doctor-info-data-header">PROFESSIONAL SUMMARY</h2>
+                                </div>
+                                <div class="col-md-8">
+                                
+                                </div>
+                            </div>
+                        </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container fad-search-footer-container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="fad-search-footer-logo-container centered">
+                        <a href="#" class="fad-search-footer-logo-img-container">
+                            <img src="../assets/images/final-log.png" class="fad-search-footer-logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 fad-footer-main-container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 fad-search-footer-link-container centered">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-6 fad-search-footer-link">
+                                    <h4>Menu</h4>
+                                    <ul class="list-unstyled">
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ui-sref="about-us">About FINDaDOCTOR</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ui-sref="privacy">Privacy Policy</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ui-sref="terms-of-use">Terms of Use</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ui-sref="faq">FAQs</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ui-sref="contact-us">Contact Us</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-6 fad-search-footer-link">
+                                    <h4>Specialties</h4>
+                                    <ul class="list-unstyled">
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{speciality:'Primary Care Doctor'})">General Physician</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{speciality:'Dentist'})">Dentist</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{speciality:'Ear, Nose & Throat Doctor'})">Ear, Nose & Throat Doctor</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{speciality:'Ophthalmologist (Eye Doctor)'})">Eye Doctor</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{speciality:'Obstetrician & Gynecologist'})">Gynecologist</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{speciality:'Cardiologist (Heart Doctor)'})">Cardiologist</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{speciality:'Dermatologist'})">Dermatologist</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{speciality:'Psychiatrist'})">Psychiatrist</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-6 fad-search-footer-link">
+                                    <h4>Insurance</h4>
+                                    <ul class="list-unstyled">
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{insurance:'Aetna'})">Aetna</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{insurance:'Blue Cross Blue Shield'})">Blue Cross Blue Shield</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{insurance:'Cigna'})">Cigna</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{insurance:'Group Health Incorporated'})">GHI</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{insurance:'HIP Health Plan'})">HIP</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{insurance:'UnitedHealthCare'})">UnitedHealthcare</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-6 fad-search-footer-link">
+                                    <h4>Cities</h4>
+                                    <ul class="list-unstyled">
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{location:{
+                                                lat:34.052235,
+                                                lon:-118.243683
+                                            }})">Los Angeles</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{location:{
+                                                lat:32.715736,
+                                                lon:-117.161087
+                                            }})">San Diego</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{location:{
+                                                lat:37.733795,
+                                                lon:-122.446747
+                                            }})">San Francisco</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{location:{
+                                                lat:40.7127837,
+                                                lon:-74.00594130000002
+                                            }})">New York</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{location:{
+                                                lat:41.881832,
+                                                lon:-87.623177
+                                            }})">Chicago</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{location:{
+                                                lat:44.919285,
+                                                lon:-123.317047
+                                            }})">Dallas</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{location:{
+                                                lat:29.761993,
+                                                lon:-95.366302
+                                            }})">Houston</a>
+                                        </li>
+                                        <li class="fad-search-footer-link-lists">
+                                            <a ng-click="doctorDetails.$state.go('quick-search',{location:{
+                                                lat:40.489578,
+                                                lon:-81.445526
+                                            }})">Philadelphia</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 footer" style="position: absolute; bottom:30px;">
+                    <h5 class="fad-search-footer-socail-header"><span>Get in touch</span></h5>
+                    <ul class="list-unstyled list-inline" style="text-align:center; margin-left: 0;">
+                        <li class="fad-search-footer-social-link-lists">
+                            <a href="https://www.facebook.com/findadoctorcom-220377064670960/?fref=ts" target="_blank">
+                                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37.83 37.83">
+                                    <defs>
+                                        <style>
+                                        .cls-1 {
+                                            fill: #fa5f5f;
+                                        }
+                                        </style>
+                                    </defs>
+                                    <title>FB</title>
+                                    <path class="cls-1" d="M37.83,0H0V37.83H18.92V23.54H14.29V17.23h4.62V14.78c0-4.24,3.18-8.05,7.09-8.05h5.1V13H26a1.54,1.54,0,0,0-1.21,1.69V17.2H31.1v6.31H24.8V37.83h13V0Z" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="fad-search-footer-social-link-lists">
+                            <a href="https://www.linkedin.com/company/findadoctor" target="_blank">
+                                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.07 38.07">
+                                    <defs>
+                                        <style>
+                                        .cls-1 {
+                                            fill: #fa5f5f;
+                                        }
+                                        </style>
+                                    </defs>
+                                    <title>linkedin</title>
+                                    <path class="cls-1" d="M0,0V38.07H38.07V0ZM11.47,31.67H5.75V14.59h5.72ZM8.61,12.25h0a3,3,0,1,1,.07-5.9,3,3,0,1,1-.07,5.9ZM32.07,31.67H26.36V22.53c0-2.3-.83-3.86-2.89-3.86a3.12,3.12,0,0,0-2.93,2.08,3.84,3.84,0,0,0-.19,1.38v9.54H14.63s.08-15.48,0-17.08h5.71V17a5.68,5.68,0,0,1,5.15-2.82c3.76,0,6.58,2.44,6.58,7.69v9.79Z" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="fad-search-footer-social-link-lists">
+                            <a href="https://twitter.com/FINDaDOCTOR1" target="block">
+                                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
+                                    <defs>
+                                        <style>
+                                        .cls-1 {
+                                            fill: #fa5f5f;
+                                        }
+                                        </style>
+                                    </defs>
+                                    <title>twitter</title>
+                                    <path class="cls-1" d="M0,0V38H38V0ZM29.42,13.62v.7A15.33,15.33,0,0,1,5.84,27.23a10.89,10.89,0,0,0,8-2.23,5.4,5.4,0,0,1-5-3.74,5.39,5.39,0,0,0,2.43-.09A5.39,5.39,0,0,1,7,15.88v-.07a5.37,5.37,0,0,0,2.44.67,5.4,5.4,0,0,1-1.67-7.2,15.3,15.3,0,0,0,11.11,5.63A5.39,5.39,0,0,1,28,10a10.8,10.8,0,0,0,3.42-1.31,5.41,5.41,0,0,1-2.37,3,10.78,10.78,0,0,0,3.1-.85,10.94,10.94,0,0,1-2.69,2.79h0Z" transform="translate(0 0)" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 fad-search-footer-copy-container centered no-padding">
+                <p class="fad-search-footer-copy">Our privacy policy and terms of use <span>&copy; 2016 Millennium Technology Solutions, Inc</span>.</p>
+            </div>
+        </div>
+    </div>
+</main>
+<script type="text/ng-template" id="map-directions">
+    <div>
+        <div class="col-md-12 fad-add-spec-modal-header" style="padding: 0;">
+            <h4 class="fad-add-spec-modal-title">
+                <button print-btn print-avoid-break style="position: relative;bottom: 15px;font-size: 10px;padding: 5px 10px;background: #3a9300;color: #fff;" class="btn btn-raised" >Print</button>
+                <button ng-click="cancel()" style="position: relative;bottom: 15px;font-size: 10px; float: right; padding: 5px 10px;background: #fa5f5f;color: #fff;" class="btn btn-raised" >Cancel</button>
+
+            <!-- <svg style="position: absolute; top: -15px; right: -20px;" ng-click="cancel()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.89 24.89"><defs><style>.cls-1{fill:#fa5f5f;}</style></defs><title>twitter-logo-silhouette</title><path class="cls-1" d="M40.92,11.82l-1.13-1.13L28.47,22,17.16,10.68,16,11.82,27.34,23.13,16,34.44l1.13,1.13L28.47,24.26,39.79,35.58l1.13-1.13L29.6,23.13Zm0,0" transform="translate(-16.03 -10.68)"/></svg> --></h4>
+        </div>
+        <div print-section id="map" location={{locationObj}} map-directions style="min-height:500px;min-width: 400px"></div>
+    </div>
+</script>

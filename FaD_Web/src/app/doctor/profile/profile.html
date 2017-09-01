@@ -1,0 +1,200 @@
+<div class="container-fluid fad-user-su-container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row fad-doc-su-main-row">
+                <div class="col-md-12 col-sm-12 col-xs-12 fad-su-logo-container">
+                    <div class="row" style="padding: 10px 0;">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <a href="#">
+                                <img class="fad-login-header-logo" src="../../../assets/images/logo-horizontal.png">
+                            </a>
+                        </div>
+						<div class="col-md-6 col-sm-6 col-xs-6" style="text-align:right;">
+							<span ng-if="profile.doctorDetails.fName && profile.doctorDetails.lName && profile.doctorDetails.fName !== 'NULL' && profile.doctorDetails.lName !== 'NULL'">Welcome <b>{{profile.doctorDetails.fName|titleCase}} {{profile.doctorDetails.lName|titleCase}}</b></span>
+							&nbsp;&nbsp;&vert;&nbsp;&nbsp;<a ng-click="profile.logout();" class="logout-link">Logout</a>
+						</div>
+                    </div>
+                    <hr style="border-top:1px solid #d1d1d1; opacity: 0.5; margin-top: 0;">
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid fad-profile-container-new">
+  <div class="row">
+    <div class="col-md-12"> 
+      <!-- Nav tabs -->
+      <div class="">
+		<div class="tab-content">
+			<div class="tabheading"> <h4 class="page-heading">Please enter patient details to check eligibilty</h4></div>
+			<form novalidate role="form" name="doctorProfileNew">
+            <div class="boxsec">             
+              <div class="panelbox mrgT20">  
+					<div class="col-xs-12">
+					  <h4 class="form-heading">Patient Information</h4>
+					</div>
+					<ul class="formgroup">
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>First Name<span class="mandy">*</span></label>
+						<input type="text" value="" id="f_name" name="f_name" class="form-control" ng-model="profile.eligibilityInput.f_name" required>
+						<span class="fad-doc-su-form-alert" ng-show="doctorProfileNew.f_name.$submitted && doctorRegistration.f_name.$error.required && doctorRegistration.f_name.$touched">First name is required.<br></span>
+					  </li>
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>Last Name<span class="mandy">*</span></label>
+						<input type="text" value="" id="l_name" name="l_name" class="form-control" ng-model="profile.eligibilityInput.l_name" required>
+						<span class="fad-doc-su-form-alert" ng-show="doctorProfileNew.f_name.$submitted && doctorRegistration.f_name.$error.required && doctorRegistration.f_name.$touched">Last name is required.<br></span>
+					  </li>
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>MI</label>
+						<input type="text" value="" id="mi" class="form-control">
+					  </li>
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>DOB (in mm/dd/yyyy format)<span class="mandy">*</span></label>
+						<input type="text" value="" id="dob" class="form-control" required ng-model="profile.eligibilityInput.dob">
+					  </li>
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label class="control-label">Gender<span class="mandy">*</span></label>
+						<span class="form-control radiosection"> <span class="vd_radio radio-success">
+						<input type="radio" value="M" id="gender_m" name="gender" class="gender" checked>
+						<label for="gender_m">Male </label>
+						<input type="radio" value="F" id="gender_f" class="gender" name="gender">
+						<label for="gender_f" value="F">Female </label>
+						</span> </span> </li>
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>Address 1</label>
+						<input type="text" value="" id="address_1" class="form-control">
+					  </li>
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>Address 2</label>
+						<input type="text" value="" id="address_2" class="form-control">
+					  </li>
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label class="boxsec">Zip</label>
+						<span class="col-xs-6 pdnL0">
+						<input type="text" value="" id="zip_1" class="form-control" placeholder="">
+						</span> <span class="col-xs-6 pdnR0">
+						<input type="text" value="" id="zip_2" class="form-control" placeholder="">
+						</span> </li>
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3 claerL">
+						<label>State</label>
+						<select id="state" class="form-control">
+						  <option selected value="">Select</option>
+						  <option ng-repeat="state in stateList">{{state}}</option>
+						</select>
+					  </li>
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>City</label>
+						<input type="text" value="" id="city" class="form-control">
+					  </li>
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>Cellphone</label>
+						<input type="text" value="" id="c_phone" class="form-control">
+					  </li>
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>Email</label>
+						<input type="text" value="" id="email" class="form-control">
+					  </li>
+					</ul>
+					<div class="col-xs-12">
+					  <h4 class="form-heading">Insurance Information</h4>
+					</div>
+					<ul class="formgroup">
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>Insurance Company<span class="mandy">*</span></label>
+						<select class="form-control" required id="insurance_company" required ng-model="profile.eligibilityInput.insurance_company">
+						  <option selected value="">Select</option>
+						  <option value="LOCAL XYZ">LOCAL XYZ</option>
+						  <option ng-repeat="insurance in insuranceList" value="{{insurance.name}}">{{insurance.name}}</option>
+						</select>
+					  </li>
+					  <!--<li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>Insurance Type</label>
+						<select class="form-control" id="insurance_type">
+						  <option selected="">Select</option>
+						  <option>Lorem</option>
+						</select>
+					  </li>-->
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>Insurance Relationship</label>
+						<select id="insured_relation" class="form-control">
+						  <option selected value="">Select</option>
+						  <option value="Self">Self</option>
+						  <option value="Spouse">Spouse</option>
+						  <option value="Child">Child</option>
+						</select>
+					  </li>
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>Member ID<span class="mandy">*</span></label>
+						<input type="text" id="member_id" class="form-control" required ng-model="profile.eligibilityInput.member_id">
+					  </li>
+					  <!--<li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>Group #<span class="mandy">*</span></label>
+						<input type="text" id="group_number" value="" class="form-control" required ng-model="profile.eligibilityInput.group_number">
+					  </li>-->
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>Policy #</label>
+						<input type="text" value="" id="policy_number" class="form-control">
+					  </li>
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>First Name</label>
+						<input type="text" value="" id="insurance_f_name" class="form-control">
+					  </li>
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>Last Name </label>
+						<input type="text" value="" id="insurance_l_name" class="form-control">
+					  </li>
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>MI</label>
+						<input type="text" value="" id="insurance_mi" class="form-control">
+					  </li>
+					  <!--<li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label>DOB<span class="mandy">*</span></label>
+						<input type="text" value="" id="insurance_dob" class="form-control">
+					  </li>
+					  <li class="form-group col-xs-12 col-sm-6 col-md-3">
+						<label class="control-label">Gender<span class="mandy">*</span></label>
+						<span class="form-control radiosection"> <span class="vd_radio radio-success">
+						<input type="radio" value="M" id="yes1" name="gender1" checked>
+						<label for="yes1">Male </label>
+						<input type="radio" value="F" id="no1" name="gender1">
+						<label for="no1">Female </label>
+						</span> </span> </li>-->
+					</ul>
+              </div>
+			  <div class="clear"></div>
+			  <div class="error-msg-wrapper"><div class="error-msg" id="error-msg">Invalid patient information.</div></div>
+              <div class="buttonsec">
+                <button class="btn btn-grey" type="reset">Reset</button>
+                <button class="btn btn-danger" ng-click="profile.submitEligibility()" type="submit">Check Eligibility</button>
+              </div>
+			  
+			  
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog" style="width:100%;margin:0px auto;">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        
+        <div class="modal-body">
+          <div id="claim"></div>
+        </div>
+       
+      </div>
+      
+    </div>
+  </div>
+			  
+			  
+			  
+			  
+			  
+            </div>
+			</form>
+		</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<script type="text/ng-template" id="patient-smith.html">
+	
+</script>-->

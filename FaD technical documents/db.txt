@@ -1,0 +1,36 @@
+Hi,
+   The database to be used depends upon the data we are handling. We need to consider the following before selecting the database for our use.
+   
+   There are 2 kids of databases
+   1. SQL (Ex: MSSQL, MYSQL, Oracle etc)
+   2. NOSQL (Ex: mongoDB, Redis, Cassandra, graphDB, couchDB etc)
+   
+The key points of both of them are
+
+SQL databases:
+1. Store related data in tables
+2. Require a schema which defines tables prior to use
+3. Encourage normalization to reduce data redundancy
+4. Support table JOINs to retrieve related data from multiple tables in a single command
+5. Implement data integrity rules
+6. Provide transactions to guarantee two or more updates succeed or fail as an atomic unit
+7. Can be scaled
+8. Use a powerful declarative language for querying.
+
+
+NoSQL databases:
+1. Store related data in JSON-like, name-value documents
+2. Can store data without specifying a schema
+3. Must usually be denormalized so information about an item is contained in a single document
+4. Should not use JOINs 
+5. Updates are not recommended
+6. Provide excellent performance and scalability
+7. Use JSON data objects for querying
+
+
+Now, when to select SQL and when to select NOSQL?
+
+NOSQL
+1. When the data needs to be read/write to DB quickly because of lot of requests per minute. Ex: Facebook which is writing nearly 6 billion messages per day (8 TB per day) at 2014 as per report.
+2. Where we have data that have no need to be updated frequently. 
+3. 

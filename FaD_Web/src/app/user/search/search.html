@@ -1,0 +1,574 @@
+<main style="height:100%;" id="search-page">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <!-- <div full-page options="fullPageConfig"> -->
+        <div>
+            <div class="section">
+                <div class="container fad-search-cover-container fad-container">
+                    <div class="fad-search-cover-overlay"></div>
+                    <div class="row fad-search-row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="row">
+                                <!-- <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <a ng-if="!loggedIn" class="fad-search-header-link-btn" ui-sref="login({loginType:'emp'})" data-hover="Sign in / Sign up">Sign in / Sign up</a>
+                                    <a ng-if="loggedIn&&loginType === 'emp'" class="fad-search-header-link-btn" ui-sref="user-profile({userId:userId})" data-hover="Sign in / Sign up">{{userName}}</a>
+                                    <a ng-if="loggedIn&&loginType === 'doctor'" class="fad-search-header-link-btn" ui-sref="doctor-profile({userId:userId})" data-hover="Sign in / Sign up">doctor logged in</a>
+                                </div> -->
+                                <div class="col-md-4 col-md-offset-4 col-sm-4 col-xs-4 col-xs-offset-4">
+                                    <div class="row">
+                                        <a ng-click="search.refresh()" class="main-logo" style="cursor: pointer;">
+                                            <img class="img-responsive fad-search-results-logo-size" src="../assets/images/final-log.png" tabindex="-1">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="row">
+                                        <button ui-sref="list-practice" class="btn btn-raised fad-search-header-list-practice-btn" role="button" tabindex="-1">
+                                            Doctors,
+                                            <br> Participate with us</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <p class="text-center fad-search-main-message-first-line search-home-text-transition">GET THE CARE YOU <span>LOVE</span></p>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <p class="text-center fad-search-main-message-second-line">Meet the right doctor for your needs, at your convenience</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 fad-search-current-location-container text-center">
+                            <div class="row ">
+                                <div class="col-md-5 col-centered col-sm-6 col-xs-12 ">
+                                    <div class="fad-current-location-container">
+                                        <label>Search location :</label>
+                                        <input class="submit-search" place-auto-suggestion onFocus="geolocate()" type="text" ng-model="search.SearchService.currentLocation['formatted_address']" id="itemLis" ng-blur='search.onBlurOfSerarch()' tabindex="-1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 fad-search-appointments-inputs-container">
+                            <div class="row no-margin">
+                                <div class="col-md-12 col-sm-12 col-xs-12 fad-search-appointments-inputs-border">
+                                    <div class="row no-margin">
+                                        <div class="col-md-4 col-sm-4 col-xs-12 fad-search-specialty-selectize-container" style="border-top-left-radius: 4px; border-bottom-left-radius: 4px;">
+                                            <!-- <md-input-container class="md-block search-block" flex-gt-sm>
+                                            <label>Specialty</label>
+                                                <md-select md-container-class="specialty-block" ng-model="search.specialitySelected" placeholder="Choose a Specialty">
+                                                    <md-option ng-value="speciality" ng-repeat="speciality in search.specialities|filter:$select.search">
+                                                    {{speciality.title}}
+                                                    </md-option>
+                                                </md-select>
+                                            </md-input-container> -->
+                                            <!-- <div class="fad-search-selectize-label"><span>Specialty</span></div>
+                                            <ui-select ng-model="search.specialitySelected" theme="selectize" tabindex="2">
+                                                <ui-select-match placeholder="Choose a Specialty"> {{search.specialitySelected.title}}</ui-select-match>
+                                                <ui-select-choices repeat="speciality in search.specialities|filter:{title : $select.search }" position='down'>
+                                                    {{speciality.title}}
+                                                </ui-select-choices>
+                                            </ui-select> -->
+                                            <label id="label">Specialty</label>
+                                            <ui-select ng-model="search.specialitySelected" theme="selectize" tabindex="2" on-select="search.onSpecialtySelected($item)" name-tab="specialty">
+                                                <ui-select-match placeholder="Choose a Specialty"> {{search.specialitySelected.title}}</ui-select-match>
+                                                <ui-select-choices class="scroll" repeat="speciality in search.specialities|filter:{title : $select.search }" position='down'>
+                                                    {{speciality.title}}
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </div>
+                                        <!-- group-by="someGroupFn" -->
+                                        <div class="col-md-4 col-sm-4 col-xs-12 fad-search-insurance-selectize-container">
+                                            <label id="label1">Insurance</label>
+                                            <ui-select ng-model="search.insuranceSelected" theme="selectize" tabindex="3" name-tab="insurance" on-select="search.onInsuranceSelected($item)">
+                                                <ui-select-match placeholder="Choose an Insurance"> {{search.insuranceSelected.name}}</ui-select-match>
+                                                <ui-select-choices repeat="provider in search.insuranceProviders|filter:{name : $select.search }" position='down'>
+                                                    {{provider.name}}
+                                                </ui-select-choices>
+                                            </ui-select>
+                                            <!-- <div class="fad-search-selectize-label"><span>Insurance</span></div>
+                                            <ui-select ng-model="search.insuranceSelected" theme="selectize" tabindex="3">
+                                                <ui-select-match placeholder="Choose an Insurance">{{search.insuranceSelected.name}}</ui-select-match>
+                                                <div>remove</div>
+                                                <ui-select-choices repeat="provider in search.insuranceProviders|filter:{name : $select.search }" position='down'>
+                                                    {{provider.name}}
+                                                </ui-select-choices>
+                                            </ui-select> -->
+                                            <!-- <md-input-container class="md-block search-block" flex-gt-sm>
+                                            <label>Insurance</label>
+                                                <md-select md-container-class="insurance-block" ng-model="search.insuranceSelected" placeholder="Choose an Insurance">
+                                                    <md-option ng-value="provider" ng-repeat="provider in search.insuranceProviders|filter:$select.search">
+                                                    {{provider.name}}
+                                                    </md-option>
+                                                </md-select>
+                                            </md-input-container> -->
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12 fad-search-insurance-selectize-container" style="border-top-right-radius: 4px; border-bottom-right-radius: 4px;" tabindex="4">
+                                            <button class="btn btn-raised " ng-click="search.getSearchResults()" style="text-transform: none;" tabindex="-1"> FINDaDOCTOR
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 fad-search-know-share-container">
+                            <div class="row">
+                                <div class="col-md-4 col-md-offset-4 col-sm-4 col-xs-6 col-sm-offset-4 col-xs-offset-3 text-center">
+                                    <a class="btn btn-link fad-search-know-more-btn" ng-click="search.goTo('choose-service-container')" tabindex="-1">Know more
+                                <br><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25.69 14.68"><defs><style>.cls-1{fill:#fff;fill-rule:evenodd;}</style></defs><title>drop down</title><path class="cls-1" d="M13.29,11.29,3.6,1.55A1.84,1.84,0,0,0,1,1.55,1.87,1.87,0,0,0,1,4.18l10.9,11a1.83,1.83,0,0,0,1.4.54,1.83,1.83,0,0,0,1.4-.54l10.9-11a1.87,1.87,0,0,0,0-2.63,1.84,1.84,0,0,0-2.62,0Z" transform="translate(-0.44 -1)"/></path></svg></a>
+                                </div>
+                                <div class="col-md-4 col-xs-3 col-sm-4">
+                                    <!-- <div class="share-button pull-right">
+                                        <input class="toggle-input" id="toggle-input" type="checkbox" />
+                                        <label for="toggle-input" class="toggle"></label>
+                                        <ul class="network-list">
+                                            <li class="twitter">
+                                                <a href="#">Share on Twitter</a>
+                                            </li>
+                                            <li class="facebook">
+                                                <a href="#">Share on Facebook</a>
+                                            </li>
+                                            <li class="linkedin">
+                                                <a href="#">Share on Google+</a>
+                                            </li>
+                                        </ul>
+                                    </div> -->
+                                    <div class="share pull-right">
+                                        <a tabindex="-1" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//codepen.io/supah/pen/MKNwZV" target="_blank" class="ico fb"><i><svg style="width: 10px;" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 22.19 36.75"><defs><style>.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{fill:#fff;}</style><clipPath id="clip-path" transform="translate(-17.06 -4.97)"><rect class="cls-1" x="17.06" y="5.02" width="22.42" height="36.76"/></clipPath></defs><title>twitter-logo-silhouette</title><g class="cls-2"><path class="cls-3" d="M38.41,5H33.09c-6,0-9.85,3.55-9.85,9v4.17H17.89a.8.8,0,0,0-.84.75v6a.8.8,0,0,0,.84.75h5.35V41a.8.8,0,0,0,.84.75h7A.8.8,0,0,0,31.9,41V25.73h6.26A.8.8,0,0,0,39,25v-6a.72.72,0,0,0-.25-.53.89.89,0,0,0-.59-.22H31.9V14.65c0-1.7.45-2.56,2.92-2.56h3.59a.8.8,0,0,0,.84-.75V5.73A.8.8,0,0,0,38.41,5Zm0,0" transform="translate(-17.06 -4.97)"/></g></svg></i></a>
+                                        <a tabindex="-1" href="https://twitter.com/FINDaDOCTOR1" target="_blank" class="ico tw"><i><svg style="width: 16px;" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41.26 39.42"><defs><style>.cls1-1{fill:#fff}</style></defs><title>twitter-logo-silhouette</title><path class="cls1-1" d="M48.47,27.5V42.76H39.63V28.53c0-3.57-1.28-6-4.48-6a4.84,4.84,0,0,0-4.54,3.23,6.06,6.06,0,0,0-.29,2.16V42.76H21.48s.12-24.1,0-26.6h8.85v3.77l-.06.09h.06v-.09a8.78,8.78,0,0,1,8-4.39c5.82,0,10.18,3.8,10.18,12ZM12.22,3.33c-3,0-5,2-5,4.6a4.58,4.58,0,0,0,4.89,4.6h.06c3.08,0,5-2,5-4.6a4.59,4.59,0,0,0-4.94-4.6ZM7.74,42.76h8.84V16.16H7.74Zm0,0" transform="translate(-7.22 -3.33)"/></svg></i></a>
+                                        <a tabindex="-1" href="https://twitter.com/FINDaDOCTOR1" target="_blank" class="ico gp"><i><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 612 612" style="width: 16px;" xml:space="preserve" >
+                                            <g>
+                                                <path d="M612,116.258c-22.525,9.981-46.694,16.75-72.088,19.772c25.929-15.527,45.777-40.155,55.184-69.411    c-24.322,14.379-51.169,24.82-79.775,30.48c-22.907-24.437-55.49-39.658-91.63-39.658c-69.334,0-125.551,56.217-125.551,125.513    c0,9.828,1.109,19.427,3.251,28.606C197.065,206.32,104.556,156.337,42.641,80.386c-10.823,18.51-16.98,40.078-16.98,63.101    c0,43.559,22.181,81.993,55.835,104.479c-20.575-0.688-39.926-6.348-56.867-15.756v1.568c0,60.806,43.291,111.554,100.693,123.104    c-10.517,2.83-21.607,4.398-33.08,4.398c-8.107,0-15.947-0.803-23.634-2.333c15.985,49.907,62.336,86.199,117.253,87.194    c-42.947,33.654-97.099,53.655-155.916,53.655c-10.134,0-20.116-0.612-29.944-1.721c55.567,35.681,121.536,56.485,192.438,56.485    c230.948,0,357.188-191.291,357.188-357.188l-0.421-16.253C573.872,163.526,595.211,141.422,612,116.258z" fill="#fff" />
+                                            </g>
+</svg>
+</i>
+</a>
+                                        <!-- <span class="text"><em>SHARE</em></span> -->
+                                        <svg class="ico-share">
+                                            <use xlink:href="#ico-share"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="share">
+                                        <a tabindex="-1" href="https://twitter.com/FINDaDOCTOR1" target="_blank" class="ico fb"><i><svg style="width: 10px;" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 22.19 36.75"><defs><style>.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{fill:#fff;}</style><clipPath id="clip-path" transform="translate(-17.06 -4.97)"><rect class="cls-1" x="17.06" y="5.02" width="22.42" height="36.76"/></clipPath></defs><title>twitter-logo-silhouette</title><g class="cls-2"><path class="cls-3" d="M38.41,5H33.09c-6,0-9.85,3.55-9.85,9v4.17H17.89a.8.8,0,0,0-.84.75v6a.8.8,0,0,0,.84.75h5.35V41a.8.8,0,0,0,.84.75h7A.8.8,0,0,0,31.9,41V25.73h6.26A.8.8,0,0,0,39,25v-6a.72.72,0,0,0-.25-.53.89.89,0,0,0-.59-.22H31.9V14.65c0-1.7.45-2.56,2.92-2.56h3.59a.8.8,0,0,0,.84-.75V5.73A.8.8,0,0,0,38.41,5Zm0,0" transform="translate(-17.06 -4.97)"/></g></svg></i></a>
+                                        <a tabindex="-1" href="https://twitter.com/FINDaDOCTOR1" target="_blank" class="ico tw"><i><svg style="width: 16px;" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41.26 39.42"><defs><style>.cls-1{fill:#fff}</style></defs><title>twitter-logo-silhouette</title><path class="cls-1" d="M48.47,27.5V42.76H39.63V28.53c0-3.57-1.28-6-4.48-6a4.84,4.84,0,0,0-4.54,3.23,6.06,6.06,0,0,0-.29,2.16V42.76H21.48s.12-24.1,0-26.6h8.85v3.77l-.06.09h.06v-.09a8.78,8.78,0,0,1,8-4.39c5.82,0,10.18,3.8,10.18,12ZM12.22,3.33c-3,0-5,2-5,4.6a4.58,4.58,0,0,0,4.89,4.6h.06c3.08,0,5-2,5-4.6a4.59,4.59,0,0,0-4.94-4.6ZM7.74,42.76h8.84V16.16H7.74Zm0,0" transform="translate(-7.22 -3.33)"/></svg></i></a>
+                                        <a tabindex="-1" href="https://twitter.com/home?status=Social%20Share%20by%20%40supahfunk%20http%3A//codepen.io/supah/pen/MKNwZV" target="_blank" class="ico gp"><i><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 612 612" style="width: 16px;" xml:space="preserve" width="512px" height="512px">
+                                            <g>
+                                                <path d="M612,116.258c-22.525,9.981-46.694,16.75-72.088,19.772c25.929-15.527,45.777-40.155,55.184-69.411    c-24.322,14.379-51.169,24.82-79.775,30.48c-22.907-24.437-55.49-39.658-91.63-39.658c-69.334,0-125.551,56.217-125.551,125.513    c0,9.828,1.109,19.427,3.251,28.606C197.065,206.32,104.556,156.337,42.641,80.386c-10.823,18.51-16.98,40.078-16.98,63.101    c0,43.559,22.181,81.993,55.835,104.479c-20.575-0.688-39.926-6.348-56.867-15.756v1.568c0,60.806,43.291,111.554,100.693,123.104    c-10.517,2.83-21.607,4.398-33.08,4.398c-8.107,0-15.947-0.803-23.634-2.333c15.985,49.907,62.336,86.199,117.253,87.194    c-42.947,33.654-97.099,53.655-155.916,53.655c-10.134,0-20.116-0.612-29.944-1.721c55.567,35.681,121.536,56.485,192.438,56.485    c230.948,0,357.188-191.291,357.188-357.188l-0.421-16.253C573.872,163.526,595.211,141.422,612,116.258z" fill="#fff" />
+                                            </g>
+                                        </svg>
+                                        </i>
+                                        </a>
+                                        <span class="text"><em>SHARE</em></span>
+                                        <svg class="ico-share">
+                                            <use xlink:href="#ico-share"></use>
+                                        </svg>
+                                    </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;">
+                                        <symbol id="ico-share" x="0px" y="0px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                                            <g>
+                                                <path fill="#FFFFFF" d="M13.26,10.387c-0.781,0-1.484,0.328-1.982,0.854L5.445,8.385c0.02-0.133,0.034-0.27,0.034-0.41
+                                                c0-0.136-0.013-0.269-0.032-0.399l5.823-2.824c0.5,0.529,1.205,0.861,1.99,0.861c1.514,0,2.74-1.227,2.74-2.74
+                                                s-1.227-2.74-2.74-2.74c-1.513,0-2.739,1.227-2.739,2.74c0,0.136,0.013,0.269,0.032,0.399L4.73,6.097
+                                                c-0.5-0.529-1.205-0.861-1.99-0.861C1.227,5.236,0,6.462,0,7.976c0,1.513,1.227,2.739,2.74,2.739c0.781,0,1.484-0.328,1.983-0.854
+                                                l5.832,2.855c-0.021,0.134-0.035,0.27-0.035,0.41c0,1.514,1.227,2.739,2.74,2.739S16,14.641,16,13.127S14.773,10.387,13.26,10.387z
+                                                " />
+                                            </g>
+                                        </symbol>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="container-fluid fad-container">
+                    <div class="row fad-search-row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <h3 class="fad-list-prac-info-form-header col-md-8 col-md-offset-2">
+                        <span class="fad-list-prac-info-form-header-name">we make it easy for you</span>
+                    </h3>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 col-xs-12" style="padding: 0 40px;">
+                                    <div class="fad-list-prac-promo-box">
+                                        <div class="fad-list-prac-promo-box-icon">
+                                            <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 55.09 53.85"><defs><style>.search-cls-1{fill:none;}.search-cls-2{isolation:isolate;}.search-cls-3{clip-path:url(#clip-path);}.search-cls-4{fill:#f7931e;}.search-cls-5{fill:#f7931e !important; stroke: #f7931e; stroke-linecap: round; stroke-miterlimit: 10;stroke-width: 0px;}.search-cls-6{fill:#e4e7e7;}.search-cls-7{fill:#f7f8f8;}.search-cls-8{opacity:0.15;mix-blend-mode:multiply;}.search-cls-9{fill:#fa5f5f;}</style><clipPath id="clip-path" transform="translate(-1.44 -1.12)"><rect class="search-cls-1" x="3.12" y="1.56" width="53.41" height="53.64"/></clipPath></defs><title>Untitled-1</title><g class="search-cls-2"><g id="Layer_1" data-name="Layer 1"><g class="search-cls-3"><path class="search-cls-4" d="M55.15,53.59a4.72,4.72,0,0,1-6.68,0L29.53,34.65A4.73,4.73,0,0,1,36.21,28L55.15,46.9a4.73,4.73,0,0,1,0,6.68Zm0,0" transform="translate(-1.44 -1.12)"/><path class="search-cls-5" d="M41.52,33.27h-10v3.35L44.85,50h0V36.62Zm0,0" transform="translate(-1.44 -1.12)"/><path class="search-cls-6" d="M25.66,1.55A22.54,22.54,0,1,1,3.12,24.09,22.54,22.54,0,0,1,25.66,1.55Zm0,0" transform="translate(-1.44 -1.12)"/></g><path class="search-cls-7" d="M25.66,6.56A17.53,17.53,0,1,1,8.13,24.09,17.53,17.53,0,0,1,25.66,6.56Zm0,0" transform="translate(-1.44 -1.12)"/><image class="search-cls-8" width="49" height="50" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAyCAYAAAD1CDOyAAAACXBIWXMAAAsSAAALEgHS3X78AAAFuUlEQVRoQ9WYB3NVVRCAl2IakRBUDKImqKBiAxW7EsDee8XuWLD33nFs2MbuWH9p3G92d3Leyc099717LY+ZbxKSMy/7bbtFFhYWZNgpHhgGigeGgeKBQdF/K1JK59tQPNCUPOgSpc/rh+KBEhUBrmxApzLFAw2Dj+BWJazOSH/XqUzxQEOBNPBDnJGM+Hkq1SNT+rudSWTBh0AET7CjypgynjHmjCZSqczAVSkeqBHIg4/A1yiTyqEZk/67iUymdVWKBxoIjCbBE+yUMq2sVw5z1vvP1ilrXShkoioDixQP1AhE9ieS4An2COVIZUbZmMDPNohJIYQM4iRgtI1I+UC9wBoPZtqDJ/CjlWOVOeU4Z7MyqxyjHCWLMohTlVRktfQp0lZgyoMhy5vEAj9BOVHZppyinOpfT1K2iEkhQ3UOF2sxKklFK0W6kCgJzHhQx3ugpylnKjuVc5Rz/fuzlDPEhJCZE6sKFaSSuUjP1hpIQnqrEEOcC5DNWQ+KjBP8ecrFym5lr7NH2aVcICZ0upgwbUYFaa8QqZqRWpEmAqtkcQuRKWYgKoDAVrHsExzBX6pcpVyn3OjcoFyjXK7Mi4nuUE4Way9EqAitFTOSr99lRfppIz6YTJExZoDhpQJklbYh01eKBX27co9yr3Kfsk+5U7lFTIbqXChWuSoRqh3rN+ajuYRUVyHaaJ3/ITYQM0ALITCvXC0WJAE/rDyuPKk8pexXHlXuV+5QrlcuExOhIrTWnFh7UmWq3Xg+6iTyKkQbbfQ/SAYZ1kvE2udWsawT/HPKy8pryuvKq8oLYkII3iXWYrTe+WIDT1tSXapMtfO26luirgpsoi3+hxlUMnqzWOs8obyovKm8r3zkfKi8IybzjJgI7XWt2AKgmlSV6tJWrF6WR2U1+pWIKpAVrsYM85xYFc4WayMCIbO0C9l+Wyzwg8pXytfKl8qnYmKIUJEHxKrHHF0k1lZcX/JqkMTmErJ0reatxF4nW2wjNkxUgV5/Wqx1DihfKN8pPzk/KN+IibyrvKQ8ptwttsWoBtuNCyRrl5YlabFya1uqJBFrldJSYgY6WomhJItsokfEqkCAnynfKr8ovzu/Kj+KVQZJZKkGM3ST2GyQFJKTtlQMeGcSMQ8M4HaxawIbid6mlcgu7UIVyPxvyl/OH8rPYtX4WGxmmI0HxTYa1w8GnHXNbUsuQRz/mcSf8j+TaNJObKBoJ4JGJNoJMQb8X2+nNoONCHPAYH8vtqVisFnD6WDPS1eDnYi0WbFvia3Yz8UyzzAj9YnynixdsVdIlyu2QqLpxY6W4GLH1RqRN8QCPuB8IHb9eEWsYunFbl7sYsctetxDdXKxWyGD33bQJs+KDTpZ59aD4J8Xu4d6SEyA+yduBP+x245SNdIbQHp5l5gIm4a7VwJFZr9DhRh+JFkEzAHDTCW7vwGsaKm0GumteLQVQx634vQ3N3a3iQ3tPgcx7l5pO9byHlkUoKIMczzltb8Vr6lG+lAUQx7PFPFQxIDSIqxe+p2WQYrMEzzzQ/vxyMq1Jn266/ahqEKED0vbKn26Q4QLFIO5wwNEhsrsdubFLo70P3OENJsoFej28TQTydtquRcFbBYyy5xs92B3OqxjBLki0z5Iz0pvCw0k0FSiTiRaiwf9TR4YA7/Vg93m8D2ZJ/g5scWAfLyyyd89hUDlSu1Log+RaQ+IwJChMrMe8Gb/StsRPBuI7CNf9fKsR0C6kGggMuGBxGtMZKjMTMaGJPhon3QLDSTQWKJGJLbWuCy+UF7rQcZL5fRl8lQSfGS/cgs1FehLoiAykshMyNLX+5Oy+FqfM2n2G63RziQqRJaTGUsYT76PzKfBtxIYSCITSasSMiEUUiPJ/6uCbyUwsESNTCqUSqU/WylZ8G0EWktUiORCVfScLX1+E4oH+mEZoUpKn9UPxQPDQPHAMFA8MAwUDwwDfwNOMSllWj3n6AAAAABJRU5ErkJggg=="/><path class="search-cls-9" d="M19,21.58h4.17V17.41a2.5,2.5,0,1,1,5,0v4.17h4.18a2.51,2.51,0,0,1,0,5H28.16v4.18a2.5,2.5,0,0,1-5,0V26.59H19a2.51,2.51,0,1,1,0-5Zm0,0" transform="translate(-1.44 -1.12)"/></g></g></svg>
+                                    </span>
+                                        </div>
+                                        <section class="fad-list-prac-promo-box-section">
+                                            <h4>SEARCH</h4>
+                                            <p>Reach out to doctors right away... Search for a doctor in your preferred location. </p>
+                                        </section>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12" style="padding: 0 40px;">
+                                    <div class="fad-list-prac-promo-box">
+                                        <div class="fad-list-prac-promo-box-icon">
+                                            <span>
+                                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54.16 52.21"><defs><style>.select-cls-1{fill:#f3f3f3;}.select-cls-2{fill:#fff;}.select-cls-3{fill:#5d5d5d;}.select-cls-4{fill:#f7931e;}.select-cls-5{fill:none;stroke:#5d5d5d;stroke-linecap:round;stroke-miterlimit:10;stroke-width:3px;}</style></defs><title>Untitled-1</title><path class="select-cls-1" d="M3.76,0H50.4a3.76,3.76,0,0,1,3.76,3.76V38.23a14,14,0,0,1-14,14H14a14,14,0,0,1-14-14V3.76A3.76,3.76,0,0,1,3.76,0Z"/><rect class="select-cls-2" x="4.04" y="12.38" width="16.2" height="15.62" rx="1.49" ry="1.49"/><path class="select-cls-3" d="M14.11,17.38c-1.93,0-3,1-3,2.93,0,2.64,1.15,4.24,3,4.21,0,0,3,.12,3-4.21,0-1.93-1-2.93-3-2.93Zm0,0" transform="translate(-1.94 -2.56)"/><path class="select-cls-3" d="M19.38,26.52l-3-1.19-.7-.59a.46.46,0,0,0-.63,0l-1,1-1-1a.46.46,0,0,0-.63,0l-.7.59-3,1.19c-1,.38-1,3.77-1,4.08H20.42c-.08-.31-.08-3.7-1-4.08Zm0,0" transform="translate(-1.94 -2.56)"/><path class="select-cls-4" d="M1.94,12.07V6.33A3.77,3.77,0,0,1,5.71,2.56H52.33A3.77,3.77,0,0,1,56.1,6.33v5.75" transform="translate(-1.94 -2.56)"/><line class="select-cls-5" x1="25.94" y1="17.64" x2="48.32" y2="17.64"/><line class="select-cls-5" x1="25.94" y1="24.72" x2="48.32" y2="24.72"/><line class="select-cls-5" x1="5.87" y1="35.45" x2="48.32" y2="35.45"/><line class="select-cls-5" x1="5.87" y1="42.9" x2="32.88" y2="42.9"/></svg>
+                                    </span>
+                                        </div>
+                                        <section class="fad-list-prac-promo-box-section">
+                                            <h4>SELECT</h4>
+                                            <p>Choose doctors who accept your insurance plan and has relevant experience in treating your illness or condition.</p>
+                                        </section>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12" style="padding: 0 40px;">
+                                    <div class="fad-list-prac-promo-box">
+                                        <div class="fad-list-prac-promo-box-icon">
+                                            <span>
+                                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55.51 52.64"><defs><style>.schedule-cls-1{fill:#f7931e;}.schedule-cls-2{fill:#5d5d5d;}.schedule-cls-3{fill:#fff;}</style></defs><title>Untitled-1</title><path class="schedule-cls-1" d="M3.5,13.3a1.58,1.58,0,0,0-1.58,1.58V54.45L9.57,46.8H43.4A1.59,1.59,0,0,0,45,45.21V14.88A1.58,1.58,0,0,0,43.4,13.3Zm0,0" transform="translate(-1.91 -1.81)"/><path class="schedule-cls-2" d="M55.84,1.81H13.07A1.59,1.59,0,0,0,11.48,3.4v9.9H43.4A1.58,1.58,0,0,1,45,14.88v23.3h4.79l7.65,7.66V3.4a1.58,1.58,0,0,0-1.58-1.58Zm0,0" transform="translate(-1.91 -1.81)"/><path class="schedule-cls-3" d="M23,23.82H11.48a1,1,0,1,1,0-1.91H23a1,1,0,0,1,0,1.91Zm0,0" transform="translate(-1.91 -1.81)"/><path class="schedule-cls-3" d="M35.41,30.53H11.48a1,1,0,1,1,0-1.92H35.41a1,1,0,1,1,0,1.92Zm0,0" transform="translate(-1.91 -1.81)"/><path class="schedule-cls-3" d="M35.41,37.23H11.48a1,1,0,1,1,0-1.92H35.41a1,1,0,1,1,0,1.92Zm0,0" transform="translate(-1.91 -1.81)"/></svg>
+                                    </span>
+                                        </div>
+                                        <section class="fad-list-prac-promo-box-section">
+                                            <h4>SCHEDULE</h4>
+                                            <p>After deciding on a doctor, you can call doctor’s office to book your health appointment.</p>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section" id="choose-service-container">
+                <div class="fad-container container">
+                    <div class="row no-margin" id="next">
+                        <div class="col-md-12 col-sm-12 col-xs-12 centered fad-category-label-container">
+                            <label class="label label-default fad-category-label">Choose a preferred category</label>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 container fad-category-care-container">
+                            <div class="row no-margin">
+                                <div class="col-md-12 col-sm-12 col-xs-12 container fad-category-care-img-container">
+                                    <div class="row no-margin">
+                                        <div class="col-md-3 col-sm-3 col-xs-6 no-padding centered fad-category-margin-for-mobile" >
+                                            <a class="img-thumbnail fad-category-care-img" ng-click="search.browseByService('medical')">
+                                                <div class="fad-category-care-img-hover">
+                                                    <img src="../assets/images/primary.jpg" class="fad-category-care-img-transform img-responsive">
+                                                    <button class="btn btn-block fad-category-care-img-btn" >Medical Care</button>
+                                                    <div class="fad-category-care-img-text-container">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12 fad-category-care-img-text-text-container">
+                                                            <p class="fad-category-care-img-text">MEDICAL CARE</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <a class="col-md-3 col-sm-3 col-xs-6 no-padding centered fad-category-margin-for-mobile" ng-click="search.browseByService('dental')">
+                                            <div class="img-thumbnail fad-category-care-img">
+                                                <div class="fad-category-care-img-hover">
+                                                    <img src="../assets/images/tooth.jpg" class="fad-category-care-img-transform img-responsive">
+                                                    <button class="btn btn-block fad-category-care-img-btn">Dental Care</button>
+                                                    <div class="fad-category-care-img-text-container">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12 fad-category-care-img-text-text-container">
+                                                            <p class="fad-category-care-img-text">DENTAL CARE</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="col-md-3 col-sm-3 col-xs-6 no-padding centered">
+                                            <a class="img-thumbnail fad-category-care-img" ng-click="search.browseByService('behavioral')">
+                                                <div class="fad-category-care-img-hover">
+                                                    <img src="../assets/images/mental.jpg" class="fad-category-care-img-transform img-responsive">
+                                                    <button class="btn btn-block fad-category-care-img-btn">Behavioral Care</button>
+                                                    <div class="fad-category-care-img-text-container">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12 fad-category-care-img-text-text-container">
+                                                            <p class="fad-category-care-img-text">BEHAVIORAL CARE</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-xs-6 no-padding centered">
+                                            <a class="img-thumbnail fad-category-care-img" ng-click="search.browseByService('urgent')">
+                                                <div class="fad-category-care-img-hover">
+                                                    <img src="../assets/images/urgent-care.jpg" class="fad-category-care-img-transform img-responsive">
+                                                    <button class="btn btn-block fad-category-care-img-btn">Urgent Care</button>
+                                                    <div class="fad-category-care-img-text-container">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12 fad-category-care-img-text-text-container">
+                                                            <p class="fad-category-care-img-text">URGENT CARE</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 fad-category-form-container">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-12 col-xs-12 centered">
+                                    <form class="fad-category-form">
+                                        <fieldset class="fad-category-form-fieldset">
+                                            <legend align="center" class="fad-category-form-legend">Choose the right doctor</legend>
+                                            <p class="fad-category-form-paragraph">Simple and Intuitive, find the right doctor in a couple of clicks. Find a match for your illness and preferences.</p>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                                <div class="col-md-4 col-sm-12 col-xs-12 centered">
+                                    <form class="fad-category-form">
+                                        <fieldset class="fad-category-form-fieldset">
+                                            <legend align="center" class="fad-category-form-legend">Find a doctor in your network</legend>
+                                            <p class="fad-category-form-paragraph">Find a doctor who accepts your insurance. Minimize your out-of-pocket expenses.</p>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                                <div class="col-md-4 col-sm-12 col-xs-12 centered">
+                                    <form class="fad-category-form">
+                                        <fieldset class="fad-category-form-fieldset">
+                                            <legend align="center" class="fad-category-form-legend">Check the qualifications</legend>
+                                            <p class="fad-category-form-paragraph">FINDaDOCTOR gives the qualifications of the doctors for you to make an informed decision.</p>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="fad-container container" style="position: relative;">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 centered fad-app-promo-header-container">
+                            <h1 class="fad-app-promo-header-first-line">FINDaDOCTOR</h1>
+                            <h1 class="fad-app-promo-header-second-line">Care that you love, <span class="fad-app-promo-header-color-code">Anywhere... Anytime...</span></h1>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 fad-app-promo-main-container">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="fad-app-promo-main-mobile-app-container centered">
+                                        <h5 class="fad-app-promo-main-text">Available on the App Store</h5>
+                                        <a href="#">
+                                            <img src="../assets/images/app-store-icon.png" class="img-responsive fad-app-promo-main-mobile-app-img">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="fad-app-promo-main-logo-container">
+                                        <img src="../assets/images/App-Download-Screen.png" class="img-responsive fad-app-promo-main-logo-img">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="fad-app-promo-main-mobile-app-container centered">
+                                        <h5 class="fad-app-promo-main-text">Download it from Play Store </h5>
+                                        <a href="#">
+                                            <img src="../assets/images/palystore.png" class="img-responsive fad-app-promo-main-mobile-app-img">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="container fad-search-footer-container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="fad-search-footer-logo-container centered">
+                                <a ng-click="search.refresh()" style="cursor: pointer;" class="fad-search-footer-logo-img-container">
+                                    <img src="../assets/images/final-logo-footer.png" class="fad-search-footer-logo">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 fad-footer-main-container">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12 fad-search-footer-link-container centered">
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-3 col-xs-6 fad-search-footer-link">
+                                            <h4>Menu</h4>
+                                            <ul class="list-unstyled">
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ui-sref="about-us">About FINDaDOCTOR</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ui-sref="privacy">Privacy Policy</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ui-sref="terms-of-use">Terms of Use</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ui-sref="faq">FAQs</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ui-sref="contact-us">Contact Us</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-xs-6 fad-search-footer-link">
+                                            <h4>Specialties</h4>
+                                            <ul class="list-unstyled">
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{speciality:'General Physician'})">General Physician</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{speciality:'Dentist'})">Dentist</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{speciality:'Ear, Nose & Throat Doctor'})">Ear, Nose & Throat Doctor</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{speciality:'Ophthalmologist (Eye Doctor)'})">Eye Doctor</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{speciality:'Obstetrician & Gynecologist'})">Gynecologist</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{speciality:'Cardiologist (Heart Doctor)'})">Cardiologist</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{speciality:'Dermatologist'})">Dermatologist</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{speciality:'Psychiatrist'})">Psychiatrist</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-xs-6 fad-search-footer-link">
+                                            <h4>Insurance</h4>
+                                            <ul class="list-unstyled">
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{insurance:'Aetna'})">Aetna</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{insurance:'Blue Cross Blue Shield'})">Blue Cross Blue Shield</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{insurance:'Cigna'})">Cigna</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{insurance:'Group Health Incorporated'})">GHI</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{insurance:'HIP Health Plan'})">HIP</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{insurance:'UnitedHealthCare'})">UnitedHealthcare</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-xs-6 fad-search-footer-link">
+                                            <h4>Cities</h4>
+                                            <ul class="list-unstyled">
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{location:{
+                                                lat:34.052235,
+                                                lon:-118.243683
+                                            }})">Los Angeles</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{location:{
+                                                lat:32.715736,
+                                                lon:-117.161087
+                                            }})">San Diego</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{location:{
+                                                lat:37.733795,
+                                                lon:-122.446747
+                                            }})">San Francisco</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{location:{
+                                                lat:40.7127837,
+                                                lon:-74.00594130000002
+                                            }})">New York</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{location:{
+                                                lat:41.881832,
+                                                lon:-87.623177
+                                            }})">Chicago</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{location:{
+                                                lat:44.919285,
+                                                lon:-123.317047
+                                            }})">Dallas</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{location:{
+                                                lat:29.761993,
+                                                lon:-95.366302
+                                            }})">Houston</a>
+                                                </li>
+                                                <li class="fad-search-footer-link-lists">
+                                                    <a ng-click="search.$state.go('quick-search',{location:{
+                                                lat:40.489578,
+                                                lon:-81.445526
+                                            }})">Philadelphia</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 footer" style="position: absolute; bottom:30px;">
+                            <h5 class="fad-search-footer-socail-header"><span>Get in touch</span></h5>
+                            <ul class="list-unstyled list-inline" style="text-align:center; margin-left: 0;">
+                                <li class="fad-search-footer-social-link-lists">
+                                    <a href="https://www.facebook.com/findadoctorcom-220377064670960/?fref=ts" target="_blank">
+                                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37.83 37.83">
+                                            <defs>
+                                                <style>
+                                                .cls-1 {
+                                                    fill: #fa5f5f;
+                                                }
+                                                </style>
+                                            </defs>
+                                            <title>FB</title>
+                                            <path class="cls-1" d="M37.83,0H0V37.83H18.92V23.54H14.29V17.23h4.62V14.78c0-4.24,3.18-8.05,7.09-8.05h5.1V13H26a1.54,1.54,0,0,0-1.21,1.69V17.2H31.1v6.31H24.8V37.83h13V0Z" />
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="fad-search-footer-social-link-lists">
+                                    <a href="https://www.linkedin.com/company/findadoctor" target="_blank">
+                                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.07 38.07">
+                                            <defs>
+                                                <style>
+                                                .cls-1 {
+                                                    fill: #fa5f5f;
+                                                }
+                                                </style>
+                                            </defs>
+                                            <title>linkedin</title>
+                                            <path class="cls-1" d="M0,0V38.07H38.07V0ZM11.47,31.67H5.75V14.59h5.72ZM8.61,12.25h0a3,3,0,1,1,.07-5.9,3,3,0,1,1-.07,5.9ZM32.07,31.67H26.36V22.53c0-2.3-.83-3.86-2.89-3.86a3.12,3.12,0,0,0-2.93,2.08,3.84,3.84,0,0,0-.19,1.38v9.54H14.63s.08-15.48,0-17.08h5.71V17a5.68,5.68,0,0,1,5.15-2.82c3.76,0,6.58,2.44,6.58,7.69v9.79Z" />
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="fad-search-footer-social-link-lists">
+                                    <a href="https://twitter.com/FINDaDOCTOR1" target="block">
+                                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
+                                            <defs>
+                                                <style>
+                                                .cls-1 {
+                                                    fill: #fa5f5f;
+                                                }
+                                                </style>
+                                            </defs>
+                                            <title>twitter</title>
+                                            <path class="cls-1" d="M0,0V38H38V0ZM29.42,13.62v.7A15.33,15.33,0,0,1,5.84,27.23a10.89,10.89,0,0,0,8-2.23,5.4,5.4,0,0,1-5-3.74,5.39,5.39,0,0,0,2.43-.09A5.39,5.39,0,0,1,7,15.88v-.07a5.37,5.37,0,0,0,2.44.67,5.4,5.4,0,0,1-1.67-7.2,15.3,15.3,0,0,0,11.11,5.63A5.39,5.39,0,0,1,28,10a10.8,10.8,0,0,0,3.42-1.31,5.41,5.41,0,0,1-2.37,3,10.78,10.78,0,0,0,3.1-.85,10.94,10.94,0,0,1-2.69,2.79h0Z" transform="translate(0 0)" />
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 fad-search-footer-copy-container centered no-padding">
+                        <p class="fad-search-footer-copy">Our privacy policy and terms of use <span>&copy; 2016 Millennium Technology Solutions, Inc</span>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>

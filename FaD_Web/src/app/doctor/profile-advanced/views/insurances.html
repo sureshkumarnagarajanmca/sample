@@ -1,0 +1,95 @@
+<div class="row fad-advanced-doc-profile-inside-container-row">
+    <div class="col-md-12">
+        <div class="row" style="padding: 15px 0;">
+            <div class="col-md-6 col-xs-12">
+                <div class="panel-heading fad-advanced-doc-profile-info-panel-heading">
+                    <span>
+                                                    Insurances Accepted
+                                                </span>
+                    <svg class="fad-su-doctor-prof-update-add" ng-click="advancedDoctorProfile.openInsurancesModal()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.86 27.87">
+                        <defs>
+                            <style>
+                            .cls-1 {
+                                fill: #fa5f5f;
+                                fill-rule: evenodd;
+                            }
+                            </style>
+                        </defs>
+                        <title>Untitled-3</title>
+                        <path class="cls-1" d="M15.18,1.24A13.93,13.93,0,1,0,29.11,15.18,13.93,13.93,0,0,0,15.18,1.24m0,26.12A12.19,12.19,0,1,1,27.36,15.18,12.19,12.19,0,0,1,15.18,27.37M20.4,14.3H16V10a.87.87,0,1,0-1.74,0V14.3H10A.87.87,0,1,0,10,16H14.3V20.4a.87.87,0,0,0,1.74,0V16H20.4a.87.87,0,0,0,0-1.74" transform="translate(-1.24 -1.24)" />
+                    </svg>
+                </div>
+                <div class="panel-body fad-advanced-doc-profile-info-panel-body">
+                    <p ng-repeat="insurance in advancedDoctorProfile.docObj.insuranceIds " class="fad-advanced-doc-profile-basic-info-specialty-upd">{{insurance.name}}
+                        <svg class="fad-su-doctor-prof-update-spec-close" ng-click="advancedDoctorProfile.removeInsurances($index)" id="{{speciality}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.14 27.14">
+                            <defs>
+                                <style>
+                                .cls-1 {
+                                    fill: #fa5f5f;
+                                }
+                                </style>
+                            </defs>
+                            <title>Untitled-3</title>
+                            <path class="cls-1" d="M15.18,1.61A13.57,13.57,0,1,0,28.74,15.18,13.58,13.58,0,0,0,15.18,1.61Zm5.44,16.61a1.7,1.7,0,1,1-2.4,2.4l-3-3-3,3a1.7,1.7,0,0,1-2.4-2.4l3-3-3-3a1.7,1.7,0,0,1,2.4-2.4l3,3,3-3a1.7,1.7,0,1,1,2.4,2.4l-3,3Zm0,0" transform="translate(-1.61 -1.61)" />
+                            </path>
+                        </svg>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-4 col-xs-12 fad-advanced-doc-profile-info-next-btn-container" style="position: relative; right: 15px;">
+    <button ng-click="advancedDoctorProfile.saveDoctor()" class="btn btn-raised pull-left fad-advanced-doc-profile-info-next-btn">Save & Done
+    </button>
+</div>
+<div class="fad-advanced-doc-profile-info-next-btn-container col-md-4 col-md-offset-4" style="position: relative; left: 15px;">
+    <button ng-click="advancedDoctorProfile.navigateToEdu('doctor-profile-main.education')" class="btn btn-raised pull-right fad-advanced-doc-profile-info-next-btn">Next
+        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" style="width:15px; margin-left: 5px;" viewBox="0 0 19.61 11.69">
+            <defs>
+                <style>
+                .cls-1 {
+                    fill: #fa5f5f;
+                }
+                </style>
+            </defs>
+            <title>arrow</title>
+            <path class="cls-1" d="M23.08,6.59l-5-5a.79.79,0,1,0-1.12,1.12L20.6,6.36H4.49A.79.79,0,1,0,4.49,8H20.6l-3.69,3.69A.8.8,0,0,0,17.47,13a.77.77,0,0,0,.56-.24l5-5a.79.79,0,0,0,0-1.13Zm0,0" transform="translate(-3.7 -1.31)" />
+        </svg>
+    </button>
+</div>
+<script type="text/ng-template" id="insurances-modal.html">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 fad-add-spec-modal-header">
+                <h4 class="fad-add-spec-modal-title">Add <span class="fad-color-code">Insurances</span> <svg ng-click="cancel()" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.89 24.89"><defs><style>.cls-1{fill:#fa5f5f;}</style></defs><title>twitter-logo-silhouette</title><path class="cls-1" d="M40.92,11.82l-1.13-1.13L28.47,22,17.16,10.68,16,11.82,27.34,23.13,16,34.44l1.13,1.13L28.47,24.26,39.79,35.58l1.13-1.13L29.6,23.13Zm0,0" transform="translate(-16.03 -10.68)"/></svg></h4>
+            </div>
+            <div style="padding:20px 0;" class="fad-add-spec-modal-body col-md-12">
+                <div class="col-md-12">
+                    <div style="padding:0px 20px">
+                        <input id="insuranceInput" type="text" ng-model="insuranceFilter" class="form-control fad-doctor-su-upd-search" placeholder="Search for insurances">
+                        <span class="input-group-btn">
+                                </span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <button style="margin:0;float:right;font-size:x-small;margin-right: 30px;" type="button" class="btn btn-link btn-raised btn-right" ng-click="clearAll()" ng-disabled="selectedInsurances.length == 0">Uncheck all</button>
+                </div>
+                <div class="col-md-12" style="max-height: 340px; padding: 0 15px 0 30px; overflow-y:auto;">
+                    <div class="fad-doc-upd-speciality-list" ng-repeat="insurance in Insurance.insuranceProviders|filter : {name :insuranceFilter}">
+                        <input id="{{insurance['_id']}}" class="btn-lg pull-right myCheck" ng-checked="arrayOfIds.indexOf(insurance['_id']) > -1 " ng-model="selected" type="checkbox" ng-click="addInsurance(insurance,selected)" ng-true-value="true" ng-false-value="false">
+                        <span ng-click="!!selected?selected=false:selected=true;addInsurance(insurance,selected)">{{insurance.name}}</span>
+                        <!-- <md-checkbox id="{{item.title}}" ng-model="selected" type="checkbox" ng-click="addSpeciality(item,selected)" ng-true-value="true" ng-false-value="false">
+                                    </md-checkbox> -->
+                    </div>
+                </div>
+            </div>
+            <div class="fad-add-spec-modal-footer col-md-12">
+                <button class="btn btn-raised fad-doctor-su-upd-search-sub" type="button" ng-click="ok()">Save ({{selectedInsurances.length}})</button>
+                <!-- <button  class="btn btn-raised fad-doctor-su-upd-search-sub-update" type="button" ng-click="clearAll()" ng-disabled="selectedInsurances.length == 0">Clear All ({{selectedInsurances.length}})</button> -->
+                <br>
+                <h4 class="col-md-6 col-md-offset-3">Copyright 2003-2016 <span>Millennium Technology Solutions</span> Inc. All Rights Reserved.</h4>
+            </div>
+        </div>
+    </div>
+</script>

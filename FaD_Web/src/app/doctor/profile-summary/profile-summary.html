@@ -1,0 +1,551 @@
+<div class="container fad-advanced-doc-profile-main-container" id="abc">
+    <div class="col-md-12">
+        <div class="row" style="background: #eee; padding:15px;">
+            <div class="col-md-12" style="padding-bottom: 15px; ">
+                <div class="row">
+                    <div class="col-md-9 fad-doc-prof-main-logo-container" style="border-radius: 4px !important;background: #fff;">
+                        <a ui-sref="search" title="Home">
+                            <img src="../../../assets/images/logo-horizontal.png">
+                        </a>
+                    </div>
+                    <div class="col-md-3" style="border-left: 2px solid #f2f2f2;border-radius: 8px;background: #fff;">
+                        <div class="row prof-summ-doc-prof-btn">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-raised dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="fad-advanced-doc-profile-doc-profile-container">
+                                        <img ngf-src="docProfileSummary.imgPath" alt="profile image" ngf-resize="{width: 30, height: 30, quality: 100%}" ngf-size="{width: 30, height: 30, quality: 100%}" class="fad-advanced-doc-profile-doc-profile-img img-circle">
+                                        <h5 class="fad-advanced-doc-profile-doc-profile-text">
+                                            <span ng-if="docProfileSummary.docObj.prefix !== 'NULL' && docProfileSummary.docObj.prefix">{{docProfileSummary.docObj.prefix|capitalize}} </span>
+                                            {{docProfileSummary.docObj.fName|capitalize}}<span ng-if="docProfileSummary.docObj.mName">&nbsp{{docProfileSummary.docObj.mName|capitalize}}</span> {{docProfileSummary.docObj.lName|capitalize}}<span ng-if="docProfileSummary.docObj.credentialText.length > 0">, {{docProfileSummary.docObj.credentialText[0]}}</span> 
+                            <!-- <br><span class="fad-advanced-doc-profile-doc-profile-text-speciality">{{docProfileSummary.docObj.taxonomy[0].title}}</span> --></h5>
+                                        <span class="drop-down-icon">
+                                    <svg style="width: 15px;" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.86 10.77"><defs><style>.cls-1{fill:#fa5f5f;fill-rule:evenodd; width: 12px; height: 8px;}</style></defs><title>Untitled-3</title><path class="cls-1" d="M11.67,8.83,4.57,1.68a1.35,1.35,0,0,0-1.92,0,1.37,1.37,0,0,0,0,1.93l8,8a1.34,1.34,0,0,0,1,.39,1.34,1.34,0,0,0,1-.39l8-8a1.37,1.37,0,0,0,0-1.93,1.35,1.35,0,0,0-1.92,0Z" transform="translate(-2.25 -1.28)"/></svg>
+                                </span>
+                                    </div>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <li class="dropdown-item" ui-sref="about-us">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+                                    <g>
+                                        <g>
+                                            <path style="fill:#556080;" d="M101.624,5.014C49.16,4.122,5.906,45.925,5.014,98.372c-0.507,29.761,12.745,56.488,33.857,74.257
+                                                c1.38-1.188,2.85-2.29,4.495-3.204l28.363-15.457c3.711-2.03,6.019-5.916,6.019-10.169v-11.607c0,0-8.313-9.962-11.481-23.792
+                                                c-2.644-1.698-4.396-4.638-4.396-7.981V87.692c0-2.783,1.246-5.288,3.168-7.036V62.274c0,0-3.76-28.605,34.959-28.605
+                                                c38.724,0,34.96,28.605,34.96,28.605v18.383c1.927,1.748,3.168,4.253,3.168,7.036v12.727c0,4.271-2.873,7.86-6.758,9.066
+                                                c-2.169,6.74-5.302,13.166-9.433,19.015c-1.053,1.47-2.012,2.711-2.873,3.693v11.903c0,4.396,2.469,8.403,6.39,10.366
+                                                l30.37,15.174c1.82,0.91,3.469,2.048,4.974,3.33c20.48-17.07,33.696-42.592,34.189-71.336
+                                                C195.895,49.165,154.093,5.906,101.624,5.014L101.624,5.014z M101.624,5.014"/>
+                                        </g>
+                                        <path style="fill:#FFFFFF;" d="M71.716,153.968l-28.345,15.457c-1.662,0.914-3.168,2.034-4.549,3.24
+                                            C55.345,186.597,76.686,195,99.985,195c23.142,0,44.344-8.277,60.817-22.022c-1.506-1.277-3.173-2.433-4.992-3.343l-30.353-15.174
+                                            c-3.921-1.963-6.408-5.969-6.408-10.366v-11.903c0.86-0.964,1.837-2.223,2.873-3.693c4.15-5.848,7.264-12.275,9.433-19.015
+                                            c3.903-1.206,6.776-4.795,6.776-9.066V87.71c0-2.801-1.241-5.306-3.186-7.054V62.273c0,0,3.782-28.587-34.96-28.587
+                                            c-38.719,0-34.942,28.587-34.942,28.587v18.383c-1.94,1.748-3.186,4.253-3.186,7.054v12.709c0,3.343,1.77,6.283,4.396,7.999
+                                            c3.186,13.83,11.499,23.774,11.499,23.774v11.625C77.753,148.034,75.427,151.938,71.716,153.968L71.716,153.968z M71.716,153.968"
+                                            />
+                                    </g>
+                                    </svg>
+                                        <span>About Us</span>
+                                    </li>
+                                    <li class="dropdown-item" ui-sref="doc-terms-of-use">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+                                    <g>
+                                        <path style="fill:#556080;" d="M99.998,5C47.535,5,5,47.534,5,99.998C5,152.465,47.535,195,99.998,195
+                                            C152.466,195,195,152.465,195,99.998C195,47.534,152.466,5,99.998,5L99.998,5z"/>
+                                        <path style="fill:#FFFFFF;" d="M147.493,124.454v11.538c0,5.217-3.464,9.624-8.214,11.053V65.65c0-9.985-8.127-18.113-18.11-18.113
+                                            H62.854c1.432-4.75,5.832-8.214,11.053-8.214h62.048c6.371,0,11.538,5.168,11.538,11.544V124.454z"/>
+                                        <path style="fill:#FFFFFF;" d="M121.166,54.109H59.122c-6.376,0-11.544,5.167-11.544,11.541v85.13
+                                            c0,6.377,5.168,11.544,11.544,11.544h62.048c6.371,0,11.538-5.167,11.538-11.544v-11.541V77.194V65.653
+                                            C132.707,59.276,127.543,54.109,121.166,54.109z M119.71,141.274H60.575v-6.572h59.135V141.274z M119.71,125.861H60.575v-6.572
+                                            h59.135V125.861z M119.71,111.286H60.575v-6.569h59.135V111.286z M119.71,96.711H60.575v-6.569h59.135V96.711z M119.71,82.137
+                                            H60.575v-6.572h59.135V82.137z"/>
+                                    </g>
+                                    </svg>
+                                        <span>Terms of Use</span>
+                                    </li>
+                                    <li class="dropdown-item" ui-sref="privacy">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+                                    <g>
+                                        <path style="fill:#556080;" d="M99.998,5C47.531,5,5,47.536,5,99.997C5,152.461,47.531,195,99.998,195
+                                            C152.463,195,195,152.464,195,99.997C195,47.534,152.463,5,99.998,5L99.998,5z"/>
+                                        <path style="fill:#FFFFFF;" d="M99.998,47.503L47.634,69.787c0,0,3.482,82.708,52.365,82.708s52.366-82.708,52.366-82.708
+                                            L99.998,47.503z M94.191,126.67l-0.028-0.04l-0.044,0.04l-20.725-23.101l8.637-7.602l12.484,9.07l30.211-24.863l6.634,8.721
+                                            L94.191,126.67z"/>
+                                    </g>
+                                    </svg>
+                                        <span>Privacy Policy</span>
+                                    </li>
+                                    <li class="dropdown-item" ui-sref="doc-faq">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+                                        <g>
+                                            <path style="fill:#556080;" d="M98.327,5.01C46.084,5.701,4.316,48.577,5.01,100.763c0.691,52.152,43.606,93.896,95.846,93.203
+                                                c52.219-0.701,94.008-43.577,93.316-95.752C193.468,46.05,150.556,4.307,98.327,5.01L98.327,5.01z"/>
+                                           <path style="fill:#FFFFFF;" d="M98.044,156.997l-0.522-0.01c-8.043-0.231-13.715-6.157-13.484-14.07
+                                                c0.221-7.785,6.035-13.431,13.805-13.431l0.473,0.01c8.264,0.241,13.875,6.108,13.643,14.253
+                                                C111.728,151.552,106.007,156.997,98.044,156.997L98.044,156.997z" />
+                                        <path style="fill:#FFFFFF;" d="M131.88,89.92c-1.887,2.678-6.053,6.018-11.294,10.091l-5.773,3.98
+                                                c-3.164,2.467-5.082,4.786-5.794,7.061c-0.563,1.787-0.843,2.267-0.895,5.908l-0.01,0.932H86.076l0.059-1.864
+                                                c0.272-7.654,0.463-12.165,3.645-15.888c4.981-5.836,15.975-12.917,16.448-13.218c1.565-1.184,2.902-2.527,3.886-3.972
+                                                c2.318-3.189,3.341-5.697,3.341-8.155c0-3.42-1.023-6.588-3.03-9.408c-1.928-2.716-5.593-4.09-10.906-4.09
+                                                c-5.259,0-8.865,1.664-11.014,5.094c-2.218,3.52-3.341,7.21-3.341,10.981v0.942H62.442l0.039-0.981
+                                                c0.594-13.901,5.552-23.912,14.759-29.758c5.783-3.72,12.983-5.608,21.388-5.608c10.983,0,20.27,2.668,27.569,7.934
+                                                c7.41,5.335,11.166,13.321,11.166,23.74C137.363,79.47,135.514,84.944,131.88,89.92L131.88,89.92z" />
+                                        <rect x="5" y="5" style="fill:none;" width="190" height="190" />
+                                        </g>
+                                        </svg>
+
+                                        <span>FAQs</span>
+                                    </li>
+                                    <li class="dropdown-item" ui-sref="contact-us">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+                                    <g>
+                                        <circle style="fill:#556080;" cx="100" cy="100" r="95"/>
+                                        <rect x="63.406" y="46.953" style="fill:none;" width="73.188" height="106.094"/>
+                                        <path style="fill:#ECF0F1;" d="M125.32,57.843C118.47,51,109.364,47.222,99.679,47.222c-9.697,0-18.801,3.778-25.654,10.621
+                                            c-12.668,12.678-14.247,36.521-3.406,50.972l29.06,41.96l29.003-41.903C139.57,94.364,137.991,70.521,125.32,57.843z M100,94.185
+                                            c-7.083,0-12.825-5.742-12.825-12.825c0-7.083,5.742-12.825,12.825-12.825c7.083,0,12.825,5.742,12.825,12.825
+                                            C112.825,88.443,107.083,94.185,100,94.185z"/>
+                                    </g>
+                                    </svg>
+                                        <span>Contact Us</span>
+                                    </li>
+                                    <li class="dropdown-item" ng-click="docProfileSummary.logout()">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+                                        <path style="fill:#556080;" d="M100,5C47.533,5,5,47.533,5,100s42.533,95,95,95c52.467,0,95-42.533,95-95S152.467,5,100,5z
+                                             M90.795,49.363c0-2.492,0.909-4.652,2.732-6.475c1.824-1.819,3.98-2.734,6.476-2.734c2.491,0,4.651,0.91,6.47,2.734
+                                            c1.823,1.823,2.737,3.978,2.737,6.475v46.035c0,2.492-0.914,4.652-2.737,6.475c-1.82,1.82-3.979,2.733-6.47,2.733
+                                            c-2.496,0-4.651-0.914-6.476-2.733c-1.823-1.823-2.732-3.983-2.732-6.475V49.363z M150.853,126.04
+                                            c-2.923,6.807-6.854,12.682-11.795,17.622c-4.94,4.936-10.812,8.871-17.623,11.795c-6.81,2.927-13.954,4.388-21.433,4.388
+                                            c-7.484,0-14.626-1.461-21.438-4.388c-6.807-2.923-12.682-6.859-17.623-11.795c-4.936-4.94-8.867-10.815-11.794-17.622
+                                            c-2.928-6.811-4.389-13.955-4.389-21.438c0-8.725,1.931-16.951,5.789-24.671c3.862-7.72,9.29-14.191,16.295-19.419
+                                            c2.06-1.535,4.349-2.134,6.866-1.798c2.518,0.335,4.522,1.534,6.005,3.595c1.534,2.013,2.125,4.281,1.762,6.798
+                                            c-0.358,2.517-1.547,4.543-3.56,6.078c-4.699,3.547-8.329,7.888-10.898,13.018c-2.565,5.135-3.845,10.601-3.845,16.399
+                                            c0,4.991,0.969,9.747,2.913,14.281c1.94,4.531,4.566,8.449,7.876,11.76c3.306,3.307,7.225,5.932,11.759,7.876
+                                            c4.531,1.94,9.29,2.914,14.278,2.914c4.987,0,9.747-0.974,14.277-2.914c4.531-1.945,8.449-4.569,11.759-7.876
+                                            c3.311-3.311,5.936-7.228,7.876-11.76c1.94-4.535,2.914-9.29,2.914-14.281c0-5.798-1.284-11.268-3.85-16.399
+                                            c-2.56-5.129-6.199-9.471-10.893-13.018c-2.017-1.535-3.203-3.561-3.56-6.078c-0.362-2.517,0.224-4.785,1.759-6.798
+                                            c1.486-2.061,3.499-3.26,6.043-3.595c2.544-0.337,4.819,0.263,6.832,1.798c7.001,5.229,12.433,11.699,16.291,19.419
+                                            c3.862,7.721,5.789,15.947,5.789,24.671C155.241,112.086,153.779,119.229,150.853,126.04z"/>
+                                        </svg>
+                                        <span>Logout</span>
+                                    </li>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-9">
+                                <div class="row">
+                                    <div class="fad-advanced-doc-profile-doc-profile-container">
+                                        <img ngf-src="docProfileSummary.imgPath" alt="profile image" ngf-resize="{width: 30, height: 30, quality: 100%}" ngf-size="{width: 30, height: 30, quality: 100%}" class="fad-advanced-doc-profile-doc-profile-img img-circle">
+                                        <h5 class="fad-advanced-doc-profile-doc-profile-text">
+                                            <span ng-if="doctor['_source'].prefix">{{doctor["_source"].prefix|capitalize}} </span>
+                                            {{docProfileSummary.docObj.fName|capitalize}}<span ng-if="docProfileSummary.docObj.mName">&nbsp{{docProfileSummary.docObj.mName|capitalize}}
+                                            </span>&nbsp{{docProfileSummary.docObj.lName|capitalize}} {{docProfileSummary.docObj.credentialText[0]}} 
+                            <br><span class="fad-advanced-doc-profile-doc-profile-text-speciality">{{docProfileSummary.docObj.taxonomy[0].title}}</span></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <a href="" class="fad-dashboard-notification-container">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve" ng-click="docProfileSummary.logout()">
+                                            <style type="text/css">
+                                            .st0 {
+                                                fill: #F16060;
+                                            }
+                                            </style>
+                                            <g>
+                                                <path class="st0" d="M109.8,136.3V23c0-5.4-4.4-9.8-9.8-9.8c-5.4,0-9.8,4.4-9.8,9.8v113.3H109.8z" />
+                                                <path class="st0" d="M180,106.8c0-26.7-13.2-51.5-35.4-66.4c-4.5-3-10.6-1.8-13.6,2.7c-3,4.5-1.8,10.6,2.7,13.6   c16.8,11.3,26.8,30,26.8,50.2c0,33.3-27.1,60.4-60.4,60.4c-33.3,0-60.4-27.1-60.4-60.4c0-20.1,10-38.8,26.7-50.1   c4.5-3,5.7-9.1,2.6-13.6c-3-4.5-9.1-5.7-13.6-2.6C33.2,55.4,20,80.2,20,106.8c0,44.1,35.9,80,80,80   C144.1,186.8,180,150.9,180,106.8L180,106.8z M180,106.8" />
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 fad-adv-prof-summ-date-cont">
+                <div class="row">
+                    <div class="col-md-9 fad-search-results-app-dates-container ">
+                        <div class="overlay ">Appointment booking features will be enabled soon..
+                            <svg id="Layer_1 " data-name="Layer 1 " xmlns="http://www.w3.org/2000/svg " viewBox="0 0 23.49 23.49 " ng-click="docProfileSummary.showAlert($event)">
+                                <defs>
+                                    <style>
+                                    .cls-1 {
+                                        fill: #fa5f5f;
+                                    }
+                                    
+                                    .cls-2 {
+                                        fill: #fa5f5f;
+                                    }
+                                    </style>
+                                </defs>
+                                <title>i</title>
+                                <path class="cls-1 " d="M12.64.84A11.74,11.74,0,1,0,24.38,12.58,11.76,11.76,0,0,0,12.64.84Zm0,22a10.3,10.3,0,1,1,10.3-10.3,10.31,10.31,0,0,1-10.3,10.3Zm0,0 " transform="translate(-0.9 -0.84) " />
+                                <path class="cls-2 " d="M13.83,7.9a1.21,1.21,0,1,1-1.21-1.21A1.21,1.21,0,0,1,13.83,7.9Zm0,0 " transform="translate(-0.9 -0.84) " />
+                                <path class="cls-2 " d="M12.62,11.08a.72.72,0,0,0-.72.72v6.14a.72.72,0,0,0,1.45,0V11.8a.72.72,0,0,0-.72-.72Zm0,0 " transform="translate(-0.9 -0.84) " />
+                            </svg>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-1 ">
+                            </div>
+                            <div class="col-md-10 ">
+                                <div class="row ">
+                                    <ul class="list-inline ">
+                                        <div class="row ">
+                                            <li>Tue 26 Mar</li>
+                                            <li>Tue 26 Mar</li>
+                                            <li>Tue 26 Mar</li>
+                                            <li>Tue 26 Mar</li>
+                                            <li>Tue 26 Mar</li>
+                                            <li>Tue 26 Mar</li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-1 ">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 fad-doc-prof-last-upd">
+                        <p>Your profile was updated on
+                        </p>
+                        <h5>{{docProfileSummary.docObj.updateDate | moment}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row fad-advanced-doc-profile-second-row">
+                    <div class="col-md-12 fad-advanced-doc-profile-summary-header-container">
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4 text-center">
+                                <label class="fad-advanced-doc-profile-summary-label">
+                                    <!-- <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.61 11.69">
+                                        <defs>
+                                            <style>
+                                            .cls-1 {
+                                                fill: #666;
+                                            }
+                                            </style>
+                                        </defs>
+                                        <title>arrow</title>
+                                        <path class="cls-1" d="M23.08,6.59l-5-5a.79.79,0,1,0-1.12,1.12L20.6,6.36H4.49A.79.79,0,1,0,4.49,8H20.6l-3.69,3.69A.8.8,0,0,0,17.47,13a.77.77,0,0,0,.56-.24l5-5a.79.79,0,0,0,0-1.13Zm0,0" transform="translate(-3.7 -1.31)" />
+                                    </svg> -->
+                                    your Profile</label>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <button ng-click="docProfileSummary.editProfile()" class="pull-right btn btn-link fad-advanced-doc-profile-summary-btn">
+                                        EDIT
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 fad-advanced-doc-profile-summary-main-container">
+                        <div class="row">
+                            <div class="col-md-3 fad-advanced-doc-profile-summary-main-img-container centered">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="wrapper">
+                                            <img class="fad-advanced-doc-profile-summary-main-img" ngf-src="docProfileSummary.imgPath" alt="Doctor Profile" ngf-resize="{width: 200, height: 200, quality: 100%}" ngf-size="{width: 200, height: 200, quality: 100%}" style="width:130px; height:130px; ">
+                                            <div id="bar"></div>
+                                        </div>
+                                        <h5 style="color: #000;">
+                                            Your profile is {{docProfileSummary.profileProgress}}% complete
+                                        </h5>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <h3>
+                                            <span ng-if="docProfileSummary.docObj.prefix">{{docProfileSummary.docObj.prefix|capitalize}} </span>
+                                            {{docProfileSummary.docObj.fName|capitalize}}<span ng-if="docProfileSummary.docObj.mName">&nbsp{{docProfileSummary.docObj.mName|capitalize}}</span> {{docProfileSummary.docObj.lName|capitalize}}<span ng-if="docProfileSummary.docObj.credentialText.length> 0">, {{docProfileSummary.docObj.credentialText[0]}}</span>
+                                            </h3>
+                                            <span>
+                                            <h4 ng-repeat="spec in (docProfileSummary.docObj.taxonomy| filter: taxonomy : taxonomy.level='2')" ng-if="$index===0">{{spec.title}}
+                                            </h4>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="input-group fad-advanced-doc-profile-summary-main-labels-container">
+                                                <span class="input-group-addon" id="basic-addon1"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 292.56 191.79"><defs><style>.cls-1{fill:gray;fill-rule:evenodd;}</style></defs><title>Untitled-3</title><path class="cls-1" d="M328.09,47.58a24.1,24.1,0,0,0-6.41-16.21.87.87,0,0,1-.15-.27c-.07-.07-.17-.09-.25-.17a24.5,24.5,0,0,0-17.78-7.64H60.11A24.6,24.6,0,0,0,42.3,30.93c-.08.08-.17.1-.22.2a.86.86,0,0,0-.15.27,23.92,23.92,0,0,0-6.41,16.19V190.77a23.93,23.93,0,0,0,6.68,16.53,1.61,1.61,0,0,0,.2.3s.08,0,.09.07a24.57,24.57,0,0,0,17.61,7.42h243.4a24.58,24.58,0,0,0,17.61-7.43s.08,0,.1-.05.09-.2.2-.27a24.07,24.07,0,0,0,6.68-16.55Zm-95.77,64,84.32-69.91a14.17,14.17,0,0,1,1.31,5.86V190.77a14.38,14.38,0,0,1-1.06,5.37Zm71.19-78.31a14.53,14.53,0,0,1,5.94,1.28L181.8,140.42,54.18,34.6a14.48,14.48,0,0,1,5.93-1.28ZM46.74,196.14a14,14,0,0,1-1.08-5.37V47.58A13.9,13.9,0,0,1,47,41.72l84.32,69.91Zm13.38,8.92a14.65,14.65,0,0,1-6.48-1.58l85.45-85.4,39.46,32.72a5.07,5.07,0,0,0,6.5,0l39.49-32.72L310,203.48a14.63,14.63,0,0,1-6.48,1.58Zm0,0" transform="translate(-35.53 -23.29)"/></svg></span>
+                                                <label type="text" class="form-control fad-advanced-doc-profile-summary-main-labels">{{docProfileSummary.docObj.email}}</label>
+                                            </div>
+                                            <div class="input-group fad-advanced-doc-profile-summary-main-labels-container">
+                                                <span class="input-group-addon" id="basic-addon1"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74.63 74.63"><defs><style>.cls-1{fill:gray;}</style></defs><title>Untitled-3</title><path class="cls-1" d="M81.09,67.94a5.73,5.73,0,0,0-2.84-4.24L59.84,53.1a5.78,5.78,0,0,0-7,.92l-3.63,3.63a2.66,2.66,0,0,1-3.55.2,105,105,0,0,1-8.37-7.52A104.78,104.78,0,0,1,29.82,42,2.66,2.66,0,0,1,30,38.4l3.63-3.63a5.78,5.78,0,0,0,.92-7L24,9.41a5.77,5.77,0,0,0-9.08-1.2L9.42,13.67c-3.81,3.81-3.88,10.79-.17,19.64C12.81,41.83,19.45,51.2,28,59.7S45.83,74.85,54.35,78.41A30.77,30.77,0,0,0,65.9,81.14c3.4,0,6.15-1,8.09-2.91l5.46-5.46a5.73,5.73,0,0,0,1.64-4.83ZM58.64,55.19,77,65.79a3.35,3.35,0,0,1,1,4.89l-24.47-14,1-1a3.36,3.36,0,0,1,4-.54ZM19.4,9a3.32,3.32,0,0,1,2.46,1.65L32.47,29a3.35,3.35,0,0,1-.53,4L31,34,17,9.59A3.31,3.31,0,0,1,19.4,9ZM72.28,76.53c-3,3-9.23,2.9-17-.35C47,72.74,38,66.28,29.67,58S14.92,40.61,11.48,32.38c-3.25-7.77-3.38-14-.35-17l4.06-4.06L29.25,35.75l-.94.94a5.07,5.07,0,0,0-.37,6.78A107.18,107.18,0,0,0,35.63,52a107.28,107.28,0,0,0,8.56,7.7A5.07,5.07,0,0,0,51,59.35l.86-.86,24.5,14Zm0,0" transform="translate(-6.52 -6.52)"/></svg></span>
+                                                <label type="text" class="form-control fad-advanced-doc-profile-summary-main-labels">{{docProfileSummary.docObj.mobile| phone}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-9 fad-advanced-doc-profile-summary-main-speciality-container">
+                                <div class="row fad-advanced-doc-profile-summary-main-speciality-row">
+                                    <div class="col-md-4 fad-advanced-doc-profile-summary-main-speciality-nav-container">
+                                        <ul class=" nav nav-pills nav-stacked" ng-repeat="tab in docProfileSummary.tabs">
+                                            <!-- docProfileSummary.docObj[tab.docObjKey].length > 0 -->
+                                            <li ng-if="docProfileSummary.checkForData(tab)" class="list-group-item" ng-class="{active:docProfileSummary.isActiveTab(tab.url)}" ng-click="docProfileSummary.onClickTab(tab)">
+                                                <a href="">{{tab.title}}</a>
+                                            </li>
+                                            <li class="list-group-item empty-tabs" ng-if="!docProfileSummary.checkForData(tab)" ng-class="{active:docProfileSummary.isActiveTab(tab.url)}" ng-click="docProfileSummary.onClickTab(tab)">
+                                                <a href="">{{tab.title}}
+                                                <br>
+                                                <h6 style="margin:0; float:right;">Not filled</h6>
+                                                </a>
+                                            </li>
+                                    </div>
+                                    <div class="col-md-8 fad-advanced-doc-profile-summary-main-speciality-current-tab-container">
+                                        <div id="mainView" class="fad-advanced-doc-profile-summary-main-speciality-current-tab">
+                                            <div class="fad-advanced-doc-profile-summary-main-speciality-current-tab-info" ng-include="docProfileSummary.currentTab">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div ng-repeat="taxonomy in docProfileSummary.docObj.taxonomy | filter: taxonomy : taxonomy.level='2'">
+                                {{taxonomy.title}}
+                                <h6 ng-repeat="subSpec in docProfileSummary.docObj.taxonomy | filter:{ level : '3' , parent : taxonomy._id}">{{subSpec.title}}</h6>
+                            </div> -->
+                            <!-- Specialities Template -->
+                            <script type="text/ng-template" id="specialities.tpl.html">
+                                <div>
+                                    <div id="specialities" class="doc-prof-summ-empty-tabs" ng-if="docProfileSummary.docObj.taxonomy.length === 0">
+                                        <div>
+                                            <h4>
+                                            <span>
+                                            No Specialties added
+                                            </span>
+                                        </h4>
+                                        </div>
+                                    </div>
+                                    <uib-accordion id="specialities">
+                                        <uib-accordion-group ng-repeat="taxonomy in docProfileSummary.docObj.taxonomy | filter: taxonomy : taxonomy.level='2' |orderBy: 'title'" class="panel-default" is-open="accordion5.open">
+                                            <uib-accordion-heading>
+                                                <svg class="doc-spec-acc-header-drop" ng-class="{'doc-spec-acc-header-drop-open': accordion5.open, 'cba': !accordion5.open}" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.86 10.77">
+                                                    <defs>
+                                                        <style>
+                                                        .cls-1 {
+                                                            fill: #fa5f5f;
+                                                            fill-rule: evenodd;
+                                                            width: 12px;
+                                                            height: 8px;
+                                                        }
+                                                        </style>
+                                                    </defs>
+                                                    <title>Untitled-3</title>
+                                                    <path class="cls-1" d="M11.67,8.83,4.57,1.68a1.35,1.35,0,0,0-1.92,0,1.37,1.37,0,0,0,0,1.93l8,8a1.34,1.34,0,0,0,1,.39,1.34,1.34,0,0,0,1-.39l8-8a1.37,1.37,0,0,0,0-1.93,1.35,1.35,0,0,0-1.92,0Z" transform="translate(-2.25 -1.28)" />
+                                                </svg>
+                                                <span class="doc-spec-acc-header">{{taxonomy.title}}</span>
+                                            </uib-accordion-heading><span class="doc-spec-acc-sub-spec" ng-repeat="subSpec in docProfileSummary.docObj.pSubSpeciality | filter:{parent : taxonomy._id} |orderBy: 'title'">{{subSpec.title}}</span>
+                                            <span class="doc-spec-acc-sub-spec" ng-if="(docProfileSummary.docObj.pSubSpeciality | filter:{parent : taxonomy._id}).length === 0">Unavailable at the moment</span>
+                                        </uib-accordion-group>
+                                    </uib-accordion>
+                                </div>
+                            </script>
+                            <!-- Board Certification Template -->
+                            <script type="text/ng-template" id="board.certification.tpl.html">
+                                <div id="board-certification" class="doc-prof-summ-empty-tabs" ng-if="docProfileSummary.docObj.certifications.length === 0">
+                                    <div>
+                                        <h4>
+                                            <span>
+                                            No Board Certification added
+                                            </span>
+                                            <span style="float: right;">
+                                                Click <span ng-click="docProfileSummary.editBoard()" style="color: #333; text-decoration: underline;">here</span> to add a Board Certification
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div id="board-certification" class="doc-prof-summ-tabs" ng-if="docProfileSummary.docObj.certifications.length > 0">
+                                    <div ng-repeat="certification in docProfileSummary.docObj.certifications |orderBy: 'certficationName'">
+                                        <h4>
+                                            <span>
+                                            {{certification.certficationName | titleCase}}
+                                            </span>
+                                            <br>
+                                            <span ng-if="!!certification.yearOfCert" style="color:#333;display: block;margin-top: 5px;">
+                                            <span>Date of Certification: </span>  {{certification.monthOfCert}}, {{certification.yearOfCert}}</span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </script>
+                            <!-- Area of expertise Template -->
+                            <!-- <script type="text/ng-template" id="area.expertise.tpl.html">
+                                <div id="board-certification" class="doc-prof-summ-empty-tabs" ng-if="docProfileSummary.docObj.certifications.length === 0">
+                                    <div>
+                                        <h4>
+                                            <span>
+                                            No Board Certification added
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div id="board-certification" class="doc-prof-summ-tabs" ng-if="docProfileSummary.docObj.certifications.length > 0">
+                                    <div ng-repeat="certification in docProfileSummary.docObj.certifications">
+                                        <h4>
+                                            <span>
+                                            {{certification.certficationName | titleCase}}
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </script> -->
+                            <!-- Insurances Template -->
+                            <script type="text/ng-template" id="insurances.tpl.html">
+                                <div id="insurances" class="doc-prof-summ-empty-tabs" ng-if="docProfileSummary.docObj.insuranceIds.length === 0">
+                                    <div>
+                                        <h4>
+                                            <span>
+                                            No Insurances added
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div id="insurances" class="doc-prof-summ-tabs-insurance">
+                                    <div ng-repeat="insurance in docProfileSummary.docObj.insuranceIds |orderBy: 'name'">
+                                        <h4>
+                                            <span>
+                                        {{insurance.name}}
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </script>
+                            <!-- Practice Location Template -->
+                            <script type="text/ng-template" id="practice.location.tpl.html">
+                                <div id="practice-location" class="doc-prof-summ-empty-tabs" ng-if="docProfileSummary.docObj.otherAddress.length === 0">
+                                    <div>
+                                        <h4>
+                                            <span>
+                                            No Practice Location added
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div id="practice-location">
+                                    <address ng-repeat="location in docProfileSummary.docObj.otherAddress |orderBy: 'organizationLegalName'" class="fad-su-doctor-prof-upd-form">
+                                        <div>
+                                            <h4>
+                                            {{location.organizationLegalName | titleCase}}
+                                            <p>
+                                                <span>{{location.Line1StreetAddress | titleCase }},</span>
+                                            <span ng-if="!!doctor['_source'].address.Line2StreetAddress"> {{location.Line2StreetAddress | titleCase}},</span>
+                                            <span>{{location.city | titleCase}},</span>
+                                            <span>{{location.state}}</span>
+                                            <span>{{location.zipCode}},</span>
+                                            <span>{{location.country}}</span>
+                                            </p>
+                                            
+                                        </h4>
+                                        </div>
+                                    </address>
+                                </div>
+                            </script>
+                            <!-- Hospital Affiliations -->
+                            <script type="text/ng-template" id="affillation.tpl.html">
+                                <div id="affillation" class="doc-prof-summ-empty-tabs" ng-if="docProfileSummary.docObj.hospitalAffillation.length === 0">
+                                    <div>
+                                        <h4>
+                                            <span>
+                                            No Hospital added
+                                            </span>
+                                            <span style="float: right;">
+                                                Click <span ng-click="docProfileSummary.editHospital()" style="color: #333; text-decoration: underline;">here</span> to add a Hospital
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div id="affillation" class="doc-prof-summ-tabs">
+                                    <div ng-repeat="affiliation in docProfileSummary.docObj.hospitalAffillation |orderBy: 'name'">
+                                        <h4>
+                                            <span>
+                                        {{affiliation.name | titleCase}}
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </script>
+                            <!-- Education Template -->
+                            <script type="text/ng-template" id="education.tpl.html">
+                                <div id="education" class="doc-prof-summ-empty-tabs" ng-if="docProfileSummary.docObj.medicalSchoolName.length === 0">
+                                    <div>
+                                        <h4>
+                                            <span>
+                                            No Education Credential added
+                                            </span>
+                                            <span style="float: right;">
+                                                Click <span ng-click="docProfileSummary.editBoard()" style="color: #333; text-decoration: underline;">here</span> to add Education Credentials
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div id="education">
+                                    <address ng-repeat="school in docProfileSummary.docObj.medicalSchoolName |orderBy: 'collegeId.name'" class="fad-su-doctor-prof-upd-form">
+                                        <div>
+                                            <h4>
+                                            {{school.collegeId.name | titleCase}}
+                                            <p>
+                                                <span >{{school.taxanomyId.title | titleCase}} <span ng-repeat="degreeName in school.degreeName">, {{degreeName}} </span></span>
+                                            </p>
+                                        </h4>
+                                        </div>
+                                    </address>
+                                </div>
+                            </script>
+                            <!-- Languages Template -->
+                            <script type="text/ng-template" id="languages.tpl.html">
+                                <div id="languages" class="doc-prof-summ-empty-tabs" ng-if="docProfileSummary.docObj.languagesSpoken.length === 0">
+                                    <div>
+                                        <h4>
+                                            <span>
+                                            No Languages added
+                                            </span>
+                                            <span style="float: right;">
+                                                Click <span ng-click="docProfileSummary.editProfile()" style="color: #333; text-decoration: underline;">here</span> to add Languages
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div id="languages" class="doc-prof-summ-tabs">
+                                    <div ng-repeat="language in docProfileSummary.docObj.languagesSpoken |orderBy: 'languageName'">
+                                        <h4>
+                                        <span>
+                                    {{language.languageName}}
+                                        </span>
+                                    </h4>
+                                    </div>
+                                </div>
+                            </script>
+                            <!-- Brief Introduction Template -->
+                            <script type="text/ng-template" id="brief.intro.tpl.html">
+                                <div id="Brief Introduction" class="doc-prof-summ-empty-tabs" ng-if="!docProfileSummary.docObj.briefIntro">
+                                    <div>
+                                        <h4>
+                                            <span>
+                                            Nothing written about yourself
+                                            </span>
+                                            <span style="float: right;">
+                                                Click <span ng-click="docProfileSummary.editHospital()" style="color: #333; text-decoration: underline;">here</span> to write about yourself
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div id="Brief Introduction" ng-if="!!docProfileSummary.docObj.briefIntro">
+                                    <pre class="brirf-intro-pre-tab">{{docProfileSummary.docObj.briefIntro}}</pre>
+                                </div>
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

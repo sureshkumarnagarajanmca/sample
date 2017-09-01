@@ -1,0 +1,179 @@
+<div class="container-fluid fad-user-su-container-fluid">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 fad-user-su-logo-container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="">
+                            <img style="width:270px;" src="../../../assets/images/logo-horizontal.png">
+                        </a>
+                    </div>
+                </div>
+                <hr style="border-top:1px solid #d1d1d1;">
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <h3 class="text-center" style="margin-bottom: 30px;">Enabling you to find a <span style="color:#fa5f5f;">right</span> doctor.</h3>
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-3">
+                <div class="row fad-doc-su-form-container">
+                    <div class="col-md-12">
+                        <h3 class="fad-user-su-form-header col-md-8 col-md-offset-2">
+                            <span class="fad-user-su-form-header-name">get started</span>
+                        </h3>
+                    </div>
+                    <div class="col-md-12">
+                        <form novalidate role="form" name="userResgistration">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <md-input-container class="md-block">
+                                                <label>Enter your first name</label>
+                                                <input ng-model="userSignup.userDetails.fName" type="text" required>
+                                            </md-input-container>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <md-input-container class="md-block">
+                                                <label>Enter your last name</label>
+                                                <input ng-model="userSignup.userDetails.lName" type="text">
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <md-input-container class="md-block">
+                                                <label>Enter your email address</label>
+                                                <input ng-model="userSignup.userDetails.username" type="email" id="email" name="email" required>
+                                                <br>
+                                                <span class="fad-doc-su-form-alert" ng-show="userResgistration.email.$dirty&&userResgistration.email.$error.email">Please enter valid email address</span>
+                                                <span class="fad-doc-su-form-alert" ng-show="userResgistration.email.$dirty&&userResgistration.email.$error.required">Email is required field</span>
+                                            </md-input-container>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <md-input-container class="md-block">
+                                                <label>Enter your registered mobile number</label>
+                                                <input ng-maxlength="10" ng-minlength="10" ng-model="userSignup.userDetails.mobile" type="text" id="mobile" name="mobile" ng-pattern="userSignup.phoneRegex" required>
+                                                <br>
+                                                <span class="fad-doc-su-form-alert" ng-show="userResgistration.mobile.$dirty&&userResgistration.mobile.$error.required">Mobile number is required</span>
+                                                <span class="fad-doc-su-form-alert" ng-show="userResgistration.mobile.$error.maxlength||userResgistration.mobile.$error.minlength">Please enter valid mobile number</span>
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6 left-inner-addon fad-user-su-form-gender">
+                                            <!-- <label class="fad-user-su-form-label">Sex</label>
+                                            <ui-select ng-model="userSignup.userDetails.gender" theme="selectize">
+                                                <ui-select-match placeholder="Select Gender">
+                                                    <div ng-if="userSignup.userDetails.gender=='M'">Male</div>
+                                                    <div ng-if="userSignup.userDetails.gender=='F'">Female</div>
+                                                </ui-select-match>
+                                                <ui-select-choices repeat="gender in ['M','F']|filter:$select.search" position='down'>
+                                                    <div ng-if="gender=='M'">Male</div>
+                                                    <div ng-if="gender=='F'">Female</div>
+                                                </ui-select-choices>
+                                            </ui-select> -->
+                                            <md-input-container class="md-block" flex-gt-sm>
+                                                <md-select ng-model="userSignup.userDetails.gender" placeholder="Sex">
+                                                    <md-option ng-repeat="gender in ['M','F']|filter:$select.search">
+                                                        <div ng-if="gender=='M'">Male</div>
+                                                        <div ng-if="gender=='F'">Female</div>
+                                                    </md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                        <div class="col-md-6 fad-user-prof-date-input-container">
+                                           <!-- <label class="fad-user-su-form-label">Date of birth</label>
+                                            <input class="fad-user-prof-date-input" value="{{userSignup.userDetails.dob}}" ng-click="toggleSignupCalendar()" placeholder="Date of Birth">
+                                            <datetimepicker ng-show="calendarVisible" ng-model="userSignup.userDetails.dob" on-set-time="toggleSignupCalendar()" datetimepicker-config="dateConfig">
+                                            </datetimepicker> -->
+                                            <md-input-container class="md-block" flex-gt-sm>
+                                                <md-datepicker ng-model="userSignup.userDetails.dob" md-placeholder="Enter date"></md-datepicker>
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <md-input-container class="md-block">
+                                                <label>Enter password</label>
+                                                <input ng-model="userSignup.userDetails.password" type="{{userSignup.pwdInputType}}" id="name" ng-minlength="6" name="password" type="password">
+                                                <br>
+                                                <span class="fad-doc-su-form-alert" ng-show="userResgistration.password.$error.minlength">Password should be of minimum six characters</span>
+                                            </md-input-container>
+                                            <div class="fad-user-su-checkbox" style="position:relative; bottom: 15px;">
+                                                <input type="checkbox" ng-model="userSignup.pwdInputType" ng-true-value="'text'" ng-false-value="'password'" id="fad-c" />
+                                                <label for="fad-c" class="custom">
+                                                    <svg version="1.0" id="checkbox" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="209.667 9.667 589.37 540.667" enable-background="new 209.667 9.667 589.37 540.667" xml:space="preserve">
+                                                        <rect id="checkbox_1_" x="211.667" y="11.667" fill="#fff" stroke="#fa5f5f" stroke-width="4" stroke-miterlimit="10" width="536.667" height="536.667" />
+                                                        <polygon id="checkmark" stroke="#fa5f5f" fill="#fa5f5f" stroke-miterlimit="10" points="451.92,291.724 254.569,205.919 211.667,220.22 
+                                                        451.92,463.333 798,28.589 737.937,28.589 " />
+                                                    </svg>
+                                                    <h6>Show Password</h6>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <md-input-container class="md-block">
+                                                <label>Confirm password</label>
+                                                <input ng-model="userSignup.confirmPassword" compare-to="userSignup.userDetails.password" type="{{userSignup.pwdInputType}}" id="confirmPassword" name="confirmPassword">
+                                                <br>
+                                                <span class="fad-doc-su-form-alert" ng-show="userResgistration.confirmPassword.$touched&&userResgistration.confirmPassword.$error.compareTo">Passwords do not match</span>
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="fad-user-su-checkbox">
+                                                <input type="checkbox" id="fad-a" name="fad-a" />
+                                                <label for="fad-a" class="custom">
+                                                    <svg version="1.0" id="checkbox" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="209.667 9.667 589.37 540.667" enable-background="new 209.667 9.667 589.37 540.667" xml:space="preserve">
+                                                        <rect id="checkbox_1_" x="211.667" y="11.667" fill="#fff" stroke="#fa5f5f" stroke-width="4" stroke-miterlimit="10" width="536.667" height="536.667" />
+                                                        <polygon id="checkmark" stroke="#fa5f5f" fill="#fa5f5f" stroke-miterlimit="10" points="451.92,291.724 254.569,205.919 211.667,220.22 
+                                                        451.92,463.333 798,28.589 737.937,28.589 " />
+                                                    </svg>
+                                                    <h6>I have read and accept FINDaDOCTOR’s <a href="" title="">Terms of Use</a></h6>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="fad-user-su-checkbox">
+                                                <input type="checkbox" id="fad-b" name="fad-b" />
+                                                <label for="fad-b" class="custom">
+                                                    <svg version="1.0" id="checkbox" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="209.667 9.667 589.37 540.667" enable-background="new 209.667 9.667 589.37 540.667" xml:space="preserve">
+                                                        <rect id="checkbox_1_" x="211.667" y="11.667" fill="#fff" stroke="#fa5f5f" stroke-width="4" stroke-miterlimit="10" width="536.667" height="536.667" />
+                                                        <polygon id="checkmark" stroke="#fa5f5f" fill="#fa5f5f" stroke-miterlimit="10" points="451.92,291.724 254.569,205.919 211.667,220.22 
+                                                        451.92,463.333 798,28.589 737.937,28.589 " />
+                                                    </svg>
+                                                    <h6>I have read and accept FINDaDOCTOR’s <a href="" title="">HIPAA Authorization</a></h6>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <button ng-class="userResgistration.$valid?'fad-user-su-form-btn':'fad-user-su-form-btn-inactive'" class="fad-user-su-form-btn" type="submit" value="SIGN UP" ng-click="userResgistration.$valid&&userSignup.registerUser()" ng-disabled="!userResgistration.$valid">SIGN UP</button>
+                                    </div>
+                                </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" style="background: #fff; padding: 0;">
+    <div class="col-md-12 fad-user-su-footer ">
+        <h4 class="fad-user-su-footer-text ">&copy;2016 <span>Millennium Technology Solutions Inc.</span> All Rights Reserved.</h4>
+    </div>
+</div>
