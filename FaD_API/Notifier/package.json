@@ -1,0 +1,23 @@
+{
+  "name": "Notifier",
+  "version": "0.1.0",
+  "description": "Notifier micro service",
+  "dependencies": {
+    "authy": "^1.2.0",
+    "body-parser": "^1.15.0",
+    "cron": "^1.1.0",
+    "express": "^4.13.4",
+    "moment": "^2.14.1",
+    "nodemailer": "^2.6.0",
+    "pubnub": "^4.0.10",
+    "q": "^1.4.1",
+    "request": "^2.74.0",
+    "request-promise": "^4.1.1",
+    "twilio": "^2.9.2"
+  },
+  "author": "Vijay Kumar Chitirala",
+  "license": "ISC",
+  "scripts": {
+    "start": "node notifier.js"
+  }
+}
