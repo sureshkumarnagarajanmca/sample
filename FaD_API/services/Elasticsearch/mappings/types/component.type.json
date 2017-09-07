@@ -1,0 +1,33 @@
+module.exports = {
+      "properties": {
+        "componentDescription": {
+          "type": "string"
+        },
+        "componentTitle": {
+          "type": "string"
+        },
+        "componentLength": {
+          "type": "string"
+        },
+        "componentSize": {
+          "type": "integer"
+        },
+        "componentBody": {
+          "type": "string"
+        },
+        "componentData" : {
+            "type" : "object"
+        },
+        "componentFileId": {
+          "index": "not_analyzed",
+          "type": "string"
+        },
+        "componentType": {
+          "type": "string"
+        },
+        "componentId": {
+          "type": "string"
+        }
+      },
+      "type": "nested"
+}

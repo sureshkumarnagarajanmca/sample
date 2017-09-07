@@ -1,0 +1,16 @@
+{
+  "host" : {
+    "doc": "database hostname",
+    "default": "10.0.90.23"
+  },
+  "port" : {
+    "doc": "database port",
+    "format": "int",
+    "default": 9200
+  },
+  "index" : {
+    "default": "findadoctor"
+  },
+  "hosts" : ["10.0.90.23"],
+  "ports" : [9200]
+}

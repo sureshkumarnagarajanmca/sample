@@ -1,0 +1,28 @@
+{
+  "host" : {
+    "default": "10.0.90.22"
+  },
+  "port" : {
+    "doc": "database port",
+    "format": "int",
+    "default": 27017
+  },
+  "database" : {
+    "default": "fadupload"
+  },
+  "sessionStore": {
+    "default": "sessions"
+  },
+  "hosts" : ["localhost"],
+  "ports" : [27017],
+  "replEnabled" : {
+    "default": false
+  },
+  "replName" : {
+    "default": "rs0"
+  },
+  "writeconcern" : {
+    "doc" : "the write concern for the connection",
+    "default" : 1
+  }
+}

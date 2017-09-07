@@ -1,0 +1,67 @@
+
+{
+  "_all" : {"enabled" : false},
+  "dynamic": false,
+  "properties": {
+    "topicId":{
+       "type" : "string",
+       "index" : "not_analyzed"
+    },
+    "namespaceId":{
+        "type" : "string",
+        "index" : "not_analyzed"
+    },
+    "e__creator":{
+          "type":"nested",
+          "properties":{
+              "id":{
+                  "type" : "string",
+                  "index" : "not_analyzed"
+              },
+              "firstName" :{
+                  "type" : "string"
+              },
+              "lastName":{
+                  "type" : "string"
+              },
+              "phoneNo":{
+                  "type" : "string",
+                  "index" : "not_analyzed"
+              },
+              "emailId":{
+                  "type" : "string",
+                  "index" : "not_analyzed"
+              },
+              "profImage": {
+                  "type" : "string",
+                  "index":"no"
+              },
+              "profColour":{
+                "type" : "string",
+                "index":"no"
+              }
+          }
+    },
+    "teamId":{
+       "type" : "string",
+       "index" : "not_analyzed"
+    },
+    "topicName":{
+       "type" :"string"
+    },
+    "members" :{
+       "type" : "string",
+       "index" : "not_analyzed"
+    },
+    "creator":{
+       "type" : "string",
+       "index" : "not_analyzed"
+    },
+    "createdOn":{
+      "type":"date"
+    },
+    "isActive":{
+      "type":"boolean"
+    }
+  }
+}

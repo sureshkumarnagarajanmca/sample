@@ -1,0 +1,32 @@
+module.exports = {
+      "properties": {
+        "total": {
+          "type": "integer"
+        },
+        "text": {
+          "type": "integer"
+        },
+        "video": {
+          "type": "integer"
+        },
+        "audio": {
+          "type": "integer"
+        },
+        "image": {
+          "type": "integer"
+        },
+        "attachment": {
+          "type": "integer"
+        },
+        "filelink": {
+          "type": "integer"
+        },
+        "contact": {
+          "type": "integer"
+        },
+        "location": {
+          "type": "integer"
+        }
+      },
+      "type": "nested"
+    }
