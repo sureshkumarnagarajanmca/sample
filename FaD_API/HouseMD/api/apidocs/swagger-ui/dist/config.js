@@ -1,1 +1,0 @@
-var apidocUrl = "/api/api-docs";

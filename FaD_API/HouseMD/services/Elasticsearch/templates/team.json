@@ -1,5 +1,0 @@
-{
-    "template" : "team*",
-    "order" : 1,
-    "mappings" : ["$topic" , "$post" , "$postattachment" , "$comment"]
-}

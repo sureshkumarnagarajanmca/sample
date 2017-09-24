@@ -1,7 +1,0 @@
-{
-    "template" : "message*",
-    "order" : 1,
-    "settings" : "$message",
-    "aliases" : ["$message"],
-    "mappings" : ["$message" , "$attachment"]
-}
