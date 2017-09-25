@@ -23,3 +23,9 @@ https://w3layouts.com/login-registration-template/
 https://github.com/sharno/Bootstrap_Metro_Dashboard
 
 http://coreui.io/demo/Ajax_Demo/
+
+http://bootstrapmaster.com/demo/metro
+
+https://www.template.net/web-templates/htmlcss-templates/free-html5-css3-login-form/
+
+http://www.prepbootstrap.com/bootstrap-template/login#
