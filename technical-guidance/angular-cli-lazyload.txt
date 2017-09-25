@@ -1,0 +1,17 @@
+https://keathmilligan.net/lazy-loading-content-with-angular-cli/
+
+pm2 start /usr/bin/ng --serve --prod
+
+ng new --routing true angular-cli-lazyload --style=scss
+
+ng g component Home
+
+ng g module --routing true Lazy
+
+ng g component --flat lazy
+
+ng g component lazy/LazyPage
+
+
+
+

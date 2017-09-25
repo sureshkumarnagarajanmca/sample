@@ -1,0 +1,11 @@
+https://scotch.io/@HaiderMalik/building-fullstack-web-app-with-sailsjs-and-angular2
+
+https://www.linkedin.com/pulse/introduction-waterline-orm-sails-mysql-adapter-navinkumar-boddu
+
+https://jumpstartsails.blogspot.in/2015/09/introduction-to-waterline-orm-and-sails.html
+
+sails new blog-api --no-frontend
+
+npm install --save sails-mongo
+
+sails generate controller Post create findAll findOne delete update
