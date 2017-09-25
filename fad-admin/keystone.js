@@ -55,6 +55,8 @@ keystone.init({
 	'basedir': __dirname,
 	'port': 8888,
 	'host': process.env.IP || '127.0.0.1',
+	//'webroot': '/blog/',
+	//'cmsdir': 'admin',
 	'admin path': 'admin' // default is keystone	
 });
 
